@@ -21,8 +21,8 @@
     <url>https://sourceforge.net/tracker2/?func=browse&amp;group_id=244112</url>
   </issueManagement>
   <ciManagement>
-    <system>cvs</system>
-    <url>http://jtimecalc.cvs.sourceforge.net</url>
+    <system>git</system>
+    <url>http://jtimecalc.git.sourceforge.net</url>
   </ciManagement>
   <developers>
     <developer>
@@ -41,10 +41,9 @@
   </developers>
 
   <scm>
-    <url>http://jtimecalc.cvs.sourceforge.net/</url>
-    <connection>scm:cvs:pserver:@jtimecalc.cvs.sourceforge.net:/cvsroot/jtimecalc:jtimecalc</connection>
-    <developerConnection>scm:cvs:pserver:extssh:[username]:[password]@jtimecalc.cvs.sourceforge.net:/cvsroot/jtimecalc:jtimecalc
-    </developerConnection>
+    <url>http://jtimecalc.git.sourceforge.net/</url>
+    <connection>git://jtimecalc.git.sourceforge.net/gitroot/jtimecalc</connection>
+    <developerConnection>ssh://[username]@jtimecalc.git.sourceforge.net/gitroot/jtimecalc</developerConnection>
   </scm>
   <organization>
     <name>Sourceforge.net</name>
