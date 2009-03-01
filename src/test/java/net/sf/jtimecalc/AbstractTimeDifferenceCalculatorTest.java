@@ -688,11 +688,6 @@ package net.sf.jtimecalc;
 
 import static org.junit.Assert.assertEquals;
 
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.PropertiesConfiguration;
-import org.apache.log4j.Logger;
-import org.junit.Ignore;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Calendar;
@@ -700,13 +695,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
+import org.apache.log4j.Logger;
+
 /**
  * AbstractTimeDifferenceCalculatorTest
  *
  * @author grzegorz@blaszczyk-consulting.com
  */
 
-@Ignore
 public class AbstractTimeDifferenceCalculatorTest {
 
   public static Logger logger = Logger.getLogger(AbstractTimeDifferenceCalculatorTest.class);
