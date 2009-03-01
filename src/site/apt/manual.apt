@@ -1,0 +1,21 @@
+ ------
+JTimeCalc Manual
+ ------
+
+Simple Example
+
+  To apply JTimeCalc easily in your projects simply add <<jtimecalc-1.3.1.jar>> to your classpath and use it as in the following example:
+
+%{snippet|id=usage|url=file:///home/deer/workspace/jtimecalc/src/test/java/net/sf/jtimecalc/SimpleExample.java}
+
+Try it out
+
+  [[1]] Download the latest distribution from: {{{http://downloads.sourceforge.net/jtimecalc/jtimecalc-1.3.1-dist.zip} here}}
+  
+  [[2]] Unzip it:
+  <<<unzip jtimecalc-1.3.1-dist.zip>>>
+  
+  [[3]] Run it:
+  <<<./run.sh>>>
+  
+  

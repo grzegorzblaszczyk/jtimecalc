@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+   <properties>
+      <title>JTimeCalc</title>
+      <author email="grzegorz@blaszczyk-consulting.com">Grzegorz Błaszczyk</author>
+   </properties>
+   <body>
+   
+      <release version="1.3.1" date="2009-03-01" description="Stable version">   
+           <action dev="Grzegorz Błaszczyk" type="refactor">
+               Refactored testing - one class for tests and abstract class with technical
+               methods for calculating time, that is why now tests are much more readable.
+               
+               Expected messages are loaded from properties files, which gives you an easy
+               way to add new languages and fixes in tests.
+               
+               Languages provided (in alphabetical order):
+               Czech, Dutch, English, Finnish, French, German, Italian, Norwegian,Polish, Spanish
+           </action>                      
+      </release>    
+         
+      <release version="1.3" date="2008-11-11" description="Stable version">   
+           <action dev="Grzegorz Błaszczyk" type="refactor">
+               One consistent constructor for all types of calculators
+               using JDK 1.5 varargs. Finnish version added.
+           </action>                      
+      </release>              
+      <release version="1.2" date="2008-11-11" description="Stable version">   
+           <action dev="Grzegorz Błaszczyk" type="refactor">
+               Instead of creating many classes (one for each language) you can 
+               use JDK 1.5 enums not to duplicate code. 
+           </action>                      
+      </release>              
+      <release version="1.1" date="2008-11-10" description="Stable version">   
+           <action dev="Grzegorz Błaszczyk" type="add">
+               Dutch, French, German, Italian and Spanish version
+           </action>                      
+      </release>
+      <release version="1.0" date="2008-11-03" description="Stable version">   
+           <action dev="Grzegorz Błaszczyk" type="add">
+               Stable version of English- and PolishTimeDifferenceCalculator
+           </action>                      
+
+<!--
+           <action dev="Grzegorz Błaszczyk" type="fix" issue="1254">
+               Fixed a nasty bug.
+           </action>        
+           <action dev="Grzegorz Błaszczyk" type="delete">
+               Removed a feature that nobody liked.
+           </action>        
+-->
+      </release>         
+   </body>
+</document>
+

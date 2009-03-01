@@ -1,0 +1,63 @@
+<project name="JTimeCalc">
+  <bannerLeft>
+    <name>JTimeCalc</name>
+    <src>images/logo.jpg</src>
+    <href>http://jtimecalc.sourceforge.net/</href>
+  </bannerLeft>
+<!--
+  <bannerRight>
+    <name>Grzegorz Błaszczyk Consulting</name>
+    <src>images/gbc-logo.jpg</src>
+    <href>http://grzegorz.blaszczyk-consulting.com</href>
+  </bannerRight>
+-->
+
+  <body>
+    <breadcrumbs>
+      <item name="Sourceforge.net" href="http://www.sourceforge.net/"/>
+      <item name="JTimeCalc" href="http://jtimecalc.sourceforge.net/"/>
+    </breadcrumbs>
+  
+    <menu name="About JTimeCalc">
+       <item name="What is JTimeCalc?" href="/index.html"/>
+       <item name="Project Summary" href="/project-summary.html"/>
+       <item name="Team List" href="/team-list.html"/>
+    </menu>
+  
+	<menu name="Get JTimeCalc">
+	   <item name="Download" href="/download.html"/>
+	   <item name="License" href="/license.html"/>
+	</menu>
+	
+	<menu name="Documentation">
+        <item name="Manual" href="/manual.html"/>
+        <item name="JavaDoc" href="/apidocs/index.html"/>       
+    <!--
+        <item name="Publications" href="/publications.html"/>
+        <item name="Wiki" href="http://wiki.apache.org/logging-log4j"/>
+    -->
+    </menu>
+	
+	<menu name="Community">
+		<item name="Mailing Lists" href="/mail-lists.html"/>
+		<item name="Issue Tracking" href="/issue-tracking.html"/>
+	</menu>
+	
+	<menu name="Development and Testing">
+        <item name="Major changes" href="/changes-report.html"/>
+        <item name="Changelog" href="/changelog.html"/>
+		<item name="Repository" href="/source-repository.html"/>
+		<item name="Cross Reference" href="/jxr.html"/>
+		<item name="Dependencies" href="/dependencies.html"/>
+		<item name="Continuous Integration" href="/integration.html"/>
+		<item name="Developer activity" href="/dev-activity.html"/>
+		<item name="File activity" href="/file-activity.html"/>
+		<item name="PMD" href="/pmd.html"/>
+		<item name="Surefire report" href="/surefire-report.html"/>
+		<item name="Tag list report" href="/taglist.html"/>
+		<item name="Test API docs" href="/testapidocs/index.html"/>
+        <item name="Cobertura" href="/cobertura/index.html"/>
+	</menu>	
+	
+  </body>
+</project>
