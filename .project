@@ -1,0 +1,16 @@
+<projectDescription>
+  <name>jtimecalc</name>
+  <comment>An easy to use library for formatting human readable time differences in many languages.
+
+  	You can try it for yourself. Just get the latest jtimecalc distribution and follow the tutorial 
+  	in Documentation section.</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>
