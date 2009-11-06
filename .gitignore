@@ -1,2 +1,4 @@
 target
-target/*
+target/* # Ignore target dir
+*.class
+!.gitignore # except for .gitignore
