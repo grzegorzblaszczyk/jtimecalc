@@ -699,12 +699,14 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
 
+import org.junit.Ignore;
+
 /**
  * AbstractTimeDifferenceCalculatorTest
  *
  * @author grzegorz@blaszczyk-consulting.com
  */
-
+@Ignore
 public class AbstractTimeDifferenceCalculatorTest {
 
   public static Logger logger = Logger.getLogger(AbstractTimeDifferenceCalculatorTest.class);

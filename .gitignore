@@ -1,4 +1,6 @@
 target
-target/* # Ignore target dir
+target/*
 *.class
+cobertura.ser
+
 !.gitignore # except for .gitignore
