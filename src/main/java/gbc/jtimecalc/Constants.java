@@ -1,8 +1,8 @@
 /*
  * Project jtimecalc
- * http://jtimecalc.sourceforge.net
+ * http://grzegorzblaszczyk.github.com/jtimecalc
  * 
- * Copyright Grzegorz Blaszczyk Consulting 2008 
+ * Copyright Grzegorz Blaszczyk Consulting 2008-2009 
  * 
  */
 
@@ -684,35 +684,47 @@
 
  */
 
-package net.sf.jtimecalc;
+package gbc.jtimecalc;
 
-public class SimpleExample {
+import java.util.Calendar;
 
-	public static void main(String[] args) {
-	  
-	  // START SNIPPET: usage
+/**
+ * Constants
+ * 
+ * @author grzegorz@blaszczyk-consulting.com
+ * 
+ */
+public class Constants {
 
-		System.out.println("1. Starting operation");
-		long startTime = System.currentTimeMillis();
+	/**
+	 * Precalculated one second in milliseconds.
+	 */
+	public static final long ONE_SECOND_IN_MILLISECONDS = 1000L;
 
-		System.out.println("2. Invoking some time consuming method");
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	/**
+	 * Precalculated one minute in milliseconds.
+	 */
+	public static final long ONE_MINUTE_IN_MILLISECONDS = 60000L;
 
-		System.out.println("3. Finishing operation");
-		long endTime = System.currentTimeMillis();
+	/**
+	 * Precalculated one hour in milliseconds.
+	 */
+	public static final long ONE_HOUR_IN_MILLISECONDS = 3600000L;
 
-		System.out.println("Result:");
+	/**
+	 * Precalculated one day in milliseconds.
+	 */
+	public static final long ONE_DAY_IN_MILLISECONDS = 86400000L;
 
-		for (TimeDifferenceCalculator calc : TimeDifferenceCalculator.values()) {
-			System.out.println(calc + ": \""
-					+ calc.getTimeDifferenceAsString(endTime, startTime)
-					+ "\" , type: " + calc.getType());
-		}
-		
-		// END SNIPPET: usage
+	/**
+	 * Returns a month in milliseconds.
+	 * 
+	 * @param cal
+	 *            instance of {@link java.util.Calendar}
+	 * @return number of milliseconds in a month set by cal
+	 */
+	public static long getActualMonthInMillis(Calendar cal) {
+		return ((long) cal.getActualMaximum(Calendar.DAY_OF_MONTH))
+				* ONE_DAY_IN_MILLISECONDS;
 	}
 }

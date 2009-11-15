@@ -2,7 +2,7 @@
   <bannerLeft>
     <name>JTimeCalc</name>
     <src>images/logo.jpg</src>
-    <href>http://jtimecalc.sourceforge.net/</href>
+    <href>http://grzegorzblaszczyk.github.com/jtimecalc</href>
   </bannerLeft>
 <!--
   <bannerRight>
@@ -11,14 +11,13 @@
     <href>http://grzegorz.blaszczyk-consulting.com</href>
   </bannerRight>
 -->
-
   <body>
     <breadcrumbs>
-      <item name="Sourceforge.net" href="http://www.sourceforge.net/"/>
-      <item name="JTimeCalc" href="http://jtimecalc.sourceforge.net/"/>
+      <item name="Grzegorz Błaszczyk" href="http://www.blaszczyk-consulting.eu/"/>
+      <item name="JTimeCalc" href="http://grzegorzblaszczyk.github.com/jtimecalc"/>
     </breadcrumbs>
   
-    <menu name="About JTimeCalc">
+      <menu name="About JTimeCalc">
        <item name="What is JTimeCalc?" href="/index.html"/>
        <item name="Project Summary" href="/project-summary.html"/>
        <item name="Team List" href="/team-list.html"/>

@@ -1,8 +1,8 @@
 /*
  * Project jtimecalc
- * http://jtimecalc.sourceforge.net
+ * http://grzegorzblaszczyk.github.com/jtimecalc
  * 
- * Copyright Grzegorz Blaszczyk Consulting 2008 
+ * Copyright Grzegorz Blaszczyk Consulting 2008-2009
  * 
  */
 
@@ -684,47 +684,636 @@
 
  */
 
-package net.sf.jtimecalc;
+package gbc.jtimecalc;
 
 import java.util.Calendar;
 
 /**
- * Constants
- * 
+ * TimeDifferenceCalculator for displaying human readable time difference
+ * between two time stamps.
+ *
  * @author grzegorz@blaszczyk-consulting.com
- * 
  */
-public class Constants {
+public enum TimeDifferenceCalculator {
 
-	/**
-	 * Precalculated one second in milliseconds.
-	 */
-	public static final long ONE_SECOND_IN_MILLISECONDS = 1000L;
+  CZECH("cs", Type.VERY_IRREGULAR_PLURAL, "", "", false, "sekunda", "sekundy",
+          "sekund", "minuta", "minuty", "minut", "hodina", "hodiny",
+          "hodin", "den", "dn\u00ed", "m\u011bs\u00edc", "m\u011bs\u00edce",
+          "m\u011bs\u00edc\u016f"),
 
-	/**
-	 * Precalculated one minute in milliseconds.
-	 */
-	public static final long ONE_MINUTE_IN_MILLISECONDS = 60000L;
+  DUTCH("nl", Type.IRREGULAR_PLURAL, "", "", false, "seconde", "seconden",
+          "minuut", "minuten", "uur", "uren", "dag", "dagen", "maand",
+          "maanden"),
 
-	/**
-	 * Precalculated one hour in milliseconds.
-	 */
-	public static final long ONE_HOUR_IN_MILLISECONDS = 3600000L;
+  ENGLISH("en", Type.PLURAL_MORPHEME, "s", "e", false, "second", "minute", "hour",
+          "day", "month"),
 
-	/**
-	 * Precalculated one day in milliseconds.
-	 */
-	public static final long ONE_DAY_IN_MILLISECONDS = 86400000L;
+  FINNISH("fi", Type.PLURAL_MORPHEME, "in", "", false, "sekunti", "minuutti",
+          "tunti", "vuorokausi", "kuukausi"),
 
-	/**
-	 * Returns a month in milliseconds.
-	 * 
-	 * @param cal
-	 *            instance of {@link java.util.Calendar}
-	 * @return number of milliseconds in a month set by cal
-	 */
-	public static long getActualMonthInMillis(Calendar cal) {
-		return ((long) cal.getActualMaximum(Calendar.DAY_OF_MONTH))
-				* ONE_DAY_IN_MILLISECONDS;
-	}
+  FRENCH("fr", Type.PLURAL_MORPHEME, "s", "e", true, "seconde", "minute", "heure",
+          "jour", "mois"),
+
+  GERMAN("de", Type.IRREGULAR_PLURAL, "", "", false, "Sekunde", "Sekunden",
+          "Minute", "Minuten", "Stunde", "Stunden", "Tag", "Tage", "Monat",
+          "Monate"),
+
+  ITALIAN("it", Type.IRREGULAR_PLURAL, "", "", false, "secondo", "seconda",
+          "minuto", "minuti", "ora", "ore", "giorno", "giorni", "mese",
+          "mesi"),
+
+  NORWEGIAN("no", Type.IRREGULAR_PLURAL, "", "", false, "sekund", "sekunder",
+          "minutt", "minutter", "time", "timer", "dag", "dagen", "m\u00e5ned",
+          "m\u00e5neden"),
+
+  POLISH("pl", Type.VERY_IRREGULAR_PLURAL, "", "", false, "sekunda", "sekundy",
+          "sekund", "minuta", "minuty", "minut", "godzina", "godziny",
+          "godzin", "dzie\u0144", "dni", "miesi\u0105c", "miesi\u0105ce",
+          "miesi\u0119cy"),
+
+  SPANISH("es", Type.PLURAL_MORPHEME, "s", "e", false, "segundo", "minuto", "hora",
+          "d\u00eda", "mes");
+
+  /**
+   * String representation for milliseconds.
+   */
+  private static final String MILLISECONDS = "ms";
+
+  /**
+   * Language code.
+   */
+  private String code;
+  
+  /**
+   * Type described in {@link Type}.
+   */
+  private Type type;
+
+  /**
+   * String representation for a base form of word "second".
+   */
+  private String second;
+
+  /**
+   * String representation for a plural form of word "second".
+   */
+  private String seconds;
+
+  /**
+   * String representation for an additional plural form of word "second".
+   */
+  private String seconds5AndMore;
+
+  /**
+   * String representation for a base form of word "minute".
+   */
+  private String minute;
+
+  /**
+   * String representation for a plural form of word "minute".
+   */
+  private String minutes;
+
+  /**
+   * String representation for an additional plural form of word "minute".
+   */
+  private String minutes5AndMore;
+
+  /**
+   * String representation for a base form of word "hour".
+   */
+  private String hour;
+
+  /**
+   * String representation for a plural form of word "hour".
+   */
+  private String hours;
+
+  /**
+   * String representation for an additional plural form of word "hour".
+   */
+  private String hours5AndMore;
+
+  /**
+   * String representation for a base form of word "day".
+   */
+  private String day;
+
+  /**
+   * String representation for a plural form of word "day".
+   */
+  private String days;
+
+  /**
+   * String representation for a base form of word "month".
+   */
+  private String month;
+
+  /**
+   * String representation for a plural form of word "month".
+   */
+  private String months;
+
+  /**
+   * String representation for an additional plural form of word "month".
+   */
+  private String months5AndMore;
+
+  /**
+   * Flag for not appending plural suffix to months
+   */
+  private boolean doNotAppendPluralSuffixToMonths;
+
+  /**
+   * Suffix used in plural morpheme languages.
+   */
+  private String pluralMorphemeSuffix;
+
+  /**
+   * Interfix user in plural morpheme languages.
+   */
+  private String pluralMorphemeInterfix;
+
+  // Constructors
+
+  /**
+   * Constructs a TimeDifferenceCalculator.
+   *
+   * @param type                   one of {@link Type}
+   * @param pluralMorphemeSuffix   plural morpheme suffix
+   * @param pluralMorphemeInterfix plural morpheme interfix
+   * @param doNotAppendPluralSuffixToMonths
+   *                               if true it does not append plural form to months
+   * @param timeFrameNames         names of time frames in a specific language
+   * @throws IllegalArgumentException if input parameters are not correct
+   */
+  TimeDifferenceCalculator(String code, Type type, String pluralMorphemeSuffix,
+                           String pluralMorphemeInterfix,
+                           boolean doNotAppendPluralSuffixToMonths, String... timeFrameNames)
+          throws IllegalArgumentException {
+
+    if (code != null && code.length() == 2) {
+      this.code = code;
+    }
+    
+    if (pluralMorphemeInterfix == null) {
+      throw new IllegalArgumentException("pluralMorphemeInterfix is null");
+    }
+
+    if (pluralMorphemeSuffix == null) {
+      throw new IllegalArgumentException("pluralMorphemeSuffix is null");
+    }
+
+    this.type = type;
+    this.doNotAppendPluralSuffixToMonths = doNotAppendPluralSuffixToMonths;
+    this.pluralMorphemeSuffix = pluralMorphemeSuffix;
+    this.pluralMorphemeInterfix = pluralMorphemeInterfix;
+
+    if (timeFrameNames == null || timeFrameNames.length == 0) {
+      throw new IllegalArgumentException("timeFrameNames is empty");
+    }
+
+    switch (type) {
+      case PLURAL_MORPHEME:
+        prepareFormsForPluralMorpheme(timeFrameNames);
+        break;
+      case IRREGULAR_PLURAL:
+        prepareFormsForIrregularPlural(timeFrameNames);
+        break;
+      case VERY_IRREGULAR_PLURAL:
+        prepareFormsForVeryIrregularPlural(timeFrameNames);
+        break;
+    }
+  }
+
+  private void prepareFormsForVeryIrregularPlural(String... timeFrameNames) {
+    if (timeFrameNames.length != this.type.getNumberOfTimeFrameNames()) {
+      throw new IllegalArgumentException(
+              "Length of timeFrameNames for " + Type.VERY_IRREGULAR_PLURAL
+                      + " must be "
+                      + this.type.getNumberOfTimeFrameNames()
+                      + " but is " + timeFrameNames.length);
+    } else {
+      assignVeryIrregularPluralForms(timeFrameNames);
+    }
+  }
+
+  private void assignVeryIrregularPluralForms(String... timeFrameNames) {
+    for (int i = 0; i < timeFrameNames.length; i++) {
+      final String frameName = timeFrameNames[i];
+      if (frameName == null
+              || frameName.length() == 0) {
+        throw new IllegalArgumentException("timeFrameNames["
+                + i + "] is empty");
+      } else {
+        assignVeryIrregularPluralForm(i, frameName);
+      }
+    }
+  }
+
+  private void assignVeryIrregularPluralForm(int i, String frameName) {
+    switch (i) {
+      case 0:
+        second = frameName;
+        break;
+      case 1:
+        seconds = frameName;
+        break;
+      case 2:
+        seconds5AndMore = frameName;
+        break;
+      case 3:
+        minute = frameName;
+        break;
+      case 4:
+        minutes = frameName;
+        break;
+      case 5:
+        minutes5AndMore = frameName;
+        break;
+      case 6:
+        hour = frameName;
+        break;
+      case 7:
+        hours = frameName;
+        break;
+      case 8:
+        hours5AndMore = frameName;
+        break;
+      case 9:
+        day = frameName;
+        break;
+      case 10:
+        days = frameName;
+        break;
+      case 11:
+        month = frameName;
+        break;
+      case 12:
+        months = frameName;
+        break;
+      case 13:
+        months5AndMore = frameName;
+        break;
+      default:
+        break;
+    }
+  }
+
+  private void prepareFormsForIrregularPlural(String... timeFrameNames) {
+    if (timeFrameNames.length != this.type.getNumberOfTimeFrameNames()) {
+      throw new IllegalArgumentException(
+              "Length of timeFrameNames for " + Type.IRREGULAR_PLURAL
+                      + " must be "
+                      + this.type.getNumberOfTimeFrameNames()
+                      + " but is " + timeFrameNames.length);
+    } else {
+      assignIrregularPluralForms(timeFrameNames);
+    }
+  }
+
+  private void assignIrregularPluralForms(String... timeFrameNames) throws IllegalArgumentException {
+    for (int i = 0; i < timeFrameNames.length; i++) {
+      final String frameName = timeFrameNames[i];
+
+      if (frameName == null || frameName.isEmpty()) {
+        throw new IllegalArgumentException("timeFrameNames["
+                + i + "] is empty");
+      } else {
+        assignIrregularPluralForm(i, frameName);
+      }
+    }
+  }
+
+  private void assignIrregularPluralForm(int i, String timeFrameName) {
+    switch (i) {
+      case 0:
+        second = timeFrameName;
+        break;
+      case 1:
+        seconds = timeFrameName;
+        break;
+      case 2:
+        minute = timeFrameName;
+        break;
+      case 3:
+        minutes = timeFrameName;
+        break;
+      case 4:
+        hour = timeFrameName;
+        break;
+      case 5:
+        hours = timeFrameName;
+        break;
+      case 6:
+        day = timeFrameName;
+        break;
+      case 7:
+        days = timeFrameName;
+        break;
+      case 8:
+        month = timeFrameName;
+        break;
+      case 9:
+        months = timeFrameName;
+        break;
+      default:
+        break;
+    }
+  }
+
+  private void prepareFormsForPluralMorpheme(String... timeFrameNames) {
+    if (timeFrameNames.length != this.type.getNumberOfTimeFrameNames()) {
+      throw new IllegalArgumentException(
+              "Length of timeFrameNames for " + Type.PLURAL_MORPHEME
+                      + " must be "
+                      + this.type.getNumberOfTimeFrameNames()
+                      + " but is " + timeFrameNames.length);
+    } else {
+      assignPluralMorphemeForms(timeFrameNames);
+    }
+  }
+
+  private void assignPluralMorphemeForms(String... timeFrameNames) {
+    for (int i = 0; i < timeFrameNames.length; i++) {
+      if (timeFrameNames[i] == null
+              || timeFrameNames[i].length() == 0) {
+        throw new IllegalArgumentException("timeFrameNames["
+                + i + "] is empty");
+      } else {
+        switch (i) {
+          case 0:
+            second = timeFrameNames[i];
+            break;
+          case 1:
+            minute = timeFrameNames[i];
+            break;
+          case 2:
+            hour = timeFrameNames[i];
+            break;
+          case 3:
+            day = timeFrameNames[i];
+            break;
+          case 4:
+            month = timeFrameNames[i];
+            break;
+          default:
+            break;
+        }
+      }
+    }
+  }
+
+  /**
+   * Returns a human readable time difference between two time stamps. If the
+   * difference can be divided by 1000, it does not contain part with
+   * milliseconds.
+   *
+   * @param endTime   end of time period
+   * @param startTime start of time period
+   * @return String representation of a difference in time between endTime and
+   *         startTime
+   */
+  public String getTimeDifferenceAsString(long endTime, long startTime) {
+    StringBuffer buffer = new StringBuffer("");
+    long diff = endTime - startTime;
+
+    if (diff % Constants.ONE_SECOND_IN_MILLISECONDS != 0) {
+      if (diff > Constants.ONE_SECOND_IN_MILLISECONDS) {
+        buffer.append(" ");
+      }
+      buffer.append((diff % Constants.ONE_SECOND_IN_MILLISECONDS));
+      buffer.append(" " + MILLISECONDS);
+    }
+    if (diff < Constants.ONE_SECOND_IN_MILLISECONDS) {
+      return buffer.toString();
+    }
+
+    Calendar cal = Calendar.getInstance();
+    cal.setTimeInMillis(diff);
+
+    buffer.insert(0, getStringRepresentationOfValue(cal, Calendar.SECOND));
+
+    if (diff < Constants.ONE_MINUTE_IN_MILLISECONDS) {
+      return buffer.toString();
+    }
+    buffer.insert(0, getStringRepresentationOfValue(cal, Calendar.MINUTE));
+
+    if (diff < Constants.ONE_HOUR_IN_MILLISECONDS) {
+      return buffer.toString();
+    }
+    cal.add(Calendar.HOUR_OF_DAY, -1);
+    buffer.insert(0, getStringRepresentationOfValue(cal,
+            Calendar.HOUR_OF_DAY));
+
+    if (diff < Constants.ONE_DAY_IN_MILLISECONDS) {
+      return buffer.toString();
+    }
+    cal.add(Calendar.DATE, -1);
+    buffer.insert(0, getStringRepresentationOfValue(cal, Calendar.DATE));
+
+    long currentMonthInMillis = Constants.getActualMonthInMillis(cal);
+
+    if (diff < currentMonthInMillis) {
+      return buffer.toString();
+    }
+    buffer.insert(0, getStringRepresentationOfValue(cal, Calendar.MONTH));
+
+    return buffer.toString().trim();
+  }
+
+  /**
+   * Returns a human readable representation of an atom value (ie. hour,
+   * minute, etc.).
+   *
+   * @param cal       instance of {@link java.util.Calendar}
+   * @param timeFrame int value - it can be one of the {@link java.util.Calendar}
+   *                  constants:<br/>
+   *                  <ul>
+   *                  <li>Calendar.MONTH</li>
+   *                  <li>Calendar.DATE</li>
+   *                  <li>Calendar.HOUR_OF_DAY</li>
+   *                  <li>Calendar.MINUTE</li>
+   *                  <li>Calendar.SECOND</li>
+   *                  </ul>
+   * @return String representation of a given calendar and time frame.
+   * @throws NumberFormatException exception when timeFrame is not able to parse
+   */
+  private String getStringRepresentationOfValue(Calendar cal, int timeFrame)
+          throws NumberFormatException {
+    String buff = "" + cal.get(timeFrame);
+    int intValue = Integer.parseInt(buff);
+
+    switch (type) {
+
+      case PLURAL_MORPHEME:
+        return getStringRepresentationForPluralMorpheme(timeFrame, intValue);
+
+      case IRREGULAR_PLURAL:
+        return getStringRepresentationForIrregularPlural(timeFrame, intValue);
+
+      case VERY_IRREGULAR_PLURAL:
+        return getStringRepresentationForVeryIrregularPlural(timeFrame, intValue);
+      default:
+    }
+    return "";
+  }
+
+  private String getStringRepresentationForVeryIrregularPlural(int timeFrame, int intValue) {
+    if (timeFrame == Calendar.DATE && intValue > 1) {
+      return intValue + " " + days + " ";
+    }
+
+    int suffixIntValue = countSuffixValue(intValue);
+
+    if (suffixIntValue == 1) {
+      switch (timeFrame) {
+        case Calendar.SECOND:
+          return intValue + " " + second;
+        case Calendar.MINUTE:
+          return intValue + " " + minute + " ";
+        case Calendar.HOUR_OF_DAY:
+          return intValue + " " + hour + " ";
+        case Calendar.DATE:
+          return intValue + " " + day + " ";
+        case Calendar.MONTH:
+          return intValue + " " + month + " ";
+      }
+
+    } else if (1 < suffixIntValue && suffixIntValue < 5) {
+      switch (timeFrame) {
+        case Calendar.SECOND:
+          return intValue + " " + seconds;
+        case Calendar.MINUTE:
+          return intValue + " " + minutes + " ";
+        case Calendar.HOUR_OF_DAY:
+          return intValue + " " + hours + " ";
+        case Calendar.MONTH:
+          return intValue + " " + months + " ";
+      }
+    } else {
+      switch (timeFrame) {
+        case Calendar.SECOND:
+          return intValue + " " + seconds5AndMore;
+        case Calendar.MINUTE:
+          return intValue + " " + minutes5AndMore + " ";
+        case Calendar.HOUR_OF_DAY:
+          return intValue + " " + hours5AndMore + " ";
+        case Calendar.MONTH:
+          return intValue + " " + months5AndMore + " ";
+      }
+    }
+    return "";
+  }
+
+  private int countSuffixValue(int intValue) {
+    int suffixIntValue;
+    if (10 < intValue && intValue < 20) {
+      suffixIntValue = 5;
+    } else {
+      suffixIntValue = Integer.parseInt(("" + intValue)
+              .substring(("" + intValue).length() - 1));
+      if (intValue > 20 && "1".equals("" + suffixIntValue)) {
+        suffixIntValue = 5;
+      }
+    }
+    return suffixIntValue;
+  }
+
+  private String getStringRepresentationForIrregularPlural(int timeFrame, int intValue) {
+    if (intValue > 1 || intValue == 0) {
+      switch (timeFrame) {
+        case Calendar.SECOND:
+          return intValue + " " + seconds;
+        case Calendar.MINUTE:
+          return intValue + " " + minutes + " ";
+        case Calendar.HOUR_OF_DAY:
+          return intValue + " " + hours + " ";
+        case Calendar.DATE:
+          return intValue + " " + days + " ";
+        case Calendar.MONTH:
+          return intValue + " " + months + " ";
+      }
+    } else {
+      switch (timeFrame) {
+        case Calendar.SECOND:
+          return intValue + " " + second;
+        case Calendar.MINUTE:
+          return intValue + " " + minute + " ";
+        case Calendar.HOUR_OF_DAY:
+          return intValue + " " + hour + " ";
+        case Calendar.DATE:
+          return intValue + " " + day + " ";
+        case Calendar.MONTH:
+          return intValue + " " + month + " ";
+      }
+    }
+    return "";
+  }
+
+  private String getStringRepresentationForPluralMorpheme(int timeFrame, int intValue) {
+    switch (timeFrame) {
+      case Calendar.SECOND:
+        return applyProperPluralMorphemeSuffix(intValue, second);
+      case Calendar.MINUTE:
+        return applyProperPluralMorphemeSuffix(intValue, minute) + " ";
+      case Calendar.HOUR_OF_DAY:
+        return applyProperPluralMorphemeSuffix(intValue, hour) + " ";
+      case Calendar.DATE:
+        return applyProperPluralMorphemeSuffix(intValue, day) + " ";
+      case Calendar.MONTH:
+        return applyProperPluralMorphemeSuffix(intValue, month) + " ";
+    }
+    return "";
+  }
+
+  /**
+   * Returns a proper plural morpheme suffix. If
+   * {@link this.doNotAppendPluralSuffixToMonths} is set and time frame is equal to
+   * "month", it passes the default output.
+   *
+   * @param value    value of time frame
+   * @param baseForm base form of time frame
+   * @return plural morpheme suffix
+   */
+  private String applyProperPluralMorphemeSuffix(int value, String baseForm) {
+    if (baseForm != null) {
+      if (value > 1 || value == 0) {
+
+        if (doNotAppendPluralSuffixToMonths && month.equals(baseForm)) {
+          return value + " " + baseForm;
+        } else {
+          if (baseForm.endsWith(pluralMorphemeSuffix)) {
+            return value + " " + baseForm + pluralMorphemeInterfix
+                    + pluralMorphemeSuffix;
+          } else {
+            return value + " " + baseForm + pluralMorphemeSuffix;
+          }
+        }
+      } else {
+        return value + " " + baseForm;
+      }
+    }
+    return "";
+  }
+
+  // Getters and setters
+  /**
+   * Returns a type of a calculator.
+   *
+   * @return type
+   */
+  public Type getType() {
+    return type;
+  }
+  
+  /**
+   * Returns a language code of a calculator.
+   *
+   * @return type
+   */
+  public String code() {
+    return code;
+  }
+
 }

@@ -1,8 +1,8 @@
 /*
  * Project jtimecalc
- * http://jtimecalc.sourceforge.net
+ * http://grzegorzblaszczyk.github.com/jtimecalc
  * 
- * Copyright Grzegorz Blaszczyk Consulting 2008 
+ * Copyright Grzegorz Blaszczyk Consulting 2008-2009
  * 
  */
 
@@ -684,46 +684,37 @@
 
  */
 
-package net.sf.jtimecalc;
+package gbc.jtimecalc;
 
-/**
- * Types of time difference calculators.
- * 
- * @author grzegorz@blaszczyk-consulting.com
- * 
- */
-public enum Type {
+import gbc.jtimecalc.TimeDifferenceCalculator;
 
-	/**
-	 * Plural morpheme time difference calculator has 5 different time frame
-	 * names.
-	 * 
-	 */
-	PLURAL_MORPHEME(5),
+public class SimpleExample {
 
-	/**
-	 * Irregular plural time difference calculator has 10 different time frame
-	 * names.
-	 * 
-	 */
-	IRREGULAR_PLURAL(10), 
+	public static void main(String[] args) {
+	  
+	  // START SNIPPET: usage
 
-	/**
-	 * Very irregular plural time difference calculator has 14 different time frame
-	 * names.
-	 * 
-	 */
-	VERY_IRREGULAR_PLURAL(14);
+		System.out.println("1. Starting operation");
+		long startTime = System.currentTimeMillis();
 
-	private int numberOfTimeFrameNames;
+		System.out.println("2. Invoking some time consuming method");
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
-	// Constructor
-	Type(int numberOfTimeFrameNames) {
-		this.numberOfTimeFrameNames = numberOfTimeFrameNames;
+		System.out.println("3. Finishing operation");
+		long endTime = System.currentTimeMillis();
+
+		System.out.println("Result:");
+
+		for (TimeDifferenceCalculator calc : TimeDifferenceCalculator.values()) {
+			System.out.println(calc + ": \""
+					+ calc.getTimeDifferenceAsString(endTime, startTime)
+					+ "\" , type: " + calc.getType());
+		}
+		
+		// END SNIPPET: usage
 	}
-
-	public int getNumberOfTimeFrameNames() {
-		return this.numberOfTimeFrameNames;
-	}
-
 }

@@ -9,7 +9,7 @@
     </layout> 
   </appender> 
 
-  <category name="net.sf.jtimecalc">
+  <category name="gbc.jtimecalc">
     <priority value="DEBUG"/>
   </category>
 

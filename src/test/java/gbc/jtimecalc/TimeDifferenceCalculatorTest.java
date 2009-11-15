@@ -1,4 +1,6 @@
-package net.sf.jtimecalc;
+package gbc.jtimecalc;
+
+import gbc.jtimecalc.TimeDifferenceCalculator;
 
 import org.junit.Test;
 

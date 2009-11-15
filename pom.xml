@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>net.sourceforge</groupId>
+  <groupId>gbc.jtimecalc</groupId>
   <artifactId>jtimecalc</artifactId>
   <name>JTimeCalc</name>
   <packaging>jar</packaging>
@@ -15,17 +15,11 @@
   	in Documentation section.
   	
   </description>
-  <url>http://jtimecalc.sourceforge.net</url>
+  <url>http://grzegorzblaszczyk.github.com/jtimecalc</url>
   <issueManagement>
-    <system>Sourceforge Tracker</system>
-    <url>https://sourceforge.net/tracker2/?func=browse&amp;group_id=244112</url>
+    <system>JTimeCalc GitHub issues</system>
+    <url>http://github.com/grzegorzblaszczyk/jtimecalc/issues</url>
   </issueManagement>
-  <!-- 
-  <ciManagement>
-    <system>git</system>
-    <url>http://jtimecalc.git.sourceforge.net</url>
-  </ciManagement>
-  -->
   <developers>
     <developer>
       <id>gblaszczyk</id>
@@ -43,13 +37,13 @@
   </developers>
 
   <scm>
-    <url>http://jtimecalc.git.sourceforge.net/</url>
-    <connection>scm:git:git://jtimecalc.git.sourceforge.net/gitroot/jtimecalc</connection>
-    <developerConnection>scm:ssh://gblaszczyk@jtimecalc.git.sourceforge.net/gitroot/jtimecalc</developerConnection>
+    <url>http://github.com/grzegorzblaszczyk/jtimecalc</url>
+    <connection>git://github.com/grzegorzblaszczyk/jtimecalc.git</connection>
+    <developerConnection>git@github.com:grzegorzblaszczyk/jtimecalc.git</developerConnection>
   </scm>
   <organization>
-    <name>Sourceforge.net</name>
-    <url>http://www.sourceforge.net</url>
+    <name>Grzegorz Błaszczyk Consulting</name>
+    <url>http://www.blaszczyk-consulting.eu</url>
   </organization>
   <licenses>
     <license>
