@@ -36,11 +36,13 @@
     </developer>
   </developers>
 
+  <!-- 
   <scm>
-    <url>http://github.com/grzegorzblaszczyk/jtimecalc</url>
+    <url>http://github.com/grzegorzblaszczyk/jtimecalc/</url>
     <connection>git://github.com/grzegorzblaszczyk/jtimecalc.git</connection>
     <developerConnection>git@github.com:grzegorzblaszczyk/jtimecalc.git</developerConnection>
   </scm>
+  -->
   <organization>
     <name>Grzegorz Błaszczyk Consulting</name>
     <url>http://www.blaszczyk-consulting.eu</url>
