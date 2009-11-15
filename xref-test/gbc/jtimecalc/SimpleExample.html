@@ -1,0 +1,733 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" /><title>SimpleExample xref</title>
+<link type="text/css" rel="stylesheet" href="../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../apidocs/gbc/jtimecalc/SimpleExample.html">View Javadoc</a></div><pre>
+
+<a name="1" href="#1">1</a>   <em class="comment">/*</em>
+<a name="2" href="#2">2</a>   <em class="comment"> * Project jtimecalc</em>
+<a name="3" href="#3">3</a>   <em class="comment"> * <a href="http://grzegorzblaszczyk.github.com/jtimecalc" target="alexandria_uri">http://grzegorzblaszczyk.github.com/jtimecalc</a></em>
+<a name="4" href="#4">4</a>   <em class="comment"> * </em>
+<a name="5" href="#5">5</a>   <em class="comment"> * Copyright Grzegorz Blaszczyk Consulting 2008-2009</em>
+<a name="6" href="#6">6</a>   <em class="comment"> * </em>
+<a name="7" href="#7">7</a>   <em class="comment"> */</em>
+<a name="8" href="#8">8</a>   
+<a name="9" href="#9">9</a>   <em class="comment">/*</em>
+<a name="10" href="#10">10</a>  <em class="comment"> GNU GENERAL PUBLIC LICENSE</em>
+<a name="11" href="#11">11</a>  <em class="comment"> Version 3, 29 June 2007</em>
+<a name="12" href="#12">12</a>  
+<a name="13" href="#13">13</a>  <em class="comment"> Copyright (C) 2007 Free Software Foundation, Inc. &lt;<a href="http://fsf.org/" target="alexandria_uri">http://fsf.org/</a>></em>
+<a name="14" href="#14">14</a>  <em class="comment"> Everyone is permitted to copy and distribute verbatim copies</em>
+<a name="15" href="#15">15</a>  <em class="comment"> of this license document, but changing it is not allowed.</em>
+<a name="16" href="#16">16</a>  
+<a name="17" href="#17">17</a>  <em class="comment"> Preamble</em>
+<a name="18" href="#18">18</a>  
+<a name="19" href="#19">19</a>  <em class="comment"> The GNU General Public License is a free, copyleft license for</em>
+<a name="20" href="#20">20</a>  <em class="comment"> software and other kinds of works.</em>
+<a name="21" href="#21">21</a>  
+<a name="22" href="#22">22</a>  <em class="comment"> The licenses for most software and other practical works are designed</em>
+<a name="23" href="#23">23</a>  <em class="comment"> to take away your freedom to share and change the works.  By contrast,</em>
+<a name="24" href="#24">24</a>  <em class="comment"> the GNU General Public License is intended to guarantee your freedom to</em>
+<a name="25" href="#25">25</a>  <em class="comment"> share and change all versions of a program--to make sure it remains free</em>
+<a name="26" href="#26">26</a>  <em class="comment"> software for all its users.  We, the Free Software Foundation, use the</em>
+<a name="27" href="#27">27</a>  <em class="comment"> GNU General Public License for most of our software; it applies also to</em>
+<a name="28" href="#28">28</a>  <em class="comment"> any other work released this way by its authors.  You can apply it to</em>
+<a name="29" href="#29">29</a>  <em class="comment"> your programs, too.</em>
+<a name="30" href="#30">30</a>  
+<a name="31" href="#31">31</a>  <em class="comment"> When we speak of free software, we are referring to freedom, not</em>
+<a name="32" href="#32">32</a>  <em class="comment"> price.  Our General Public Licenses are designed to make sure that you</em>
+<a name="33" href="#33">33</a>  <em class="comment"> have the freedom to distribute copies of free software (and charge for</em>
+<a name="34" href="#34">34</a>  <em class="comment"> them if you wish), that you receive source code or can get it if you</em>
+<a name="35" href="#35">35</a>  <em class="comment"> want it, that you can change the software or use pieces of it in new</em>
+<a name="36" href="#36">36</a>  <em class="comment"> free programs, and that you know you can do these things.</em>
+<a name="37" href="#37">37</a>  
+<a name="38" href="#38">38</a>  <em class="comment"> To protect your rights, we need to prevent others from denying you</em>
+<a name="39" href="#39">39</a>  <em class="comment"> these rights or asking you to surrender the rights.  Therefore, you have</em>
+<a name="40" href="#40">40</a>  <em class="comment"> certain responsibilities if you distribute copies of the software, or if</em>
+<a name="41" href="#41">41</a>  <em class="comment"> you modify it: responsibilities to respect the freedom of others.</em>
+<a name="42" href="#42">42</a>  
+<a name="43" href="#43">43</a>  <em class="comment"> For example, if you distribute copies of such a program, whether</em>
+<a name="44" href="#44">44</a>  <em class="comment"> gratis or for a fee, you must pass on to the recipients the same</em>
+<a name="45" href="#45">45</a>  <em class="comment"> freedoms that you received.  You must make sure that they, too, receive</em>
+<a name="46" href="#46">46</a>  <em class="comment"> or can get the source code.  And you must show them these terms so they</em>
+<a name="47" href="#47">47</a>  <em class="comment"> know their rights.</em>
+<a name="48" href="#48">48</a>  
+<a name="49" href="#49">49</a>  <em class="comment"> Developers that use the GNU GPL protect your rights with two steps:</em>
+<a name="50" href="#50">50</a>  <em class="comment"> (1) assert copyright on the software, and (2) offer you this License</em>
+<a name="51" href="#51">51</a>  <em class="comment"> giving you legal permission to copy, distribute and/or modify it.</em>
+<a name="52" href="#52">52</a>  
+<a name="53" href="#53">53</a>  <em class="comment"> For the developers' and authors' protection, the GPL clearly explains</em>
+<a name="54" href="#54">54</a>  <em class="comment"> that there is no warranty for this free software.  For both users' and</em>
+<a name="55" href="#55">55</a>  <em class="comment"> authors' sake, the GPL requires that modified versions be marked as</em>
+<a name="56" href="#56">56</a>  <em class="comment"> changed, so that their problems will not be attributed erroneously to</em>
+<a name="57" href="#57">57</a>  <em class="comment"> authors of previous versions.</em>
+<a name="58" href="#58">58</a>  
+<a name="59" href="#59">59</a>  <em class="comment"> Some devices are designed to deny users access to install or run</em>
+<a name="60" href="#60">60</a>  <em class="comment"> modified versions of the software inside them, although the manufacturer</em>
+<a name="61" href="#61">61</a>  <em class="comment"> can do so.  This is fundamentally incompatible with the aim of</em>
+<a name="62" href="#62">62</a>  <em class="comment"> protecting users' freedom to change the software.  The systematic</em>
+<a name="63" href="#63">63</a>  <em class="comment"> pattern of such abuse occurs in the area of products for individuals to</em>
+<a name="64" href="#64">64</a>  <em class="comment"> use, which is precisely where it is most unacceptable.  Therefore, we</em>
+<a name="65" href="#65">65</a>  <em class="comment"> have designed this version of the GPL to prohibit the practice for those</em>
+<a name="66" href="#66">66</a>  <em class="comment"> products.  If such problems arise substantially in other domains, we</em>
+<a name="67" href="#67">67</a>  <em class="comment"> stand ready to extend this provision to those domains in future versions</em>
+<a name="68" href="#68">68</a>  <em class="comment"> of the GPL, as needed to protect the freedom of users.</em>
+<a name="69" href="#69">69</a>  
+<a name="70" href="#70">70</a>  <em class="comment"> Finally, every program is threatened constantly by software patents.</em>
+<a name="71" href="#71">71</a>  <em class="comment"> States should not allow patents to restrict development and use of</em>
+<a name="72" href="#72">72</a>  <em class="comment"> software on general-purpose computers, but in those that do, we wish to</em>
+<a name="73" href="#73">73</a>  <em class="comment"> avoid the special danger that patents applied to a free program could</em>
+<a name="74" href="#74">74</a>  <em class="comment"> make it effectively proprietary.  To prevent this, the GPL assures that</em>
+<a name="75" href="#75">75</a>  <em class="comment"> patents cannot be used to render the program non-free.</em>
+<a name="76" href="#76">76</a>  
+<a name="77" href="#77">77</a>  <em class="comment"> The precise terms and conditions for copying, distribution and</em>
+<a name="78" href="#78">78</a>  <em class="comment"> modification follow.</em>
+<a name="79" href="#79">79</a>  
+<a name="80" href="#80">80</a>  <em class="comment"> TERMS AND CONDITIONS</em>
+<a name="81" href="#81">81</a>  
+<a name="82" href="#82">82</a>  <em class="comment"> 0. Definitions.</em>
+<a name="83" href="#83">83</a>  
+<a name="84" href="#84">84</a>  <em class="comment"> "This License" refers to version 3 of the GNU General Public License.</em>
+<a name="85" href="#85">85</a>  
+<a name="86" href="#86">86</a>  <em class="comment"> "Copyright" also means copyright-like laws that apply to other kinds of</em>
+<a name="87" href="#87">87</a>  <em class="comment"> works, such as semiconductor masks.</em>
+<a name="88" href="#88">88</a>  
+<a name="89" href="#89">89</a>  <em class="comment"> "The Program" refers to any copyrightable work licensed under this</em>
+<a name="90" href="#90">90</a>  <em class="comment"> License.  Each licensee is addressed as "you".  "Licensees" and</em>
+<a name="91" href="#91">91</a>  <em class="comment"> "recipients" may be individuals or organizations.</em>
+<a name="92" href="#92">92</a>  
+<a name="93" href="#93">93</a>  <em class="comment"> To "modify" a work means to copy from or adapt all or part of the work</em>
+<a name="94" href="#94">94</a>  <em class="comment"> in a fashion requiring copyright permission, other than the making of an</em>
+<a name="95" href="#95">95</a>  <em class="comment"> exact copy.  The resulting work is called a "modified version" of the</em>
+<a name="96" href="#96">96</a>  <em class="comment"> earlier work or a work "based on" the earlier work.</em>
+<a name="97" href="#97">97</a>  
+<a name="98" href="#98">98</a>  <em class="comment"> A "covered work" means either the unmodified Program or a work based</em>
+<a name="99" href="#99">99</a>  <em class="comment"> on the Program.</em>
+<a name="100" href="#100">100</a> 
+<a name="101" href="#101">101</a> <em class="comment"> To "propagate" a work means to do anything with it that, without</em>
+<a name="102" href="#102">102</a> <em class="comment"> permission, would make you directly or secondarily liable for</em>
+<a name="103" href="#103">103</a> <em class="comment"> infringement under applicable copyright law, except executing it on a</em>
+<a name="104" href="#104">104</a> <em class="comment"> computer or modifying a private copy.  Propagation includes copying,</em>
+<a name="105" href="#105">105</a> <em class="comment"> distribution (with or without modification), making available to the</em>
+<a name="106" href="#106">106</a> <em class="comment"> public, and in some countries other activities as well.</em>
+<a name="107" href="#107">107</a> 
+<a name="108" href="#108">108</a> <em class="comment"> To "convey" a work means any kind of propagation that enables other</em>
+<a name="109" href="#109">109</a> <em class="comment"> parties to make or receive copies.  Mere interaction with a user through</em>
+<a name="110" href="#110">110</a> <em class="comment"> a computer network, with no transfer of a copy, is not conveying.</em>
+<a name="111" href="#111">111</a> 
+<a name="112" href="#112">112</a> <em class="comment"> An interactive user interface displays "Appropriate Legal Notices"</em>
+<a name="113" href="#113">113</a> <em class="comment"> to the extent that it includes a convenient and prominently visible</em>
+<a name="114" href="#114">114</a> <em class="comment"> feature that (1) displays an appropriate copyright notice, and (2)</em>
+<a name="115" href="#115">115</a> <em class="comment"> tells the user that there is no warranty for the work (except to the</em>
+<a name="116" href="#116">116</a> <em class="comment"> extent that warranties are provided), that licensees may convey the</em>
+<a name="117" href="#117">117</a> <em class="comment"> work under this License, and how to view a copy of this License.  If</em>
+<a name="118" href="#118">118</a> <em class="comment"> the interface presents a list of user commands or options, such as a</em>
+<a name="119" href="#119">119</a> <em class="comment"> menu, a prominent item in the list meets this criterion.</em>
+<a name="120" href="#120">120</a> 
+<a name="121" href="#121">121</a> <em class="comment"> 1. Source Code.</em>
+<a name="122" href="#122">122</a> 
+<a name="123" href="#123">123</a> <em class="comment"> The "source code" for a work means the preferred form of the work</em>
+<a name="124" href="#124">124</a> <em class="comment"> for making modifications to it.  "Object code" means any non-source</em>
+<a name="125" href="#125">125</a> <em class="comment"> form of a work.</em>
+<a name="126" href="#126">126</a> 
+<a name="127" href="#127">127</a> <em class="comment"> A "Standard Interface" means an interface that either is an official</em>
+<a name="128" href="#128">128</a> <em class="comment"> standard defined by a recognized standards body, or, in the case of</em>
+<a name="129" href="#129">129</a> <em class="comment"> interfaces specified for a particular programming language, one that</em>
+<a name="130" href="#130">130</a> <em class="comment"> is widely used among developers working in that language.</em>
+<a name="131" href="#131">131</a> 
+<a name="132" href="#132">132</a> <em class="comment"> The "System Libraries" of an executable work include anything, other</em>
+<a name="133" href="#133">133</a> <em class="comment"> than the work as a whole, that (a) is included in the normal form of</em>
+<a name="134" href="#134">134</a> <em class="comment"> packaging a Major Component, but which is not part of that Major</em>
+<a name="135" href="#135">135</a> <em class="comment"> Component, and (b) serves only to enable use of the work with that</em>
+<a name="136" href="#136">136</a> <em class="comment"> Major Component, or to implement a Standard Interface for which an</em>
+<a name="137" href="#137">137</a> <em class="comment"> implementation is available to the public in source code form.  A</em>
+<a name="138" href="#138">138</a> <em class="comment"> "Major Component", in this context, means a major essential component</em>
+<a name="139" href="#139">139</a> <em class="comment"> (kernel, window system, and so on) of the specific operating system</em>
+<a name="140" href="#140">140</a> <em class="comment"> (if any) on which the executable work runs, or a compiler used to</em>
+<a name="141" href="#141">141</a> <em class="comment"> produce the work, or an object code interpreter used to run it.</em>
+<a name="142" href="#142">142</a> 
+<a name="143" href="#143">143</a> <em class="comment"> The "Corresponding Source" for a work in object code form means all</em>
+<a name="144" href="#144">144</a> <em class="comment"> the source code needed to generate, install, and (for an executable</em>
+<a name="145" href="#145">145</a> <em class="comment"> work) run the object code and to modify the work, including scripts to</em>
+<a name="146" href="#146">146</a> <em class="comment"> control those activities.  However, it does not include the work's</em>
+<a name="147" href="#147">147</a> <em class="comment"> System Libraries, or general-purpose tools or generally available free</em>
+<a name="148" href="#148">148</a> <em class="comment"> programs which are used unmodified in performing those activities but</em>
+<a name="149" href="#149">149</a> <em class="comment"> which are not part of the work.  For example, Corresponding Source</em>
+<a name="150" href="#150">150</a> <em class="comment"> includes interface definition files associated with source files for</em>
+<a name="151" href="#151">151</a> <em class="comment"> the work, and the source code for shared libraries and dynamically</em>
+<a name="152" href="#152">152</a> <em class="comment"> linked subprograms that the work is specifically designed to require,</em>
+<a name="153" href="#153">153</a> <em class="comment"> such as by intimate data communication or control flow between those</em>
+<a name="154" href="#154">154</a> <em class="comment"> subprograms and other parts of the work.</em>
+<a name="155" href="#155">155</a> 
+<a name="156" href="#156">156</a> <em class="comment"> The Corresponding Source need not include anything that users</em>
+<a name="157" href="#157">157</a> <em class="comment"> can regenerate automatically from other parts of the Corresponding</em>
+<a name="158" href="#158">158</a> <em class="comment"> Source.</em>
+<a name="159" href="#159">159</a> 
+<a name="160" href="#160">160</a> <em class="comment"> The Corresponding Source for a work in source code form is that</em>
+<a name="161" href="#161">161</a> <em class="comment"> same work.</em>
+<a name="162" href="#162">162</a> 
+<a name="163" href="#163">163</a> <em class="comment"> 2. Basic Permissions.</em>
+<a name="164" href="#164">164</a> 
+<a name="165" href="#165">165</a> <em class="comment"> All rights granted under this License are granted for the term of</em>
+<a name="166" href="#166">166</a> <em class="comment"> copyright on the Program, and are irrevocable provided the stated</em>
+<a name="167" href="#167">167</a> <em class="comment"> conditions are met.  This License explicitly affirms your unlimited</em>
+<a name="168" href="#168">168</a> <em class="comment"> permission to run the unmodified Program.  The output from running a</em>
+<a name="169" href="#169">169</a> <em class="comment"> covered work is covered by this License only if the output, given its</em>
+<a name="170" href="#170">170</a> <em class="comment"> content, constitutes a covered work.  This License acknowledges your</em>
+<a name="171" href="#171">171</a> <em class="comment"> rights of fair use or other equivalent, as provided by copyright law.</em>
+<a name="172" href="#172">172</a> 
+<a name="173" href="#173">173</a> <em class="comment"> You may make, run and propagate covered works that you do not</em>
+<a name="174" href="#174">174</a> <em class="comment"> convey, without conditions so long as your license otherwise remains</em>
+<a name="175" href="#175">175</a> <em class="comment"> in force.  You may convey covered works to others for the sole purpose</em>
+<a name="176" href="#176">176</a> <em class="comment"> of having them make modifications exclusively for you, or provide you</em>
+<a name="177" href="#177">177</a> <em class="comment"> with facilities for running those works, provided that you comply with</em>
+<a name="178" href="#178">178</a> <em class="comment"> the terms of this License in conveying all material for which you do</em>
+<a name="179" href="#179">179</a> <em class="comment"> not control copyright.  Those thus making or running the covered works</em>
+<a name="180" href="#180">180</a> <em class="comment"> for you must do so exclusively on your behalf, under your direction</em>
+<a name="181" href="#181">181</a> <em class="comment"> and control, on terms that prohibit them from making any copies of</em>
+<a name="182" href="#182">182</a> <em class="comment"> your copyrighted material outside their relationship with you.</em>
+<a name="183" href="#183">183</a> 
+<a name="184" href="#184">184</a> <em class="comment"> Conveying under any other circumstances is permitted solely under</em>
+<a name="185" href="#185">185</a> <em class="comment"> the conditions stated below.  Sublicensing is not allowed; section 10</em>
+<a name="186" href="#186">186</a> <em class="comment"> makes it unnecessary.</em>
+<a name="187" href="#187">187</a> 
+<a name="188" href="#188">188</a> <em class="comment"> 3. Protecting Users' Legal Rights From Anti-Circumvention Law.</em>
+<a name="189" href="#189">189</a> 
+<a name="190" href="#190">190</a> <em class="comment"> No covered work shall be deemed part of an effective technological</em>
+<a name="191" href="#191">191</a> <em class="comment"> measure under any applicable law fulfilling obligations under article</em>
+<a name="192" href="#192">192</a> <em class="comment"> 11 of the WIPO copyright treaty adopted on 20 December 1996, or</em>
+<a name="193" href="#193">193</a> <em class="comment"> similar laws prohibiting or restricting circumvention of such</em>
+<a name="194" href="#194">194</a> <em class="comment"> measures.</em>
+<a name="195" href="#195">195</a> 
+<a name="196" href="#196">196</a> <em class="comment"> When you convey a covered work, you waive any legal power to forbid</em>
+<a name="197" href="#197">197</a> <em class="comment"> circumvention of technological measures to the extent such circumvention</em>
+<a name="198" href="#198">198</a> <em class="comment"> is effected by exercising rights under this License with respect to</em>
+<a name="199" href="#199">199</a> <em class="comment"> the covered work, and you disclaim any intention to limit operation or</em>
+<a name="200" href="#200">200</a> <em class="comment"> modification of the work as a means of enforcing, against the work's</em>
+<a name="201" href="#201">201</a> <em class="comment"> users, your or third parties' legal rights to forbid circumvention of</em>
+<a name="202" href="#202">202</a> <em class="comment"> technological measures.</em>
+<a name="203" href="#203">203</a> 
+<a name="204" href="#204">204</a> <em class="comment"> 4. Conveying Verbatim Copies.</em>
+<a name="205" href="#205">205</a> 
+<a name="206" href="#206">206</a> <em class="comment"> You may convey verbatim copies of the Program's source code as you</em>
+<a name="207" href="#207">207</a> <em class="comment"> receive it, in any medium, provided that you conspicuously and</em>
+<a name="208" href="#208">208</a> <em class="comment"> appropriately publish on each copy an appropriate copyright notice;</em>
+<a name="209" href="#209">209</a> <em class="comment"> keep intact all notices stating that this License and any</em>
+<a name="210" href="#210">210</a> <em class="comment"> non-permissive terms added in accord with section 7 apply to the code;</em>
+<a name="211" href="#211">211</a> <em class="comment"> keep intact all notices of the absence of any warranty; and give all</em>
+<a name="212" href="#212">212</a> <em class="comment"> recipients a copy of this License along with the Program.</em>
+<a name="213" href="#213">213</a> 
+<a name="214" href="#214">214</a> <em class="comment"> You may charge any price or no price for each copy that you convey,</em>
+<a name="215" href="#215">215</a> <em class="comment"> and you may offer support or warranty protection for a fee.</em>
+<a name="216" href="#216">216</a> 
+<a name="217" href="#217">217</a> <em class="comment"> 5. Conveying Modified Source Versions.</em>
+<a name="218" href="#218">218</a> 
+<a name="219" href="#219">219</a> <em class="comment"> You may convey a work based on the Program, or the modifications to</em>
+<a name="220" href="#220">220</a> <em class="comment"> produce it from the Program, in the form of source code under the</em>
+<a name="221" href="#221">221</a> <em class="comment"> terms of section 4, provided that you also meet all of these conditions:</em>
+<a name="222" href="#222">222</a> 
+<a name="223" href="#223">223</a> <em class="comment"> a) The work must carry prominent notices stating that you modified</em>
+<a name="224" href="#224">224</a> <em class="comment"> it, and giving a relevant date.</em>
+<a name="225" href="#225">225</a> 
+<a name="226" href="#226">226</a> <em class="comment"> b) The work must carry prominent notices stating that it is</em>
+<a name="227" href="#227">227</a> <em class="comment"> released under this License and any conditions added under section</em>
+<a name="228" href="#228">228</a> <em class="comment"> 7.  This requirement modifies the requirement in section 4 to</em>
+<a name="229" href="#229">229</a> <em class="comment"> "keep intact all notices".</em>
+<a name="230" href="#230">230</a> 
+<a name="231" href="#231">231</a> <em class="comment"> c) You must license the entire work, as a whole, under this</em>
+<a name="232" href="#232">232</a> <em class="comment"> License to anyone who comes into possession of a copy.  This</em>
+<a name="233" href="#233">233</a> <em class="comment"> License will therefore apply, along with any applicable section 7</em>
+<a name="234" href="#234">234</a> <em class="comment"> additional terms, to the whole of the work, and all its parts,</em>
+<a name="235" href="#235">235</a> <em class="comment"> regardless of how they are packaged.  This License gives no</em>
+<a name="236" href="#236">236</a> <em class="comment"> permission to license the work in any other way, but it does not</em>
+<a name="237" href="#237">237</a> <em class="comment"> invalidate such permission if you have separately received it.</em>
+<a name="238" href="#238">238</a> 
+<a name="239" href="#239">239</a> <em class="comment"> d) If the work has interactive user interfaces, each must display</em>
+<a name="240" href="#240">240</a> <em class="comment"> Appropriate Legal Notices; however, if the Program has interactive</em>
+<a name="241" href="#241">241</a> <em class="comment"> interfaces that do not display Appropriate Legal Notices, your</em>
+<a name="242" href="#242">242</a> <em class="comment"> work need not make them do so.</em>
+<a name="243" href="#243">243</a> 
+<a name="244" href="#244">244</a> <em class="comment"> A compilation of a covered work with other separate and independent</em>
+<a name="245" href="#245">245</a> <em class="comment"> works, which are not by their nature extensions of the covered work,</em>
+<a name="246" href="#246">246</a> <em class="comment"> and which are not combined with it such as to form a larger program,</em>
+<a name="247" href="#247">247</a> <em class="comment"> in or on a volume of a storage or distribution medium, is called an</em>
+<a name="248" href="#248">248</a> <em class="comment"> "aggregate" if the compilation and its resulting copyright are not</em>
+<a name="249" href="#249">249</a> <em class="comment"> used to limit the access or legal rights of the compilation's users</em>
+<a name="250" href="#250">250</a> <em class="comment"> beyond what the individual works permit.  Inclusion of a covered work</em>
+<a name="251" href="#251">251</a> <em class="comment"> in an aggregate does not cause this License to apply to the other</em>
+<a name="252" href="#252">252</a> <em class="comment"> parts of the aggregate.</em>
+<a name="253" href="#253">253</a> 
+<a name="254" href="#254">254</a> <em class="comment"> 6. Conveying Non-Source Forms.</em>
+<a name="255" href="#255">255</a> 
+<a name="256" href="#256">256</a> <em class="comment"> You may convey a covered work in object code form under the terms</em>
+<a name="257" href="#257">257</a> <em class="comment"> of sections 4 and 5, provided that you also convey the</em>
+<a name="258" href="#258">258</a> <em class="comment"> machine-readable Corresponding Source under the terms of this License,</em>
+<a name="259" href="#259">259</a> <em class="comment"> in one of these ways:</em>
+<a name="260" href="#260">260</a> 
+<a name="261" href="#261">261</a> <em class="comment"> a) Convey the object code in, or embodied in, a physical product</em>
+<a name="262" href="#262">262</a> <em class="comment"> (including a physical distribution medium), accompanied by the</em>
+<a name="263" href="#263">263</a> <em class="comment"> Corresponding Source fixed on a durable physical medium</em>
+<a name="264" href="#264">264</a> <em class="comment"> customarily used for software interchange.</em>
+<a name="265" href="#265">265</a> 
+<a name="266" href="#266">266</a> <em class="comment"> b) Convey the object code in, or embodied in, a physical product</em>
+<a name="267" href="#267">267</a> <em class="comment"> (including a physical distribution medium), accompanied by a</em>
+<a name="268" href="#268">268</a> <em class="comment"> written offer, valid for at least three years and valid for as</em>
+<a name="269" href="#269">269</a> <em class="comment"> long as you offer spare parts or customer support for that product</em>
+<a name="270" href="#270">270</a> <em class="comment"> model, to give anyone who possesses the object code either (1) a</em>
+<a name="271" href="#271">271</a> <em class="comment"> copy of the Corresponding Source for all the software in the</em>
+<a name="272" href="#272">272</a> <em class="comment"> product that is covered by this License, on a durable physical</em>
+<a name="273" href="#273">273</a> <em class="comment"> medium customarily used for software interchange, for a price no</em>
+<a name="274" href="#274">274</a> <em class="comment"> more than your reasonable cost of physically performing this</em>
+<a name="275" href="#275">275</a> <em class="comment"> conveying of source, or (2) access to copy the</em>
+<a name="276" href="#276">276</a> <em class="comment"> Corresponding Source from a network server at no charge.</em>
+<a name="277" href="#277">277</a> 
+<a name="278" href="#278">278</a> <em class="comment"> c) Convey individual copies of the object code with a copy of the</em>
+<a name="279" href="#279">279</a> <em class="comment"> written offer to provide the Corresponding Source.  This</em>
+<a name="280" href="#280">280</a> <em class="comment"> alternative is allowed only occasionally and noncommercially, and</em>
+<a name="281" href="#281">281</a> <em class="comment"> only if you received the object code with such an offer, in accord</em>
+<a name="282" href="#282">282</a> <em class="comment"> with subsection 6b.</em>
+<a name="283" href="#283">283</a> 
+<a name="284" href="#284">284</a> <em class="comment"> d) Convey the object code by offering access from a designated</em>
+<a name="285" href="#285">285</a> <em class="comment"> place (gratis or for a charge), and offer equivalent access to the</em>
+<a name="286" href="#286">286</a> <em class="comment"> Corresponding Source in the same way through the same place at no</em>
+<a name="287" href="#287">287</a> <em class="comment"> further charge.  You need not require recipients to copy the</em>
+<a name="288" href="#288">288</a> <em class="comment"> Corresponding Source along with the object code.  If the place to</em>
+<a name="289" href="#289">289</a> <em class="comment"> copy the object code is a network server, the Corresponding Source</em>
+<a name="290" href="#290">290</a> <em class="comment"> may be on a different server (operated by you or a third party)</em>
+<a name="291" href="#291">291</a> <em class="comment"> that supports equivalent copying facilities, provided you maintain</em>
+<a name="292" href="#292">292</a> <em class="comment"> clear directions next to the object code saying where to find the</em>
+<a name="293" href="#293">293</a> <em class="comment"> Corresponding Source.  Regardless of what server hosts the</em>
+<a name="294" href="#294">294</a> <em class="comment"> Corresponding Source, you remain obligated to ensure that it is</em>
+<a name="295" href="#295">295</a> <em class="comment"> available for as long as needed to satisfy these requirements.</em>
+<a name="296" href="#296">296</a> 
+<a name="297" href="#297">297</a> <em class="comment"> e) Convey the object code using peer-to-peer transmission, provided</em>
+<a name="298" href="#298">298</a> <em class="comment"> you inform other peers where the object code and Corresponding</em>
+<a name="299" href="#299">299</a> <em class="comment"> Source of the work are being offered to the general public at no</em>
+<a name="300" href="#300">300</a> <em class="comment"> charge under subsection 6d.</em>
+<a name="301" href="#301">301</a> 
+<a name="302" href="#302">302</a> <em class="comment"> A separable portion of the object code, whose source code is excluded</em>
+<a name="303" href="#303">303</a> <em class="comment"> from the Corresponding Source as a System Library, need not be</em>
+<a name="304" href="#304">304</a> <em class="comment"> included in conveying the object code work.</em>
+<a name="305" href="#305">305</a> 
+<a name="306" href="#306">306</a> <em class="comment"> A "User Product" is either (1) a "consumer product", which means any</em>
+<a name="307" href="#307">307</a> <em class="comment"> tangible personal property which is normally used for personal, family,</em>
+<a name="308" href="#308">308</a> <em class="comment"> or household purposes, or (2) anything designed or sold for incorporation</em>
+<a name="309" href="#309">309</a> <em class="comment"> into a dwelling.  In determining whether a product is a consumer product,</em>
+<a name="310" href="#310">310</a> <em class="comment"> doubtful cases shall be resolved in favor of coverage.  For a particular</em>
+<a name="311" href="#311">311</a> <em class="comment"> product received by a particular user, "normally used" refers to a</em>
+<a name="312" href="#312">312</a> <em class="comment"> typical or common use of that class of product, regardless of the status</em>
+<a name="313" href="#313">313</a> <em class="comment"> of the particular user or of the way in which the particular user</em>
+<a name="314" href="#314">314</a> <em class="comment"> actually uses, or expects or is expected to use, the product.  A product</em>
+<a name="315" href="#315">315</a> <em class="comment"> is a consumer product regardless of whether the product has substantial</em>
+<a name="316" href="#316">316</a> <em class="comment"> commercial, industrial or non-consumer uses, unless such uses represent</em>
+<a name="317" href="#317">317</a> <em class="comment"> the only significant mode of use of the product.</em>
+<a name="318" href="#318">318</a> 
+<a name="319" href="#319">319</a> <em class="comment"> "Installation Information" for a User Product means any methods,</em>
+<a name="320" href="#320">320</a> <em class="comment"> procedures, authorization keys, or other information required to install</em>
+<a name="321" href="#321">321</a> <em class="comment"> and execute modified versions of a covered work in that User Product from</em>
+<a name="322" href="#322">322</a> <em class="comment"> a modified version of its Corresponding Source.  The information must</em>
+<a name="323" href="#323">323</a> <em class="comment"> suffice to ensure that the continued functioning of the modified object</em>
+<a name="324" href="#324">324</a> <em class="comment"> code is in no case prevented or interfered with solely because</em>
+<a name="325" href="#325">325</a> <em class="comment"> modification has been made.</em>
+<a name="326" href="#326">326</a> 
+<a name="327" href="#327">327</a> <em class="comment"> If you convey an object code work under this section in, or with, or</em>
+<a name="328" href="#328">328</a> <em class="comment"> specifically for use in, a User Product, and the conveying occurs as</em>
+<a name="329" href="#329">329</a> <em class="comment"> part of a transaction in which the right of possession and use of the</em>
+<a name="330" href="#330">330</a> <em class="comment"> User Product is transferred to the recipient in perpetuity or for a</em>
+<a name="331" href="#331">331</a> <em class="comment"> fixed term (regardless of how the transaction is characterized), the</em>
+<a name="332" href="#332">332</a> <em class="comment"> Corresponding Source conveyed under this section must be accompanied</em>
+<a name="333" href="#333">333</a> <em class="comment"> by the Installation Information.  But this requirement does not apply</em>
+<a name="334" href="#334">334</a> <em class="comment"> if neither you nor any third party retains the ability to install</em>
+<a name="335" href="#335">335</a> <em class="comment"> modified object code on the User Product (for example, the work has</em>
+<a name="336" href="#336">336</a> <em class="comment"> been installed in ROM).</em>
+<a name="337" href="#337">337</a> 
+<a name="338" href="#338">338</a> <em class="comment"> The requirement to provide Installation Information does not include a</em>
+<a name="339" href="#339">339</a> <em class="comment"> requirement to continue to provide support service, warranty, or updates</em>
+<a name="340" href="#340">340</a> <em class="comment"> for a work that has been modified or installed by the recipient, or for</em>
+<a name="341" href="#341">341</a> <em class="comment"> the User Product in which it has been modified or installed.  Access to a</em>
+<a name="342" href="#342">342</a> <em class="comment"> network may be denied when the modification itself materially and</em>
+<a name="343" href="#343">343</a> <em class="comment"> adversely affects the operation of the network or violates the rules and</em>
+<a name="344" href="#344">344</a> <em class="comment"> protocols for communication across the network.</em>
+<a name="345" href="#345">345</a> 
+<a name="346" href="#346">346</a> <em class="comment"> Corresponding Source conveyed, and Installation Information provided,</em>
+<a name="347" href="#347">347</a> <em class="comment"> in accord with this section must be in a format that is publicly</em>
+<a name="348" href="#348">348</a> <em class="comment"> documented (and with an implementation available to the public in</em>
+<a name="349" href="#349">349</a> <em class="comment"> source code form), and must require no special password or key for</em>
+<a name="350" href="#350">350</a> <em class="comment"> unpacking, reading or copying.</em>
+<a name="351" href="#351">351</a> 
+<a name="352" href="#352">352</a> <em class="comment"> 7. Additional Terms.</em>
+<a name="353" href="#353">353</a> 
+<a name="354" href="#354">354</a> <em class="comment"> "Additional permissions" are terms that supplement the terms of this</em>
+<a name="355" href="#355">355</a> <em class="comment"> License by making exceptions from one or more of its conditions.</em>
+<a name="356" href="#356">356</a> <em class="comment"> Additional permissions that are applicable to the entire Program shall</em>
+<a name="357" href="#357">357</a> <em class="comment"> be treated as though they were included in this License, to the extent</em>
+<a name="358" href="#358">358</a> <em class="comment"> that they are valid under applicable law.  If additional permissions</em>
+<a name="359" href="#359">359</a> <em class="comment"> apply only to part of the Program, that part may be used separately</em>
+<a name="360" href="#360">360</a> <em class="comment"> under those permissions, but the entire Program remains governed by</em>
+<a name="361" href="#361">361</a> <em class="comment"> this License without regard to the additional permissions.</em>
+<a name="362" href="#362">362</a> 
+<a name="363" href="#363">363</a> <em class="comment"> When you convey a copy of a covered work, you may at your option</em>
+<a name="364" href="#364">364</a> <em class="comment"> remove any additional permissions from that copy, or from any part of</em>
+<a name="365" href="#365">365</a> <em class="comment"> it.  (Additional permissions may be written to require their own</em>
+<a name="366" href="#366">366</a> <em class="comment"> removal in certain cases when you modify the work.)  You may place</em>
+<a name="367" href="#367">367</a> <em class="comment"> additional permissions on material, added by you to a covered work,</em>
+<a name="368" href="#368">368</a> <em class="comment"> for which you have or can give appropriate copyright permission.</em>
+<a name="369" href="#369">369</a> 
+<a name="370" href="#370">370</a> <em class="comment"> Notwithstanding any other provision of this License, for material you</em>
+<a name="371" href="#371">371</a> <em class="comment"> add to a covered work, you may (if authorized by the copyright holders of</em>
+<a name="372" href="#372">372</a> <em class="comment"> that material) supplement the terms of this License with terms:</em>
+<a name="373" href="#373">373</a> 
+<a name="374" href="#374">374</a> <em class="comment"> a) Disclaiming warranty or limiting liability differently from the</em>
+<a name="375" href="#375">375</a> <em class="comment"> terms of sections 15 and 16 of this License; or</em>
+<a name="376" href="#376">376</a> 
+<a name="377" href="#377">377</a> <em class="comment"> b) Requiring preservation of specified reasonable legal notices or</em>
+<a name="378" href="#378">378</a> <em class="comment"> author attributions in that material or in the Appropriate Legal</em>
+<a name="379" href="#379">379</a> <em class="comment"> Notices displayed by works containing it; or</em>
+<a name="380" href="#380">380</a> 
+<a name="381" href="#381">381</a> <em class="comment"> c) Prohibiting misrepresentation of the origin of that material, or</em>
+<a name="382" href="#382">382</a> <em class="comment"> requiring that modified versions of such material be marked in</em>
+<a name="383" href="#383">383</a> <em class="comment"> reasonable ways as different from the original version; or</em>
+<a name="384" href="#384">384</a> 
+<a name="385" href="#385">385</a> <em class="comment"> d) Limiting the use for publicity purposes of names of licensors or</em>
+<a name="386" href="#386">386</a> <em class="comment"> authors of the material; or</em>
+<a name="387" href="#387">387</a> 
+<a name="388" href="#388">388</a> <em class="comment"> e) Declining to grant rights under trademark law for use of some</em>
+<a name="389" href="#389">389</a> <em class="comment"> trade names, trademarks, or service marks; or</em>
+<a name="390" href="#390">390</a> 
+<a name="391" href="#391">391</a> <em class="comment"> f) Requiring indemnification of licensors and authors of that</em>
+<a name="392" href="#392">392</a> <em class="comment"> material by anyone who conveys the material (or modified versions of</em>
+<a name="393" href="#393">393</a> <em class="comment"> it) with contractual assumptions of liability to the recipient, for</em>
+<a name="394" href="#394">394</a> <em class="comment"> any liability that these contractual assumptions directly impose on</em>
+<a name="395" href="#395">395</a> <em class="comment"> those licensors and authors.</em>
+<a name="396" href="#396">396</a> 
+<a name="397" href="#397">397</a> <em class="comment"> All other non-permissive additional terms are considered "further</em>
+<a name="398" href="#398">398</a> <em class="comment"> restrictions" within the meaning of section 10.  If the Program as you</em>
+<a name="399" href="#399">399</a> <em class="comment"> received it, or any part of it, contains a notice stating that it is</em>
+<a name="400" href="#400">400</a> <em class="comment"> governed by this License along with a term that is a further</em>
+<a name="401" href="#401">401</a> <em class="comment"> restriction, you may remove that term.  If a license document contains</em>
+<a name="402" href="#402">402</a> <em class="comment"> a further restriction but permits relicensing or conveying under this</em>
+<a name="403" href="#403">403</a> <em class="comment"> License, you may add to a covered work material governed by the terms</em>
+<a name="404" href="#404">404</a> <em class="comment"> of that license document, provided that the further restriction does</em>
+<a name="405" href="#405">405</a> <em class="comment"> not survive such relicensing or conveying.</em>
+<a name="406" href="#406">406</a> 
+<a name="407" href="#407">407</a> <em class="comment"> If you add terms to a covered work in accord with this section, you</em>
+<a name="408" href="#408">408</a> <em class="comment"> must place, in the relevant source files, a statement of the</em>
+<a name="409" href="#409">409</a> <em class="comment"> additional terms that apply to those files, or a notice indicating</em>
+<a name="410" href="#410">410</a> <em class="comment"> where to find the applicable terms.</em>
+<a name="411" href="#411">411</a> 
+<a name="412" href="#412">412</a> <em class="comment"> Additional terms, permissive or non-permissive, may be stated in the</em>
+<a name="413" href="#413">413</a> <em class="comment"> form of a separately written license, or stated as exceptions;</em>
+<a name="414" href="#414">414</a> <em class="comment"> the above requirements apply either way.</em>
+<a name="415" href="#415">415</a> 
+<a name="416" href="#416">416</a> <em class="comment"> 8. Termination.</em>
+<a name="417" href="#417">417</a> 
+<a name="418" href="#418">418</a> <em class="comment"> You may not propagate or modify a covered work except as expressly</em>
+<a name="419" href="#419">419</a> <em class="comment"> provided under this License.  Any attempt otherwise to propagate or</em>
+<a name="420" href="#420">420</a> <em class="comment"> modify it is void, and will automatically terminate your rights under</em>
+<a name="421" href="#421">421</a> <em class="comment"> this License (including any patent licenses granted under the third</em>
+<a name="422" href="#422">422</a> <em class="comment"> paragraph of section 11).</em>
+<a name="423" href="#423">423</a> 
+<a name="424" href="#424">424</a> <em class="comment"> However, if you cease all violation of this License, then your</em>
+<a name="425" href="#425">425</a> <em class="comment"> license from a particular copyright holder is reinstated (a)</em>
+<a name="426" href="#426">426</a> <em class="comment"> provisionally, unless and until the copyright holder explicitly and</em>
+<a name="427" href="#427">427</a> <em class="comment"> finally terminates your license, and (b) permanently, if the copyright</em>
+<a name="428" href="#428">428</a> <em class="comment"> holder fails to notify you of the violation by some reasonable means</em>
+<a name="429" href="#429">429</a> <em class="comment"> prior to 60 days after the cessation.</em>
+<a name="430" href="#430">430</a> 
+<a name="431" href="#431">431</a> <em class="comment"> Moreover, your license from a particular copyright holder is</em>
+<a name="432" href="#432">432</a> <em class="comment"> reinstated permanently if the copyright holder notifies you of the</em>
+<a name="433" href="#433">433</a> <em class="comment"> violation by some reasonable means, this is the first time you have</em>
+<a name="434" href="#434">434</a> <em class="comment"> received notice of violation of this License (for any work) from that</em>
+<a name="435" href="#435">435</a> <em class="comment"> copyright holder, and you cure the violation prior to 30 days after</em>
+<a name="436" href="#436">436</a> <em class="comment"> your receipt of the notice.</em>
+<a name="437" href="#437">437</a> 
+<a name="438" href="#438">438</a> <em class="comment"> Termination of your rights under this section does not terminate the</em>
+<a name="439" href="#439">439</a> <em class="comment"> licenses of parties who have received copies or rights from you under</em>
+<a name="440" href="#440">440</a> <em class="comment"> this License.  If your rights have been terminated and not permanently</em>
+<a name="441" href="#441">441</a> <em class="comment"> reinstated, you do not qualify to receive new licenses for the same</em>
+<a name="442" href="#442">442</a> <em class="comment"> material under section 10.</em>
+<a name="443" href="#443">443</a> 
+<a name="444" href="#444">444</a> <em class="comment"> 9. Acceptance Not Required for Having Copies.</em>
+<a name="445" href="#445">445</a> 
+<a name="446" href="#446">446</a> <em class="comment"> You are not required to accept this License in order to receive or</em>
+<a name="447" href="#447">447</a> <em class="comment"> run a copy of the Program.  Ancillary propagation of a covered work</em>
+<a name="448" href="#448">448</a> <em class="comment"> occurring solely as a consequence of using peer-to-peer transmission</em>
+<a name="449" href="#449">449</a> <em class="comment"> to receive a copy likewise does not require acceptance.  However,</em>
+<a name="450" href="#450">450</a> <em class="comment"> nothing other than this License grants you permission to propagate or</em>
+<a name="451" href="#451">451</a> <em class="comment"> modify any covered work.  These actions infringe copyright if you do</em>
+<a name="452" href="#452">452</a> <em class="comment"> not accept this License.  Therefore, by modifying or propagating a</em>
+<a name="453" href="#453">453</a> <em class="comment"> covered work, you indicate your acceptance of this License to do so.</em>
+<a name="454" href="#454">454</a> 
+<a name="455" href="#455">455</a> <em class="comment"> 10. Automatic Licensing of Downstream Recipients.</em>
+<a name="456" href="#456">456</a> 
+<a name="457" href="#457">457</a> <em class="comment"> Each time you convey a covered work, the recipient automatically</em>
+<a name="458" href="#458">458</a> <em class="comment"> receives a license from the original licensors, to run, modify and</em>
+<a name="459" href="#459">459</a> <em class="comment"> propagate that work, subject to this License.  You are not responsible</em>
+<a name="460" href="#460">460</a> <em class="comment"> for enforcing compliance by third parties with this License.</em>
+<a name="461" href="#461">461</a> 
+<a name="462" href="#462">462</a> <em class="comment"> An "entity transaction" is a transaction transferring control of an</em>
+<a name="463" href="#463">463</a> <em class="comment"> organization, or substantially all assets of one, or subdividing an</em>
+<a name="464" href="#464">464</a> <em class="comment"> organization, or merging organizations.  If propagation of a covered</em>
+<a name="465" href="#465">465</a> <em class="comment"> work results from an entity transaction, each party to that</em>
+<a name="466" href="#466">466</a> <em class="comment"> transaction who receives a copy of the work also receives whatever</em>
+<a name="467" href="#467">467</a> <em class="comment"> licenses to the work the party's predecessor in interest had or could</em>
+<a name="468" href="#468">468</a> <em class="comment"> give under the previous paragraph, plus a right to possession of the</em>
+<a name="469" href="#469">469</a> <em class="comment"> Corresponding Source of the work from the predecessor in interest, if</em>
+<a name="470" href="#470">470</a> <em class="comment"> the predecessor has it or can get it with reasonable efforts.</em>
+<a name="471" href="#471">471</a> 
+<a name="472" href="#472">472</a> <em class="comment"> You may not impose any further restrictions on the exercise of the</em>
+<a name="473" href="#473">473</a> <em class="comment"> rights granted or affirmed under this License.  For example, you may</em>
+<a name="474" href="#474">474</a> <em class="comment"> not impose a license fee, royalty, or other charge for exercise of</em>
+<a name="475" href="#475">475</a> <em class="comment"> rights granted under this License, and you may not initiate litigation</em>
+<a name="476" href="#476">476</a> <em class="comment"> (including a cross-claim or counterclaim in a lawsuit) alleging that</em>
+<a name="477" href="#477">477</a> <em class="comment"> any patent claim is infringed by making, using, selling, offering for</em>
+<a name="478" href="#478">478</a> <em class="comment"> sale, or importing the Program or any portion of it.</em>
+<a name="479" href="#479">479</a> 
+<a name="480" href="#480">480</a> <em class="comment"> 11. Patents.</em>
+<a name="481" href="#481">481</a> 
+<a name="482" href="#482">482</a> <em class="comment"> A "contributor" is a copyright holder who authorizes use under this</em>
+<a name="483" href="#483">483</a> <em class="comment"> License of the Program or a work on which the Program is based.  The</em>
+<a name="484" href="#484">484</a> <em class="comment"> work thus licensed is called the contributor's "contributor version".</em>
+<a name="485" href="#485">485</a> 
+<a name="486" href="#486">486</a> <em class="comment"> A contributor's "essential patent claims" are all patent claims</em>
+<a name="487" href="#487">487</a> <em class="comment"> owned or controlled by the contributor, whether already acquired or</em>
+<a name="488" href="#488">488</a> <em class="comment"> hereafter acquired, that would be infringed by some manner, permitted</em>
+<a name="489" href="#489">489</a> <em class="comment"> by this License, of making, using, or selling its contributor version,</em>
+<a name="490" href="#490">490</a> <em class="comment"> but do not include claims that would be infringed only as a</em>
+<a name="491" href="#491">491</a> <em class="comment"> consequence of further modification of the contributor version.  For</em>
+<a name="492" href="#492">492</a> <em class="comment"> purposes of this definition, "control" includes the right to grant</em>
+<a name="493" href="#493">493</a> <em class="comment"> patent sublicenses in a manner consistent with the requirements of</em>
+<a name="494" href="#494">494</a> <em class="comment"> this License.</em>
+<a name="495" href="#495">495</a> 
+<a name="496" href="#496">496</a> <em class="comment"> Each contributor grants you a non-exclusive, worldwide, royalty-free</em>
+<a name="497" href="#497">497</a> <em class="comment"> patent license under the contributor's essential patent claims, to</em>
+<a name="498" href="#498">498</a> <em class="comment"> make, use, sell, offer for sale, import and otherwise run, modify and</em>
+<a name="499" href="#499">499</a> <em class="comment"> propagate the contents of its contributor version.</em>
+<a name="500" href="#500">500</a> 
+<a name="501" href="#501">501</a> <em class="comment"> In the following three paragraphs, a "patent license" is any express</em>
+<a name="502" href="#502">502</a> <em class="comment"> agreement or commitment, however denominated, not to enforce a patent</em>
+<a name="503" href="#503">503</a> <em class="comment"> (such as an express permission to practice a patent or covenant not to</em>
+<a name="504" href="#504">504</a> <em class="comment"> sue for patent infringement).  To "grant" such a patent license to a</em>
+<a name="505" href="#505">505</a> <em class="comment"> party means to make such an agreement or commitment not to enforce a</em>
+<a name="506" href="#506">506</a> <em class="comment"> patent against the party.</em>
+<a name="507" href="#507">507</a> 
+<a name="508" href="#508">508</a> <em class="comment"> If you convey a covered work, knowingly relying on a patent license,</em>
+<a name="509" href="#509">509</a> <em class="comment"> and the Corresponding Source of the work is not available for anyone</em>
+<a name="510" href="#510">510</a> <em class="comment"> to copy, free of charge and under the terms of this License, through a</em>
+<a name="511" href="#511">511</a> <em class="comment"> publicly available network server or other readily accessible means,</em>
+<a name="512" href="#512">512</a> <em class="comment"> then you must either (1) cause the Corresponding Source to be so</em>
+<a name="513" href="#513">513</a> <em class="comment"> available, or (2) arrange to deprive yourself of the benefit of the</em>
+<a name="514" href="#514">514</a> <em class="comment"> patent license for this particular work, or (3) arrange, in a manner</em>
+<a name="515" href="#515">515</a> <em class="comment"> consistent with the requirements of this License, to extend the patent</em>
+<a name="516" href="#516">516</a> <em class="comment"> license to downstream recipients.  "Knowingly relying" means you have</em>
+<a name="517" href="#517">517</a> <em class="comment"> actual knowledge that, but for the patent license, your conveying the</em>
+<a name="518" href="#518">518</a> <em class="comment"> covered work in a country, or your recipient's use of the covered work</em>
+<a name="519" href="#519">519</a> <em class="comment"> in a country, would infringe one or more identifiable patents in that</em>
+<a name="520" href="#520">520</a> <em class="comment"> country that you have reason to believe are valid.</em>
+<a name="521" href="#521">521</a> 
+<a name="522" href="#522">522</a> <em class="comment"> If, pursuant to or in connection with a single transaction or</em>
+<a name="523" href="#523">523</a> <em class="comment"> arrangement, you convey, or propagate by procuring conveyance of, a</em>
+<a name="524" href="#524">524</a> <em class="comment"> covered work, and grant a patent license to some of the parties</em>
+<a name="525" href="#525">525</a> <em class="comment"> receiving the covered work authorizing them to use, propagate, modify</em>
+<a name="526" href="#526">526</a> <em class="comment"> or convey a specific copy of the covered work, then the patent license</em>
+<a name="527" href="#527">527</a> <em class="comment"> you grant is automatically extended to all recipients of the covered</em>
+<a name="528" href="#528">528</a> <em class="comment"> work and works based on it.</em>
+<a name="529" href="#529">529</a> 
+<a name="530" href="#530">530</a> <em class="comment"> A patent license is "discriminatory" if it does not include within</em>
+<a name="531" href="#531">531</a> <em class="comment"> the scope of its coverage, prohibits the exercise of, or is</em>
+<a name="532" href="#532">532</a> <em class="comment"> conditioned on the non-exercise of one or more of the rights that are</em>
+<a name="533" href="#533">533</a> <em class="comment"> specifically granted under this License.  You may not convey a covered</em>
+<a name="534" href="#534">534</a> <em class="comment"> work if you are a party to an arrangement with a third party that is</em>
+<a name="535" href="#535">535</a> <em class="comment"> in the business of distributing software, under which you make payment</em>
+<a name="536" href="#536">536</a> <em class="comment"> to the third party based on the extent of your activity of conveying</em>
+<a name="537" href="#537">537</a> <em class="comment"> the work, and under which the third party grants, to any of the</em>
+<a name="538" href="#538">538</a> <em class="comment"> parties who would receive the covered work from you, a discriminatory</em>
+<a name="539" href="#539">539</a> <em class="comment"> patent license (a) in connection with copies of the covered work</em>
+<a name="540" href="#540">540</a> <em class="comment"> conveyed by you (or copies made from those copies), or (b) primarily</em>
+<a name="541" href="#541">541</a> <em class="comment"> for and in connection with specific products or compilations that</em>
+<a name="542" href="#542">542</a> <em class="comment"> contain the covered work, unless you entered into that arrangement,</em>
+<a name="543" href="#543">543</a> <em class="comment"> or that patent license was granted, prior to 28 March 2007.</em>
+<a name="544" href="#544">544</a> 
+<a name="545" href="#545">545</a> <em class="comment"> Nothing in this License shall be construed as excluding or limiting</em>
+<a name="546" href="#546">546</a> <em class="comment"> any implied license or other defenses to infringement that may</em>
+<a name="547" href="#547">547</a> <em class="comment"> otherwise be available to you under applicable patent law.</em>
+<a name="548" href="#548">548</a> 
+<a name="549" href="#549">549</a> <em class="comment"> 12. No Surrender of Others' Freedom.</em>
+<a name="550" href="#550">550</a> 
+<a name="551" href="#551">551</a> <em class="comment"> If conditions are imposed on you (whether by court order, agreement or</em>
+<a name="552" href="#552">552</a> <em class="comment"> otherwise) that contradict the conditions of this License, they do not</em>
+<a name="553" href="#553">553</a> <em class="comment"> excuse you from the conditions of this License.  If you cannot convey a</em>
+<a name="554" href="#554">554</a> <em class="comment"> covered work so as to satisfy simultaneously your obligations under this</em>
+<a name="555" href="#555">555</a> <em class="comment"> License and any other pertinent obligations, then as a consequence you may</em>
+<a name="556" href="#556">556</a> <em class="comment"> not convey it at all.  For example, if you agree to terms that obligate you</em>
+<a name="557" href="#557">557</a> <em class="comment"> to collect a royalty for further conveying from those to whom you convey</em>
+<a name="558" href="#558">558</a> <em class="comment"> the Program, the only way you could satisfy both those terms and this</em>
+<a name="559" href="#559">559</a> <em class="comment"> License would be to refrain entirely from conveying the Program.</em>
+<a name="560" href="#560">560</a> 
+<a name="561" href="#561">561</a> <em class="comment"> 13. Use with the GNU Affero General Public License.</em>
+<a name="562" href="#562">562</a> 
+<a name="563" href="#563">563</a> <em class="comment"> Notwithstanding any other provision of this License, you have</em>
+<a name="564" href="#564">564</a> <em class="comment"> permission to link or combine any covered work with a work licensed</em>
+<a name="565" href="#565">565</a> <em class="comment"> under version 3 of the GNU Affero General Public License into a single</em>
+<a name="566" href="#566">566</a> <em class="comment"> combined work, and to convey the resulting work.  The terms of this</em>
+<a name="567" href="#567">567</a> <em class="comment"> License will continue to apply to the part which is the covered work,</em>
+<a name="568" href="#568">568</a> <em class="comment"> but the special requirements of the GNU Affero General Public License,</em>
+<a name="569" href="#569">569</a> <em class="comment"> section 13, concerning interaction through a network will apply to the</em>
+<a name="570" href="#570">570</a> <em class="comment"> combination as such.</em>
+<a name="571" href="#571">571</a> 
+<a name="572" href="#572">572</a> <em class="comment"> 14. Revised Versions of this License.</em>
+<a name="573" href="#573">573</a> 
+<a name="574" href="#574">574</a> <em class="comment"> The Free Software Foundation may publish revised and/or new versions of</em>
+<a name="575" href="#575">575</a> <em class="comment"> the GNU General Public License from time to time.  Such new versions will</em>
+<a name="576" href="#576">576</a> <em class="comment"> be similar in spirit to the present version, but may differ in detail to</em>
+<a name="577" href="#577">577</a> <em class="comment"> address new problems or concerns.</em>
+<a name="578" href="#578">578</a> 
+<a name="579" href="#579">579</a> <em class="comment"> Each version is given a distinguishing version number.  If the</em>
+<a name="580" href="#580">580</a> <em class="comment"> Program specifies that a certain numbered version of the GNU General</em>
+<a name="581" href="#581">581</a> <em class="comment"> Public License "or any later version" applies to it, you have the</em>
+<a name="582" href="#582">582</a> <em class="comment"> option of following the terms and conditions either of that numbered</em>
+<a name="583" href="#583">583</a> <em class="comment"> version or of any later version published by the Free Software</em>
+<a name="584" href="#584">584</a> <em class="comment"> Foundation.  If the Program does not specify a version number of the</em>
+<a name="585" href="#585">585</a> <em class="comment"> GNU General Public License, you may choose any version ever published</em>
+<a name="586" href="#586">586</a> <em class="comment"> by the Free Software Foundation.</em>
+<a name="587" href="#587">587</a> 
+<a name="588" href="#588">588</a> <em class="comment"> If the Program specifies that a proxy can decide which future</em>
+<a name="589" href="#589">589</a> <em class="comment"> versions of the GNU General Public License can be used, that proxy's</em>
+<a name="590" href="#590">590</a> <em class="comment"> public statement of acceptance of a version permanently authorizes you</em>
+<a name="591" href="#591">591</a> <em class="comment"> to choose that version for the Program.</em>
+<a name="592" href="#592">592</a> 
+<a name="593" href="#593">593</a> <em class="comment"> Later license versions may give you additional or different</em>
+<a name="594" href="#594">594</a> <em class="comment"> permissions.  However, no additional obligations are imposed on any</em>
+<a name="595" href="#595">595</a> <em class="comment"> author or copyright holder as a result of your choosing to follow a</em>
+<a name="596" href="#596">596</a> <em class="comment"> later version.</em>
+<a name="597" href="#597">597</a> 
+<a name="598" href="#598">598</a> <em class="comment"> 15. Disclaimer of Warranty.</em>
+<a name="599" href="#599">599</a> 
+<a name="600" href="#600">600</a> <em class="comment"> THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY</em>
+<a name="601" href="#601">601</a> <em class="comment"> APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT</em>
+<a name="602" href="#602">602</a> <em class="comment"> HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY</em>
+<a name="603" href="#603">603</a> <em class="comment"> OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,</em>
+<a name="604" href="#604">604</a> <em class="comment"> THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR</em>
+<a name="605" href="#605">605</a> <em class="comment"> PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM</em>
+<a name="606" href="#606">606</a> <em class="comment"> IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF</em>
+<a name="607" href="#607">607</a> <em class="comment"> ALL NECESSARY SERVICING, REPAIR OR CORRECTION.</em>
+<a name="608" href="#608">608</a> 
+<a name="609" href="#609">609</a> <em class="comment"> 16. Limitation of Liability.</em>
+<a name="610" href="#610">610</a> 
+<a name="611" href="#611">611</a> <em class="comment"> IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING</em>
+<a name="612" href="#612">612</a> <em class="comment"> WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS</em>
+<a name="613" href="#613">613</a> <em class="comment"> THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY</em>
+<a name="614" href="#614">614</a> <em class="comment"> GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE</em>
+<a name="615" href="#615">615</a> <em class="comment"> USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF</em>
+<a name="616" href="#616">616</a> <em class="comment"> DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD</em>
+<a name="617" href="#617">617</a> <em class="comment"> PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),</em>
+<a name="618" href="#618">618</a> <em class="comment"> EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF</em>
+<a name="619" href="#619">619</a> <em class="comment"> SUCH DAMAGES.</em>
+<a name="620" href="#620">620</a> 
+<a name="621" href="#621">621</a> <em class="comment"> 17. Interpretation of Sections 15 and 16.</em>
+<a name="622" href="#622">622</a> 
+<a name="623" href="#623">623</a> <em class="comment"> If the disclaimer of warranty and limitation of liability provided</em>
+<a name="624" href="#624">624</a> <em class="comment"> above cannot be given local legal effect according to their terms,</em>
+<a name="625" href="#625">625</a> <em class="comment"> reviewing courts shall apply local law that most closely approximates</em>
+<a name="626" href="#626">626</a> <em class="comment"> an absolute waiver of all civil liability in connection with the</em>
+<a name="627" href="#627">627</a> <em class="comment"> Program, unless a warranty or assumption of liability accompanies a</em>
+<a name="628" href="#628">628</a> <em class="comment"> copy of the Program in return for a fee.</em>
+<a name="629" href="#629">629</a> 
+<a name="630" href="#630">630</a> <em class="comment"> END OF TERMS AND CONDITIONS</em>
+<a name="631" href="#631">631</a> 
+<a name="632" href="#632">632</a> <em class="comment"> How to Apply These Terms to Your New Programs</em>
+<a name="633" href="#633">633</a> 
+<a name="634" href="#634">634</a> <em class="comment"> If you develop a new program, and you want it to be of the greatest</em>
+<a name="635" href="#635">635</a> <em class="comment"> possible use to the public, the best way to achieve this is to make it</em>
+<a name="636" href="#636">636</a> <em class="comment"> free software which everyone can redistribute and change under these terms.</em>
+<a name="637" href="#637">637</a> 
+<a name="638" href="#638">638</a> <em class="comment"> To do so, attach the following notices to the program.  It is safest</em>
+<a name="639" href="#639">639</a> <em class="comment"> to attach them to the start of each source file to most effectively</em>
+<a name="640" href="#640">640</a> <em class="comment"> state the exclusion of warranty; and each file should have at least</em>
+<a name="641" href="#641">641</a> <em class="comment"> the "copyright" line and a pointer to where the full notice is found.</em>
+<a name="642" href="#642">642</a> 
+<a name="643" href="#643">643</a> <em class="comment"> &lt;one line to give the program's name and a brief idea of what it does.></em>
+<a name="644" href="#644">644</a> <em class="comment"> Copyright (C) &lt;year>  &lt;name of author></em>
+<a name="645" href="#645">645</a> 
+<a name="646" href="#646">646</a> <em class="comment"> This program is free software: you can redistribute it and/or modify</em>
+<a name="647" href="#647">647</a> <em class="comment"> it under the terms of the GNU General Public License as published by</em>
+<a name="648" href="#648">648</a> <em class="comment"> the Free Software Foundation, either version 3 of the License, or</em>
+<a name="649" href="#649">649</a> <em class="comment"> (at your option) any later version.</em>
+<a name="650" href="#650">650</a> 
+<a name="651" href="#651">651</a> <em class="comment"> This program is distributed in the hope that it will be useful,</em>
+<a name="652" href="#652">652</a> <em class="comment"> but WITHOUT ANY WARRANTY; without even the implied warranty of</em>
+<a name="653" href="#653">653</a> <em class="comment"> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</em>
+<a name="654" href="#654">654</a> <em class="comment"> GNU General Public License for more details.</em>
+<a name="655" href="#655">655</a> 
+<a name="656" href="#656">656</a> <em class="comment"> You should have received a copy of the GNU General Public License</em>
+<a name="657" href="#657">657</a> <em class="comment"> along with this program.  If not, see &lt;<a href="http://www.gnu.org/licenses/" target="alexandria_uri">http://www.gnu.org/licenses/</a>>.</em>
+<a name="658" href="#658">658</a> 
+<a name="659" href="#659">659</a> <em class="comment"> Also add information on how to contact you by electronic and paper mail.</em>
+<a name="660" href="#660">660</a> 
+<a name="661" href="#661">661</a> <em class="comment"> If the program does terminal interaction, make it output a short</em>
+<a name="662" href="#662">662</a> <em class="comment"> notice like this when it starts in an interactive mode:</em>
+<a name="663" href="#663">663</a> 
+<a name="664" href="#664">664</a> <em class="comment"> &lt;program>  Copyright (C) &lt;year>  &lt;name of author></em>
+<a name="665" href="#665">665</a> <em class="comment"> This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.</em>
+<a name="666" href="#666">666</a> <em class="comment"> This is free software, and you are welcome to redistribute it</em>
+<a name="667" href="#667">667</a> <em class="comment"> under certain conditions; type `show c' for details.</em>
+<a name="668" href="#668">668</a> 
+<a name="669" href="#669">669</a> <em class="comment"> The hypothetical commands `show w' and `show c' should show the appropriate</em>
+<a name="670" href="#670">670</a> <em class="comment"> parts of the General Public License.  Of course, your program's commands</em>
+<a name="671" href="#671">671</a> <em class="comment"> might be different; for a GUI interface, you would use an "about box".</em>
+<a name="672" href="#672">672</a> 
+<a name="673" href="#673">673</a> <em class="comment"> You should also get your employer (if you work as a programmer) or school,</em>
+<a name="674" href="#674">674</a> <em class="comment"> if any, to sign a "copyright disclaimer" for the program, if necessary.</em>
+<a name="675" href="#675">675</a> <em class="comment"> For more information on this, and how to apply and follow the GNU GPL, see</em>
+<a name="676" href="#676">676</a> <em class="comment"> &lt;<a href="http://www.gnu.org/licenses/" target="alexandria_uri">http://www.gnu.org/licenses/</a>>.</em>
+<a name="677" href="#677">677</a> 
+<a name="678" href="#678">678</a> <em class="comment"> The GNU General Public License does not permit incorporating your program</em>
+<a name="679" href="#679">679</a> <em class="comment"> into proprietary programs.  If your program is a subroutine library, you</em>
+<a name="680" href="#680">680</a> <em class="comment"> may consider it more useful to permit linking proprietary applications with</em>
+<a name="681" href="#681">681</a> <em class="comment"> the library.  If this is what you want to do, use the GNU Lesser General</em>
+<a name="682" href="#682">682</a> <em class="comment"> Public License instead of this License.  But first, please read</em>
+<a name="683" href="#683">683</a> <em class="comment"> &lt;<a href="http://www.gnu.org/philosophy/why-not-lgpl.html" target="alexandria_uri">http://www.gnu.org/philosophy/why-not-lgpl.html</a>>.</em>
+<a name="684" href="#684">684</a> 
+<a name="685" href="#685">685</a> <em class="comment"> */</em>
+<a name="686" href="#686">686</a> 
+<a name="687" href="#687">687</a> <strong>package</strong> gbc.jtimecalc;
+<a name="688" href="#688">688</a> 
+<a name="689" href="#689">689</a> <strong>import</strong> gbc.jtimecalc.TimeDifferenceCalculator;
+<a name="690" href="#690">690</a> 
+<a name="691" href="#691">691</a> <strong>public</strong> <strong>class</strong> <a href="../../gbc/jtimecalc/SimpleExample.html">SimpleExample</a> {
+<a name="692" href="#692">692</a> 
+<a name="693" href="#693">693</a> 	<strong>public</strong> <strong>static</strong> <strong>void</strong> main(String[] args) {
+<a name="694" href="#694">694</a> 	  
+<a name="695" href="#695">695</a> 	  <em class="comment">// START SNIPPET: usage</em>
+<a name="696" href="#696">696</a> 
+<a name="697" href="#697">697</a> 		System.out.println(<span class="string">"1. Starting operation"</span>);
+<a name="698" href="#698">698</a> 		<strong>long</strong> startTime = System.currentTimeMillis();
+<a name="699" href="#699">699</a> 
+<a name="700" href="#700">700</a> 		System.out.println(<span class="string">"2. Invoking some time consuming method"</span>);
+<a name="701" href="#701">701</a> 		<strong>try</strong> {
+<a name="702" href="#702">702</a> 			Thread.sleep(5000);
+<a name="703" href="#703">703</a> 		} <strong>catch</strong> (InterruptedException e) {
+<a name="704" href="#704">704</a> 			e.printStackTrace();
+<a name="705" href="#705">705</a> 		}
+<a name="706" href="#706">706</a> 
+<a name="707" href="#707">707</a> 		System.out.println(<span class="string">"3. Finishing operation"</span>);
+<a name="708" href="#708">708</a> 		<strong>long</strong> endTime = System.currentTimeMillis();
+<a name="709" href="#709">709</a> 
+<a name="710" href="#710">710</a> 		System.out.println(<span class="string">"Result:"</span>);
+<a name="711" href="#711">711</a> 
+<a name="712" href="#712">712</a> 		<strong>for</strong> (TimeDifferenceCalculator calc : TimeDifferenceCalculator.values()) {
+<a name="713" href="#713">713</a> 			System.out.println(calc + <span class="string">": \&quot;"</span>
+<a name="714" href="#714">714</a> 					+ calc.getTimeDifferenceAsString(endTime, startTime)
+<a name="715" href="#715">715</a> 					+ <span class="string">"\&quot; , type: "</span> + calc.getType());
+<a name="716" href="#716">716</a> 		}
+<a name="717" href="#717">717</a> 		
+<a name="718" href="#718">718</a> 		<em class="comment">// END SNIPPET: usage</em>
+<a name="719" href="#719">719</a> 	}
+<a name="720" href="#720">720</a> }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+
