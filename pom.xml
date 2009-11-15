@@ -36,13 +36,11 @@
     </developer>
   </developers>
 
-  <!-- 
   <scm>
-    <url>http://github.com/grzegorzblaszczyk/jtimecalc/</url>
-    <connection>git://github.com/grzegorzblaszczyk/jtimecalc.git</connection>
-    <developerConnection>git@github.com:grzegorzblaszczyk/jtimecalc.git</developerConnection>
+    <url>scm:git:git://github.com/grzegorzblaszczyk/jtimecalc.git</url>
+    <connection>scm:git:git://github.com/grzegorzblaszczyk/jtimecalc.git</connection>
+    <developerConnection>scm:git:git://git@github.com:grzegorzblaszczyk/jtimecalc.git</developerConnection>
   </scm>
-  -->
   <organization>
     <name>Grzegorz Błaszczyk Consulting</name>
     <url>http://www.blaszczyk-consulting.eu</url>
@@ -79,6 +77,13 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>1.2</version>
+      </plugin>
+      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
