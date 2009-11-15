@@ -61,14 +61,14 @@
 
   <distributionManagement>
     <repository>
-      <id>jtimecalc.sf.net</id>
-      <name>Sourceforge.net</name>
-      <url>scp://web.sourceforge.net/j/jt/jtimecalc</url>
+      <id>jtimecalc.github.com</id>
+      <name>GitHub</name>
+      <url>git://github.com/grzegorzblaszczyk/jtimecalc.git</url>
     </repository>
     <site>
-      <id>jtimecalc.sf.net</id>
-      <name>Sourceforge.net</name>
-      <url>scp://web.sourceforge.net/home/groups/j/jt/jtimecalc/htdocs/</url>
+      <id>jtimecalc.github.com</id>
+      <name>GitHub</name>
+      <url>http://grzegorzblaszczyk.github.com/jtimecalc</url>
     </site>
   </distributionManagement>
 
