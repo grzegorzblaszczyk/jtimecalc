@@ -111,5 +111,8 @@ public interface TimeDifferenceCalculatorTest {
 
   @Test
   void shouldReturn22Hours();
+  
+  @Test
+  void shouldReturn30DaysWithoutTailingZeroes();
 
 }

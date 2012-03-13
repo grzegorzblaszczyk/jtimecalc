@@ -1071,10 +1071,11 @@ public enum TimeDifferenceCalculator {
    *
    * @param endTime   end of time period
    * @param startTime start of time period
+   * @param omitTailingZeroes omit tailing zeroes
    * @return String representation of a difference in time between endTime and
    *         startTime
    */
-  public String getTimeDifferenceAsString(long endTime, long startTime) {
+  public String getTimeDifferenceAsString(long endTime, long startTime, boolean omitTailingZeroes) {
     StringBuffer buffer = new StringBuffer("");
     long diff = endTime - startTime;
 
@@ -1086,40 +1087,49 @@ public enum TimeDifferenceCalculator {
       buffer.append(" " + MILLISECONDS);
     }
     if (diff < Constants.ONE_SECOND_IN_MILLISECONDS) {
-      return buffer.toString();
+      return buffer.toString().trim();
     }
 
     Calendar cal = Calendar.getInstance();
     cal.setTimeInMillis(diff);
 
-    buffer.insert(0, getStringRepresentationOfValue(cal, Calendar.SECOND));
-
+    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.SECOND), omitTailingZeroes);
+    
     if (diff < Constants.ONE_MINUTE_IN_MILLISECONDS) {
-      return buffer.toString();
+      return buffer.toString().trim();
     }
-    buffer.insert(0, getStringRepresentationOfValue(cal, Calendar.MINUTE));
+    
+    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.MINUTE), omitTailingZeroes);
 
     if (diff < Constants.ONE_HOUR_IN_MILLISECONDS) {
-      return buffer.toString();
+      return buffer.toString().trim();
     }
     cal.add(Calendar.HOUR_OF_DAY, -1);
-    buffer.insert(0, getStringRepresentationOfValue(cal,
-            Calendar.HOUR_OF_DAY));
-
+    
+    prependInBuffer(buffer, getStringRepresentationOfValue(cal,
+            Calendar.HOUR_OF_DAY), omitTailingZeroes);
+    
     if (diff < Constants.ONE_DAY_IN_MILLISECONDS) {
-      return buffer.toString();
+      return buffer.toString().trim();
     }
     cal.add(Calendar.DATE, -1);
-    buffer.insert(0, getStringRepresentationOfValue(cal, Calendar.DATE));
+    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.DATE), omitTailingZeroes);
 
     long currentMonthInMillis = Constants.getActualMonthInMillis(cal);
 
     if (diff < currentMonthInMillis) {
-      return buffer.toString();
+      return buffer.toString().trim();
     }
-    buffer.insert(0, getStringRepresentationOfValue(cal, Calendar.MONTH));
+    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.MONTH), omitTailingZeroes);
 
     return buffer.toString().trim();
+  }
+
+  private void prependInBuffer(StringBuffer buffer, String part,
+		boolean omitTailingZeroes) {
+	if (!omitTailingZeroes || !part.startsWith("0 ")) {
+    	buffer.insert(0, part);
+    }
   }
 
   /**

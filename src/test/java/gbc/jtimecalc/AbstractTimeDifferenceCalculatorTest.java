@@ -1012,7 +1012,18 @@ public class AbstractTimeDifferenceCalculatorTest {
     // 2.01.2006 00:00:00.0
     expectedValue = messages.get("30Days1Hour");
   }
+  
+  public void shouldReturn30DaysWithoutTailingZeroes() {
+    Calendar end = prepareCalendar(2006, Calendar.FEBRUARY, 1, 1, 0, 0, 0);
+    // 1.02.2006 01:00:00.0
+    setEndTime(end.getTimeInMillis());
 
+    Calendar start = (Calendar) end.clone();
+    start.add(Calendar.DATE, -30);
+    setStartTime(start.getTimeInMillis());
+    // 2.01.2006 00:00:00.0
+    expectedValue = messages.get("30DaysWithoutTailingZeroes");
+  }
 
   public void shouldReturn2Months3Days0Hours0Minutes0seconds() {
     Calendar end = prepareCalendar(2006, Calendar.FEBRUARY, 1, 0, 0, 0, 0);
@@ -1072,9 +1083,9 @@ public class AbstractTimeDifferenceCalculatorTest {
     return timeDifferenceCalculator;
   }
 
-  protected void assertCorrectMessage(String expectedValue, long endTime, long startTime) {
+  protected void assertCorrectMessage(String expectedValue, long endTime, long startTime, boolean omitTailingZeroes) {
     assertEquals("value returned is not '" + expectedValue + "'", expectedValue, getTimeDifferenceCalculator()
-        .getTimeDifferenceAsString(endTime, startTime));
+        .getTimeDifferenceAsString(endTime, startTime, omitTailingZeroes));
   }
 
   protected void assertCorrectMessages() {
@@ -1097,7 +1108,13 @@ public class AbstractTimeDifferenceCalculatorTest {
           e.printStackTrace();
           throw new RuntimeException(e);
         }
-        assertCorrectMessage(getExpectedValue(), getEndTime(), getStartTime());
+        
+        boolean omitTailingZeroes = false;
+        if (method.getName().endsWith("WithoutTailingZeroes")) {
+        	omitTailingZeroes = true;
+        }
+        
+        assertCorrectMessage(getExpectedValue(), getEndTime(), getStartTime(), omitTailingZeroes);
         logger.debug("expected value '" + getExpectedValue() + "' is correct");
       }
     }
