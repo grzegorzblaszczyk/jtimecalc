@@ -731,6 +731,9 @@ public enum TimeDifferenceCalculator {
           "godzin", "dzie\u0144", "dni", "miesi\u0105c", "miesi\u0105ce",
           "miesi\u0119cy"),
 
+  PORTUGESE("pt", Type.PLURAL_MORPHEME, "s", "e", false, "segundo", "minuto", "hora",
+          "dia", "mes"),
+          
   SPANISH("es", Type.PLURAL_MORPHEME, "s", "e", false, "segundo", "minuto", "hora",
           "d\u00eda", "mes");
 
