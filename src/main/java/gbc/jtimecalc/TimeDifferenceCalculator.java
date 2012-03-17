@@ -696,45 +696,46 @@ import java.util.Calendar;
  */
 public enum TimeDifferenceCalculator {
 
-  CZECH("cs", Type.VERY_IRREGULAR_PLURAL, "", "", false, "sekunda", "sekundy",
+  CZECH("cs", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "sekunda", "sekundy",
           "sekund", "minuta", "minuty", "minut", "hodina", "hodiny",
           "hodin", "den", "dn\u00ed", "m\u011bs\u00edc", "m\u011bs\u00edce",
           "m\u011bs\u00edc\u016f"),
 
-  DUTCH("nl", Type.IRREGULAR_PLURAL, "", "", false, "seconde", "seconden",
+  DUTCH("nl", Type.IRREGULAR_PLURAL, "", "", false, false, "", "seconde", "seconden",
           "minuut", "minuten", "uur", "uren", "dag", "dagen", "maand",
           "maanden"),
 
-  ENGLISH("en", Type.PLURAL_MORPHEME, "s", "e", false, "second", "minute", "hour",
+  ENGLISH("en", Type.PLURAL_MORPHEME, "s", "e", false, false, "", "second", "minute", "hour",
           "day", "month"),
 
-  FINNISH("fi", Type.PLURAL_MORPHEME, "in", "", false, "sekunti", "minuutti",
+  FINNISH("fi", Type.PLURAL_MORPHEME, "in", "", false, false, "", "sekunti", "minuutti",
           "tunti", "vuorokausi", "kuukausi"),
 
-  FRENCH("fr", Type.PLURAL_MORPHEME, "s", "e", true, "seconde", "minute", "heure",
+  FRENCH("fr", Type.PLURAL_MORPHEME, "s", "e", true, false, "", "seconde", "minute", "heure",
           "jour", "mois"),
 
-  GERMAN("de", Type.IRREGULAR_PLURAL, "", "", false, "Sekunde", "Sekunden",
+  GERMAN("de", Type.IRREGULAR_PLURAL, "", "", false, false, "", "Sekunde", "Sekunden",
           "Minute", "Minuten", "Stunde", "Stunden", "Tag", "Tage", "Monat",
           "Monate"),
 
-  ITALIAN("it", Type.IRREGULAR_PLURAL, "", "", false, "secondo", "seconda",
+  ITALIAN("it", Type.IRREGULAR_PLURAL, "", "", false, false, "", "secondo", "seconda",
           "minuto", "minuti", "ora", "ore", "giorno", "giorni", "mese",
           "mesi"),
 
-  NORWEGIAN("no", Type.IRREGULAR_PLURAL, "", "", false, "sekund", "sekunder",
+  NORWEGIAN("no", Type.IRREGULAR_PLURAL, "", "", false, false, "", "sekund", "sekunder",
           "minutt", "minutter", "time", "timer", "dag", "dagen", "m\u00e5ned",
           "m\u00e5neden"),
 
-  POLISH("pl", Type.VERY_IRREGULAR_PLURAL, "", "", false, "sekunda", "sekundy",
+  POLISH("pl", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "sekunda", "sekundy",
           "sekund", "minuta", "minuty", "minut", "godzina", "godziny",
           "godzin", "dzie\u0144", "dni", "miesi\u0105c", "miesi\u0105ce",
           "miesi\u0119cy"),
 
-  PORTUGESE("pt", Type.PLURAL_MORPHEME, "s", "e", false, "segundo", "minuto", "hora",
-          "dia", "mes"),
+  PORTUGESE("pt", Type.IRREGULAR_PLURAL, "s", "e", false, true, "e", "segundo", "segundos",
+          "minuto", "minutos", "hora", "horas", "dia", "dias", "mê",
+          "meses"),
           
-  SPANISH("es", Type.PLURAL_MORPHEME, "s", "e", false, "segundo", "minuto", "hora",
+  SPANISH("es", Type.PLURAL_MORPHEME, "s", "e", false, false, "", "segundo", "minuto", "hora",
           "d\u00eda", "mes");
 
   /**
@@ -836,6 +837,16 @@ public enum TimeDifferenceCalculator {
    * Interfix user in plural morpheme languages.
    */
   private String pluralMorphemeInterfix;
+  
+  /**
+   * Flag for using commas between time frames.
+   */
+  boolean useCommasBetween;
+  
+  /**
+   * Word meaning 'and'.
+   */
+  String andWord;
 
   // Constructors
 
@@ -847,12 +858,18 @@ public enum TimeDifferenceCalculator {
    * @param pluralMorphemeInterfix plural morpheme interfix
    * @param doNotAppendPluralSuffixToMonths
    *                               if true it does not append plural form to months
+   * @param useCommasBetween 	   use commas between time frames without the last one
+   * @param andWord				   word that stands for "and" before the last timeframe
    * @param timeFrameNames         names of time frames in a specific language
    * @throws IllegalArgumentException if input parameters are not correct
    */
-  TimeDifferenceCalculator(String code, Type type, String pluralMorphemeSuffix,
+  TimeDifferenceCalculator(String code, 
+		  				   Type type, String pluralMorphemeSuffix,
                            String pluralMorphemeInterfix,
-                           boolean doNotAppendPluralSuffixToMonths, String... timeFrameNames)
+                           boolean doNotAppendPluralSuffixToMonths, 
+                           boolean useCommasBetween,
+                           String andWord,
+                           String... timeFrameNames)
           throws IllegalArgumentException {
 
     if (code != null && code.length() == 2) {
@@ -871,6 +888,8 @@ public enum TimeDifferenceCalculator {
     this.doNotAppendPluralSuffixToMonths = doNotAppendPluralSuffixToMonths;
     this.pluralMorphemeSuffix = pluralMorphemeSuffix;
     this.pluralMorphemeInterfix = pluralMorphemeInterfix;
+    this.useCommasBetween = useCommasBetween;
+    this.andWord = andWord;
 
     if (timeFrameNames == null || timeFrameNames.length == 0) {
       throw new IllegalArgumentException("timeFrameNames is empty");
@@ -1105,7 +1124,7 @@ public enum TimeDifferenceCalculator {
     prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.MINUTE), omitTailingZeroes);
 
     if (diff < Constants.ONE_HOUR_IN_MILLISECONDS) {
-      return buffer.toString().trim();
+      return applyCommasAndAndWord(buffer).toString().trim();
     }
     cal.add(Calendar.HOUR_OF_DAY, -1);
     
@@ -1113,7 +1132,7 @@ public enum TimeDifferenceCalculator {
             Calendar.HOUR_OF_DAY), omitTailingZeroes);
     
     if (diff < Constants.ONE_DAY_IN_MILLISECONDS) {
-      return buffer.toString().trim();
+      return applyCommasAndAndWord(buffer).toString().trim();
     }
     cal.add(Calendar.DATE, -1);
     prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.DATE), omitTailingZeroes);
@@ -1121,14 +1140,34 @@ public enum TimeDifferenceCalculator {
     long currentMonthInMillis = Constants.getActualMonthInMillis(cal);
 
     if (diff < currentMonthInMillis) {
-      return buffer.toString().trim();
+      return applyCommasAndAndWord(buffer).toString().trim();
     }
     prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.MONTH), omitTailingZeroes);
 
-    return buffer.toString().trim();
+    return applyCommasAndAndWord(buffer).toString().trim();
   }
 
-  private void prependInBuffer(StringBuffer buffer, String part,
+  private StringBuffer applyCommasAndAndWord(final StringBuffer buffer) {
+	if (!this.useCommasBetween) {
+		return buffer;
+	}
+
+	StringBuffer output = new StringBuffer();
+	String[] timeFrames = buffer.toString().split(" ");
+	for (int i=0; i<timeFrames.length; i=i+2) {
+		String timeFrame = timeFrames[i] + " " + timeFrames[i+1];
+		if (i == timeFrames.length - 2 && timeFrames.length > 2){
+			output.append(" " + andWord + " ");
+		}
+		output.append(timeFrame);
+		if (i < timeFrames.length - 4) {
+			output.append(", ");
+		}
+	}
+	return output;
+  }
+
+private void prependInBuffer(StringBuffer buffer, String part,
 		boolean omitTailingZeroes) {
 	if (!omitTailingZeroes || !part.startsWith("0 ")) {
     	buffer.insert(0, part);
