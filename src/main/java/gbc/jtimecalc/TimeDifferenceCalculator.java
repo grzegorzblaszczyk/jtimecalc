@@ -708,8 +708,9 @@ public enum TimeDifferenceCalculator {
   ENGLISH("en", Type.PLURAL_MORPHEME, "s", "e", false, false, "", "second", "minute", "hour",
           "day", "month"),
 
-  FINNISH("fi", Type.PLURAL_MORPHEME, "in", "", false, false, "", "sekunti", "minuutti",
-          "tunti", "vuorokausi", "kuukausi"),
+  FINNISH("fi", Type.IRREGULAR_PLURAL, "", "", false, false, "", "sekunti", "sekuntia",
+          "minuutti", "minuuttia", "tunti", "tuntia", "vuorokausi", "vuorokautta", "kuukausi",
+          "kuukautta"),
 
   FRENCH("fr", Type.PLURAL_MORPHEME, "s", "e", true, false, "", "seconde", "minute", "heure",
           "jour", "mois"),
