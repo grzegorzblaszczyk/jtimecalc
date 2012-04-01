@@ -1045,7 +1045,6 @@ public class AbstractTimeDifferenceCalculatorTest {
     expectedValue = messages.get("9Months2Days");
   }
   
-  /*
   public void shouldReturn1BusinessDayWithoutTailingZeroes() {
 	prepareStartEndAndExpectedValueForBusinessDays("1BusinessDay", 1);
   }
@@ -1127,61 +1126,60 @@ public class AbstractTimeDifferenceCalculatorTest {
   }
   
   public void shouldReturn21BusinessDaysWithoutTailingZeroes() {
-	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 21);
+	prepareStartEndAndExpectedValueForBusinessDays("21BusinessDays", 21);
   }
   
   public void shouldReturn22BusinessDaysWithoutTailingZeroes() {
-	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 22);
+	prepareStartEndAndExpectedValueForBusinessDays("22BusinessDays", 22);
   }
   
   public void shouldReturn23BusinessDaysWithoutTailingZeroes() {
-	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 23);
+	prepareStartEndAndExpectedValueForBusinessDays("23BusinessDays", 23);
   }
   
   public void shouldReturn24BusinessDaysWithoutTailingZeroes() {
-	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 24);
+	prepareStartEndAndExpectedValueForBusinessDays("24BusinessDays", 24);
   }
   
   public void shouldReturn25BusinessDaysWithoutTailingZeroes() {
-	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 25);
+	prepareStartEndAndExpectedValueForBusinessDays("25BusinessDays", 25);
   }
   
   public void shouldReturn26BusinessDaysWithoutTailingZeroes() {
-	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 26);
+	prepareStartEndAndExpectedValueForBusinessDays("26BusinessDays", 26);
   }
   
   public void shouldReturn27BusinessDaysWithoutTailingZeroes() {
-	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 27);
+	prepareStartEndAndExpectedValueForBusinessDays("27BusinessDays", 27);
   }
   
   public void shouldReturn28BusinessDaysWithoutTailingZeroes() {
-	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 28);
+	prepareStartEndAndExpectedValueForBusinessDays("28BusinessDays", 28);
   }
   
   public void shouldReturn29BusinessDaysWithoutTailingZeroes() {
-    prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 29);
+    prepareStartEndAndExpectedValueForBusinessDays("29BusinessDays", 29);
   }
   
   public void shouldReturn30BusinessDaysWithoutTailingZeroes() {
-	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 30);
+	prepareStartEndAndExpectedValueForBusinessDays("30BusinessDays", 30);
   }
   
   public void shouldReturn31BusinessDaysWithoutTailingZeroes() {
 	prepareStartEndAndExpectedValueForBusinessDays("31BusinessDays", 31);
   }
   
-  public void shouldReturn1BusinessMonth20BusinessDays() {
-	Calendar end = prepareCalendar(2011, Calendar.APRIL, 0, 0, 0, 0, 0);
-    // 1.04.2011 00:00:00.0
+  public void shouldReturn1BusinessMonth20BusinessDaysWithoutTailingZeroes() {
+	Calendar end = prepareCalendar(2011, Calendar.JULY, 31, 0, 0, 0, 0);
+    // 31.07.2011 00:00:00.0
     setEndTime(end.getTimeInMillis());
 
     Calendar start = (Calendar) end.clone();
-    start.set(Calendar.MONTH, Calendar.FEBRUARY);
-    start.set(Calendar.DAY_OF_MONTH, 2);
+    start.set(Calendar.MONTH, Calendar.JUNE);
+    start.set(Calendar.DAY_OF_MONTH, 10);
     setStartTime(start.getTimeInMillis());
     expectedValue = messages.get("1BusinessMonth20BusinessDays");
   }
-  */
 
   public long getEndTime() {
     return endTime;

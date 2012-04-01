@@ -115,7 +115,6 @@ public interface TimeDifferenceCalculatorTest {
   @Test
   void shouldReturn30DaysWithoutTailingZeroes();
 
-  /*
   @Test
   void shouldReturn1BusinessDayWithoutTailingZeroes();
   
@@ -210,6 +209,5 @@ public interface TimeDifferenceCalculatorTest {
   void shouldReturn31BusinessDaysWithoutTailingZeroes();
 
   @Test
-  void shouldReturn1BusinessMonth20BusinessDays();
-  */
+  void shouldReturn1BusinessMonth20BusinessDaysWithoutTailingZeroes();
 }
