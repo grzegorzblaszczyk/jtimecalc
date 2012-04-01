@@ -688,9 +688,6 @@ package gbc.jtimecalc;
 
 import static org.junit.Assert.assertEquals;
 
-import gbc.jtimecalc.Constants;
-import gbc.jtimecalc.TimeDifferenceCalculator;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Calendar;
@@ -698,11 +695,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
-
 import org.junit.Ignore;
 
 /**
@@ -1039,7 +1034,6 @@ public class AbstractTimeDifferenceCalculatorTest {
     expectedValue = messages.get("2Months3Days");
   }
 
-
   public void shouldReturn9Months0Days0Hours0Minutes0seconds() {
     Calendar end = prepareCalendar(1980, Calendar.JANUARY, 0, 0, 0, 0, 0);
     // 1.01.1980 00:00:00.0
@@ -1050,6 +1044,144 @@ public class AbstractTimeDifferenceCalculatorTest {
     setStartTime(start.getTimeInMillis());
     expectedValue = messages.get("9Months2Days");
   }
+  
+  /*
+  public void shouldReturn1BusinessDayWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("1BusinessDay", 1);
+  }
+  
+  public void shouldReturn2BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("2BusinessDays", 2);
+  }
+
+  public void shouldReturn3BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("3BusinessDays", 3);
+  }
+
+  public void shouldReturn4BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("4BusinessDays", 4);
+  }
+  
+  public void shouldReturn5BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("5BusinessDays", 5);
+  }
+  
+  public void shouldReturn6BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("6BusinessDays", 6);
+  }
+  
+  public void shouldReturn7BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("7BusinessDays", 7);
+  }
+  
+  public void shouldReturn8BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("8BusinessDays", 8);
+  }
+  
+  public void shouldReturn9BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("9BusinessDays", 9);
+  }
+  
+  public void shouldReturn10BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("10BusinessDays", 10);
+  }
+  
+  public void shouldReturn11BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("11BusinessDays", 11);
+  }
+  
+  public void shouldReturn12BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("12BusinessDays", 12);
+  }
+  
+  public void shouldReturn13BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("13BusinessDays", 13);
+  }
+  
+  public void shouldReturn14BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("14BusinessDays", 14);
+  }
+  
+  public void shouldReturn15BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("15BusinessDays", 15);
+  }
+  
+  public void shouldReturn16BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("16BusinessDays", 16);
+  }
+  
+  public void shouldReturn17BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("17BusinessDays", 17);
+  }
+  
+  public void shouldReturn18BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("18BusinessDays", 18);
+  }
+  
+  public void shouldReturn19BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("19BusinessDays", 19);
+  }
+  
+  public void shouldReturn20BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 20);
+  }
+  
+  public void shouldReturn21BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 21);
+  }
+  
+  public void shouldReturn22BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 22);
+  }
+  
+  public void shouldReturn23BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 23);
+  }
+  
+  public void shouldReturn24BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 24);
+  }
+  
+  public void shouldReturn25BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 25);
+  }
+  
+  public void shouldReturn26BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 26);
+  }
+  
+  public void shouldReturn27BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 27);
+  }
+  
+  public void shouldReturn28BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 28);
+  }
+  
+  public void shouldReturn29BusinessDaysWithoutTailingZeroes() {
+    prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 29);
+  }
+  
+  public void shouldReturn30BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("20BusinessDays", 30);
+  }
+  
+  public void shouldReturn31BusinessDaysWithoutTailingZeroes() {
+	prepareStartEndAndExpectedValueForBusinessDays("31BusinessDays", 31);
+  }
+  
+  public void shouldReturn1BusinessMonth20BusinessDays() {
+	Calendar end = prepareCalendar(2011, Calendar.APRIL, 0, 0, 0, 0, 0);
+    // 1.04.2011 00:00:00.0
+    setEndTime(end.getTimeInMillis());
+
+    Calendar start = (Calendar) end.clone();
+    start.set(Calendar.MONTH, Calendar.FEBRUARY);
+    start.set(Calendar.DAY_OF_MONTH, 2);
+    setStartTime(start.getTimeInMillis());
+    expectedValue = messages.get("1BusinessMonth20BusinessDays");
+  }
+  */
 
   public long getEndTime() {
     return endTime;
@@ -1083,9 +1215,9 @@ public class AbstractTimeDifferenceCalculatorTest {
     return timeDifferenceCalculator;
   }
 
-  protected void assertCorrectMessage(String expectedValue, long endTime, long startTime, boolean omitTailingZeroes) {
+  protected void assertCorrectMessage(String expectedValue, long endTime, long startTime, boolean omitTailingZeroes, boolean onlyBusinessDays, Map<String, String> customValues) {
     assertEquals("value returned is not '" + expectedValue + "'", expectedValue, getTimeDifferenceCalculator()
-        .getTimeDifferenceAsString(endTime, startTime, omitTailingZeroes));
+        .getTimeDifferenceAsString(endTime, startTime, omitTailingZeroes, onlyBusinessDays, customValues));
   }
 
   protected void assertCorrectMessages() {
@@ -1113,8 +1245,13 @@ public class AbstractTimeDifferenceCalculatorTest {
         if (method.getName().endsWith("WithoutTailingZeroes")) {
         	omitTailingZeroes = true;
         }
+
+        boolean onlyBusinessDays = false;
+        if (method.getName().contains("BusinessDay")) {
+        	onlyBusinessDays = true;
+        }
         
-        assertCorrectMessage(getExpectedValue(), getEndTime(), getStartTime(), omitTailingZeroes);
+        assertCorrectMessage(getExpectedValue(), getEndTime(), getStartTime(), omitTailingZeroes, onlyBusinessDays, null);
         logger.debug("expected value '" + getExpectedValue() + "' is correct");
       }
     }
@@ -1126,6 +1263,14 @@ public class AbstractTimeDifferenceCalculatorTest {
     } else {
       return false;
     }
+  }
+  
+  private void prepareStartEndAndExpectedValueForBusinessDays(String messageKey, int numOfDays) {
+	Calendar end = prepareCalendar(2011, Calendar.MARCH, 31, 0, 0, 0, 0);
+	// 31.03.2011 00:00:00.0
+	setEndTime(endTime = end.getTimeInMillis());
+	setStartTime(substractFromDate(endTime, numOfDays, 0, 0, 0, 0));
+	expectedValue = messages.get(messageKey);
   }
   
 }

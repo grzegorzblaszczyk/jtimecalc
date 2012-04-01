@@ -713,7 +713,7 @@ public enum Type {
 	 * names.
 	 * 
 	 */
-	VERY_IRREGULAR_PLURAL(14);
+	VERY_IRREGULAR_PLURAL(20);
 
 	private int numberOfTimeFrameNames;
 

@@ -686,7 +686,13 @@
 
 package gbc.jtimecalc;
 
+import gbc.jtimecalc.strategy.TimeDifferenceCalculationStrategy;
+import gbc.jtimecalc.strategy.impl.BusinessDaysOnlyTimeDifferenceCalculationStrategy;
+import gbc.jtimecalc.strategy.impl.DefaultTimeDifferenceCalculationStrategy;
+
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * TimeDifferenceCalculator for displaying human readable time difference
@@ -698,8 +704,10 @@ public enum TimeDifferenceCalculator {
 
   CZECH("cs", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "sekunda", "sekundy",
           "sekund", "minuta", "minuty", "minut", "hodina", "hodiny",
-          "hodin", "den", "dn\u00ed", "m\u011bs\u00edc", "m\u011bs\u00edce",
-          "m\u011bs\u00edc\u016f"),
+          "hodin", "den", "dn\u00ed", "m\u011bs\u00edc", "m\u011bs\u00edce", "m\u011bs\u00edc\u016f",
+          "pracovn\u00ed den", "pracovn\u00ed dny", "pracovn\u00edch dn\u016f",
+          "pracovn\u00ed m\u011bs\u00edc", "pracovn\u00ed m\u011bs\u00edce", "pracovn\u00edch m\u011bs\u00edc\u016f"
+          ),
 
   DUTCH("nl", Type.IRREGULAR_PLURAL, "", "", false, false, "", "seconde", "seconden",
           "minuut", "minuten", "uur", "uren", "dag", "dagen", "maand",
@@ -730,7 +738,9 @@ public enum TimeDifferenceCalculator {
   POLISH("pl", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "sekunda", "sekundy",
           "sekund", "minuta", "minuty", "minut", "godzina", "godziny",
           "godzin", "dzie\u0144", "dni", "miesi\u0105c", "miesi\u0105ce",
-          "miesi\u0119cy"),
+          "miesi\u0119cy",
+          "dzie\u0144 roboczy", "dni robocze", "dni roboczych",
+          "miesi\u0105c roboczy", "miesi\u0105ce robocze", "miesi\u0119cy roboczych"),
 
   PORTUGESE("pt", Type.IRREGULAR_PLURAL, "s", "e", false, true, "e", "segundo", "segundos",
           "minuto", "minutos", "hora", "horas", "dia", "dias", "mê",
@@ -805,14 +815,29 @@ public enum TimeDifferenceCalculator {
   private String day;
 
   /**
+   * String representation for a base form of word "business day".
+   */
+  private String businessDay;
+  
+  /**
    * String representation for a plural form of word "day".
    */
   private String days;
+  
+  /**
+   * String representation for a plural form of word "business days".
+   */
+  private String businessDays;
 
   /**
    * String representation for a base form of word "month".
    */
   private String month;
+  
+  /**
+   * String representation for a base form of word "business month".
+   */
+  private String businessMonth;
 
   /**
    * String representation for a plural form of word "month".
@@ -820,9 +845,19 @@ public enum TimeDifferenceCalculator {
   private String months;
 
   /**
-   * String representation for an additional plural form of word "month".
+   * String representation for a base form of word "business months".
+   */
+  private String businessMonths;
+  
+  /**
+   * String representation for an additional plural form of word "months (5 and more)".
    */
   private String months5AndMore;
+  
+  /**
+   * String representation for an additional plural form of word "business months (5 and more)".
+   */
+  private String businessMonths5AndMore;
 
   /**
    * Flag for not appending plural suffix to months
@@ -1095,12 +1130,21 @@ public enum TimeDifferenceCalculator {
    * @param endTime   end of time period
    * @param startTime start of time period
    * @param omitTailingZeroes omit tailing zeroes
+   * @param onlyBusinessDays count only business days
    * @return String representation of a difference in time between endTime and
    *         startTime
    */
-  public String getTimeDifferenceAsString(long endTime, long startTime, boolean omitTailingZeroes) {
+  public String getTimeDifferenceAsString(long endTime, long startTime, boolean omitTailingZeroes, boolean onlyBusinessDays, Map<String, String> customValues) {
     StringBuffer buffer = new StringBuffer("");
-    long diff = endTime - startTime;
+    
+    TimeDifferenceCalculationStrategy calculationStrategy;
+    if (onlyBusinessDays) {
+    	calculationStrategy = new BusinessDaysOnlyTimeDifferenceCalculationStrategy();
+    } else {
+    	calculationStrategy = new DefaultTimeDifferenceCalculationStrategy();
+    }
+    
+    long diff = calculationStrategy.calculateTimeDifference(startTime, endTime);
 
     if (diff % Constants.ONE_SECOND_IN_MILLISECONDS != 0) {
       if (diff > Constants.ONE_SECOND_IN_MILLISECONDS) {
@@ -1116,34 +1160,42 @@ public enum TimeDifferenceCalculator {
     Calendar cal = Calendar.getInstance();
     cal.setTimeInMillis(diff);
 
-    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.SECOND), omitTailingZeroes);
+    if (customValues == null && onlyBusinessDays) {
+    	customValues = new HashMap<String, String>();
+    	customValues.put("day", businessDay);
+    	customValues.put("days", businessDays);
+    	customValues.put("month", businessMonth);
+    	customValues.put("months", businessMonths);
+    	customValues.put("businessMonths5AndMore", businessMonths5AndMore);
+    }
+    
+    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.SECOND, customValues), omitTailingZeroes);
     
     if (diff < Constants.ONE_MINUTE_IN_MILLISECONDS) {
       return buffer.toString().trim();
     }
     
-    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.MINUTE), omitTailingZeroes);
+    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.MINUTE, customValues), omitTailingZeroes);
 
     if (diff < Constants.ONE_HOUR_IN_MILLISECONDS) {
       return applyCommasAndAndWord(buffer).toString().trim();
     }
     cal.add(Calendar.HOUR_OF_DAY, -1);
     
-    prependInBuffer(buffer, getStringRepresentationOfValue(cal,
-            Calendar.HOUR_OF_DAY), omitTailingZeroes);
+    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.HOUR_OF_DAY, customValues), omitTailingZeroes);
     
     if (diff < Constants.ONE_DAY_IN_MILLISECONDS) {
       return applyCommasAndAndWord(buffer).toString().trim();
     }
     cal.add(Calendar.DATE, -1);
-    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.DATE), omitTailingZeroes);
+    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.DATE, customValues), omitTailingZeroes);
 
     long currentMonthInMillis = Constants.getActualMonthInMillis(cal);
 
     if (diff < currentMonthInMillis) {
       return applyCommasAndAndWord(buffer).toString().trim();
     }
-    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.MONTH), omitTailingZeroes);
+    prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.MONTH, customValues), omitTailingZeroes);
 
     return applyCommasAndAndWord(buffer).toString().trim();
   }
@@ -1168,8 +1220,7 @@ public enum TimeDifferenceCalculator {
 	return output;
   }
 
-private void prependInBuffer(StringBuffer buffer, String part,
-		boolean omitTailingZeroes) {
+  private void prependInBuffer(StringBuffer buffer, String part, boolean omitTailingZeroes) {
 	if (!omitTailingZeroes || !part.startsWith("0 ")) {
     	buffer.insert(0, part);
     }
@@ -1189,32 +1240,30 @@ private void prependInBuffer(StringBuffer buffer, String part,
    *                  <li>Calendar.MINUTE</li>
    *                  <li>Calendar.SECOND</li>
    *                  </ul>
+   * @param businessDays get string representation for business days                 
    * @return String representation of a given calendar and time frame.
    * @throws NumberFormatException exception when timeFrame is not able to parse
    */
-  private String getStringRepresentationOfValue(Calendar cal, int timeFrame)
+  private String getStringRepresentationOfValue(Calendar cal, int timeFrame, Map<String, String> customValues)
           throws NumberFormatException {
     String buff = "" + cal.get(timeFrame);
     int intValue = Integer.parseInt(buff);
 
     switch (type) {
-
       case PLURAL_MORPHEME:
-        return getStringRepresentationForPluralMorpheme(timeFrame, intValue);
-
+        return getStringRepresentationForPluralMorpheme(timeFrame, intValue, customValues);
       case IRREGULAR_PLURAL:
-        return getStringRepresentationForIrregularPlural(timeFrame, intValue);
-
+        return getStringRepresentationForIrregularPlural(timeFrame, intValue, customValues);
       case VERY_IRREGULAR_PLURAL:
-        return getStringRepresentationForVeryIrregularPlural(timeFrame, intValue);
+        return getStringRepresentationForVeryIrregularPlural(timeFrame, intValue, customValues);
       default:
     }
     return "";
   }
 
-  private String getStringRepresentationForVeryIrregularPlural(int timeFrame, int intValue) {
+  private String getStringRepresentationForVeryIrregularPlural(int timeFrame, int intValue, Map<String, String> customValues) {
     if (timeFrame == Calendar.DATE && intValue > 1) {
-      return intValue + " " + days + " ";
+      return intValue + " " + getCustomOrDefaultValue(customValues, "days", days) + " ";
     }
 
     int suffixIntValue = countSuffixValue(intValue);
@@ -1222,38 +1271,38 @@ private void prependInBuffer(StringBuffer buffer, String part,
     if (suffixIntValue == 1) {
       switch (timeFrame) {
         case Calendar.SECOND:
-          return intValue + " " + second;
+          return intValue + " " + getCustomOrDefaultValue(customValues, "second", second);
         case Calendar.MINUTE:
-          return intValue + " " + minute + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "minute", minute) + " ";
         case Calendar.HOUR_OF_DAY:
-          return intValue + " " + hour + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "hour", hour) + " ";
         case Calendar.DATE:
-          return intValue + " " + day + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "day", day) + " ";
         case Calendar.MONTH:
-          return intValue + " " + month + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "month", month) + " ";
       }
 
     } else if (1 < suffixIntValue && suffixIntValue < 5) {
       switch (timeFrame) {
         case Calendar.SECOND:
-          return intValue + " " + seconds;
+          return intValue + " " + getCustomOrDefaultValue(customValues, "seconds", seconds);
         case Calendar.MINUTE:
-          return intValue + " " + minutes + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "minutes", minutes) + " ";
         case Calendar.HOUR_OF_DAY:
-          return intValue + " " + hours + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "hours", hours) + " ";
         case Calendar.MONTH:
-          return intValue + " " + months + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "months", months) + " ";
       }
     } else {
       switch (timeFrame) {
         case Calendar.SECOND:
-          return intValue + " " + seconds5AndMore;
+          return intValue + " " + getCustomOrDefaultValue(customValues, "seconds5AndMore", seconds5AndMore);
         case Calendar.MINUTE:
-          return intValue + " " + minutes5AndMore + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "minutes5AndMore", minutes5AndMore) + " ";
         case Calendar.HOUR_OF_DAY:
-          return intValue + " " + hours5AndMore + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "hours5AndMore", hours5AndMore) + " ";
         case Calendar.MONTH:
-          return intValue + " " + months5AndMore + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "months5AndMore", months5AndMore) + " ";
       }
     }
     return "";
@@ -1273,51 +1322,59 @@ private void prependInBuffer(StringBuffer buffer, String part,
     return suffixIntValue;
   }
 
-  private String getStringRepresentationForIrregularPlural(int timeFrame, int intValue) {
+  private String getStringRepresentationForIrregularPlural(int timeFrame, int intValue, Map<String, String> customValues) {
     if (intValue > 1 || intValue == 0) {
       switch (timeFrame) {
         case Calendar.SECOND:
-          return intValue + " " + seconds;
+          return intValue + " " + getCustomOrDefaultValue(customValues, "seconds", seconds);
         case Calendar.MINUTE:
-          return intValue + " " + minutes + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "minutes", minutes) + " ";
         case Calendar.HOUR_OF_DAY:
-          return intValue + " " + hours + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "hours", hours) + " ";
         case Calendar.DATE:
-          return intValue + " " + days + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "days", days) + " ";
         case Calendar.MONTH:
-          return intValue + " " + months + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "months", months) + " ";
       }
     } else {
       switch (timeFrame) {
         case Calendar.SECOND:
-          return intValue + " " + second;
+          return intValue + " " + getCustomOrDefaultValue(customValues, "second", second);
         case Calendar.MINUTE:
-          return intValue + " " + minute + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "minute", minute) + " ";
         case Calendar.HOUR_OF_DAY:
-          return intValue + " " + hour + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "hour", hour) + " ";
         case Calendar.DATE:
-          return intValue + " " + day + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "day", day) + " ";
         case Calendar.MONTH:
-          return intValue + " " + month + " ";
+          return intValue + " " + getCustomOrDefaultValue(customValues, "month", month) + " ";
       }
     }
     return "";
   }
 
-  private String getStringRepresentationForPluralMorpheme(int timeFrame, int intValue) {
+  private String getStringRepresentationForPluralMorpheme(int timeFrame, int intValue, Map<String, String> customValues) {
     switch (timeFrame) {
       case Calendar.SECOND:
-        return applyProperPluralMorphemeSuffix(intValue, second);
+        return applyProperPluralMorphemeSuffix(intValue, getCustomOrDefaultValue(customValues, "second", second));
       case Calendar.MINUTE:
-        return applyProperPluralMorphemeSuffix(intValue, minute) + " ";
+        return applyProperPluralMorphemeSuffix(intValue, getCustomOrDefaultValue(customValues, "minute", minute)) + " ";
       case Calendar.HOUR_OF_DAY:
-        return applyProperPluralMorphemeSuffix(intValue, hour) + " ";
+        return applyProperPluralMorphemeSuffix(intValue, getCustomOrDefaultValue(customValues, "hour", hour)) + " ";
       case Calendar.DATE:
-        return applyProperPluralMorphemeSuffix(intValue, day) + " ";
+        return applyProperPluralMorphemeSuffix(intValue, getCustomOrDefaultValue(customValues, "day", day)) + " ";
       case Calendar.MONTH:
-        return applyProperPluralMorphemeSuffix(intValue, month) + " ";
+        return applyProperPluralMorphemeSuffix(intValue, getCustomOrDefaultValue(customValues, "month", month)) + " ";
     }
     return "";
+  }
+
+  private String getCustomOrDefaultValue(Map<String, String> customValues, 
+		String key, String defaultValue) {
+	if (customValues != null && customValues.get(key) != null) {
+		return customValues.get(key);
+	}
+	return defaultValue;
   }
 
   /**

@@ -115,4 +115,101 @@ public interface TimeDifferenceCalculatorTest {
   @Test
   void shouldReturn30DaysWithoutTailingZeroes();
 
+  /*
+  @Test
+  void shouldReturn1BusinessDayWithoutTailingZeroes();
+  
+  @Test
+  void shouldReturn2BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn3BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn4BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn5BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn6BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn7BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn8BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn9BusinessDaysWithoutTailingZeroes();
+  
+  @Test
+  void shouldReturn10BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn11BusinessDaysWithoutTailingZeroes();
+  
+  @Test
+  void shouldReturn12BusinessDaysWithoutTailingZeroes();
+  
+  @Test
+  void shouldReturn13BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn14BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn15BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn16BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn17BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn18BusinessDaysWithoutTailingZeroes();
+  
+  @Test
+  void shouldReturn19BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn20BusinessDaysWithoutTailingZeroes();
+  
+  @Test
+  void shouldReturn21BusinessDaysWithoutTailingZeroes();
+  
+  @Test
+  void shouldReturn22BusinessDaysWithoutTailingZeroes();
+  
+  @Test
+  void shouldReturn23BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn24BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn25BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn26BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn27BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn28BusinessDaysWithoutTailingZeroes();
+  
+  @Test
+  void shouldReturn29BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn30BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn31BusinessDaysWithoutTailingZeroes();
+
+  @Test
+  void shouldReturn1BusinessMonth20BusinessDays();
+  */
 }

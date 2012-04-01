@@ -711,7 +711,7 @@ public class SimpleExample {
 
 		for (TimeDifferenceCalculator calc : TimeDifferenceCalculator.values()) {
 			System.out.println(calc + ": \""
-					+ calc.getTimeDifferenceAsString(endTime, startTime, false)
+					+ calc.getTimeDifferenceAsString(endTime, startTime, false, false, null)
 					+ "\" , type: " + calc.getType());
 		}
 		
