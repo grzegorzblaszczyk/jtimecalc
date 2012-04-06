@@ -833,7 +833,7 @@ public enum TimeDifferenceCalculator {
   }
 
   private boolean isBlank(String value) {
-	return (value != null && value != "");
+	return (value == null || value == "");
   }
 
 private String getCustomOrDefaultValue(Map<String, String> customValues, 
