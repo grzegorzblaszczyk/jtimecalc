@@ -1264,8 +1264,8 @@ public class AbstractTimeDifferenceCalculatorTest {
   }
   
   private void prepareStartEndAndExpectedValueForBusinessDays(String messageKey, int numOfDays) {
-	Calendar end = prepareCalendar(2011, Calendar.MARCH, 31, 0, 0, 0, 0);
-	// 31.03.2011 00:00:00.0
+	Calendar end = prepareCalendar(2012, Calendar.APRIL, 30, 0, 0, 0, 0);
+	// 30.04.2012 00:00:00.0 - Monday
 	setEndTime(endTime = end.getTimeInMillis());
 	setStartTime(substractFromDate(endTime, numOfDays, 0, 0, 0, 0));
 	expectedValue = messages.get(messageKey);
