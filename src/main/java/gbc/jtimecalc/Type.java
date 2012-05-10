@@ -44,21 +44,21 @@ public enum Type {
 	 * names.
 	 * 
 	 */
-	PLURAL_MORPHEME(9),
+	PLURAL_MORPHEME(10),
 
 	/**
 	 * Irregular plural time difference calculator has 10 different time frame
 	 * names.
 	 * 
 	 */
-	IRREGULAR_PLURAL(14), 
+	IRREGULAR_PLURAL(15), 
 
 	/**
 	 * Very irregular plural time difference calculator has 14 different time frame
 	 * names.
 	 * 
 	 */
-	VERY_IRREGULAR_PLURAL(21);
+	VERY_IRREGULAR_PLURAL(23);
 
 	private int numberOfTimeFrameNames;
 

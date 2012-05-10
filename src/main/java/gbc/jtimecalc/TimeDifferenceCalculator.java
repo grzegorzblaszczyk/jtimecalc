@@ -47,75 +47,77 @@ import java.util.Map;
  */
 public enum TimeDifferenceCalculator {
 
-  CZECH("cs", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "sekunda", "sekundy",
+  CZECH("cs", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "ms", "sekunda", "sekundy",
           "sekund", "minuta", "minuty", "minut", "hodina", "hodiny",
-          "hodin", "den", "dn\u00ed", "m\u011bs\u00edc", "m\u011bs\u00edce", "m\u011bs\u00edc\u016f",
+          "hodin", "den", "dn\u00ed", "dn\u00ed", "m\u011bs\u00edc", "m\u011bs\u00edce", "m\u011bs\u00edc\u016f",
           "pracovn\u00ed den", "pracovn\u00ed dny", "pracovn\u00edch dn\u016f", "pracovn\u00edch dn\u00ed",
           "pracovn\u00ed m\u011bs\u00edc", "pracovn\u00ed m\u011bs\u00edce", "pracovn\u00edch m\u011bs\u00edc\u016f"
           ),
 
-  DUTCH("nl", Type.IRREGULAR_PLURAL, "", "", false, false, "", "seconde", "seconden",
+  DUTCH("nl", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms", "seconde", "seconden",
           "minuut", "minuten", "uur", "uren", "dag", "dagen", "maand",
           "maanden",
           "werkdag", "werkdagen",
           "werkmaand", "werkmaanden"),
 
-  ENGLISH("en", Type.PLURAL_MORPHEME, "s", "e", false, false, "", "second", "minute", "hour",
+  ENGLISH("en", Type.PLURAL_MORPHEME, "s", "e", false, false, "", "ms", "second", "minute", "hour",
           "day", "month", 
           "business day", "business days",
           "business month", "business months"),
 
-  FINNISH("fi", Type.IRREGULAR_PLURAL, "", "", false, false, "", "sekunti", "sekuntia",
+  FINNISH("fi", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms", "sekunti", "sekuntia",
           "minuutti", "minuuttia", "tunti", "tuntia", "vuorokausi", "vuorokautta", "kuukausi",
           "kuukautta",
           "työpäivä", "työpäivää",
           "liiketoiminnan kuukausi", "liiketoimintaa kuukautta"),
 
-  FRENCH("fr", Type.PLURAL_MORPHEME, "s", "e", true, false, "", "seconde", "minute", "heure",
+  FRENCH("fr", Type.PLURAL_MORPHEME, "s", "e", true, false, "", "ms", "seconde", "minute", "heure",
           "jour", "mois",
           "jour ouvrable", "jours ouvrables", 
           "moi ouvrable", "mois ouvrables"),
 
-  GERMAN("de", Type.IRREGULAR_PLURAL, "", "", false, false, "", "Sekunde", "Sekunden",
+  GERMAN("de", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms", "Sekunde", "Sekunden",
           "Minute", "Minuten", "Stunde", "Stunden", "Tag", "Tage", "Monat",
           "Monate",
           "Werktag", "Werktage",
           "Werkmonat", "Werkmonate"),
 
-  ITALIAN("it", Type.IRREGULAR_PLURAL, "", "", false, false, "", "secondo", "seconda",
+  ITALIAN("it", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms", "secondo", "seconda",
           "minuto", "minuti", "ora", "ore", "giorno", "giorni", "mese",
           "mesi",
           "giorno lavorativo", "giorni lavorativi",
           "mese lavorativo", "mesi lavorativi"),
 
-  NORWEGIAN("no", Type.IRREGULAR_PLURAL, "", "", false, false, "", "sekund", "sekunder",
+  NORWEGIAN("no", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms", "sekund", "sekunder",
           "minutt", "minutter", "time", "timer", "dag", "dagen", "m\u00e5ned",
           "m\u00e5neden",
           "virkedag", "virkedager",
           "virkem\u00e5ned", "virkem\u00e5neder"),
 
-  POLISH("pl", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "sekunda", "sekundy",
+  POLISH("pl", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "ms", "sekunda", "sekundy",
           "sekund", "minuta", "minuty", "minut", "godzina", "godziny",
-          "godzin", "dzie\u0144", "dni", "miesi\u0105c", "miesi\u0105ce",
+          "godzin", "dzie\u0144", "dni", "dni", "miesi\u0105c", "miesi\u0105ce",
           "miesi\u0119cy",
           "dzie\u0144 roboczy", "dni robocze", "dni roboczych", "dni roboczych",
           "miesi\u0105c roboczy", "miesi\u0105ce robocze", "miesi\u0119cy roboczych"),
 
-  PORTUGESE("pt", Type.IRREGULAR_PLURAL, "s", "e", false, true, "e", "segundo", "segundos",
+  PORTUGESE("pt", Type.IRREGULAR_PLURAL, "s", "e", false, true, "e", "ms", "segundo", "segundos",
           "minuto", "minutos", "hora", "horas", "dia", "dias", "m\u00ea",
           "meses",
           "dia \u00fatil", "dias \u00fateis",
           "m\u00ea \u00fatil", "meses \u00fateis"),
           
-  SPANISH("es", Type.PLURAL_MORPHEME, "s", "e", false, false, "", "segundo", "minuto", "hora",
+  RUSSIAN("ru", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "мс", "секунда", "секунды",
+          "секунд", "минута", "минуты", "минут", "час", "часа",
+          "часов", "день", "дня", "дней", "месяц", "месяца",
+          "месяцев",
+          "рабочий день", "рабочих дней", "рабочих дней", "рабочих дней",
+          "рабочий месяц", "рабочих месяца", "рабочих месяцев"),          
+          
+  SPANISH("es", Type.PLURAL_MORPHEME, "s", "e", false, false, "", "ms", "segundo", "minuto", "hora",
           "d\u00eda", "mes",
           "d\u00eda h\u00e1bil", "d\u00edas h\u00e1biles",
           "mes h\u00e1bil", "meses h\u00e1biles");
-
-  /**
-   * String representation for milliseconds.
-   */
-  private static final String MILLISECONDS = "ms";
 
   /**
    * Language code.
@@ -126,6 +128,11 @@ public enum TimeDifferenceCalculator {
    * Type described in {@link Type}.
    */
   private Type type;
+
+  /**
+   * String representation for a base form of word "millisecond" and "milliseconds".
+   */
+  private String ms;
 
   /**
    * String representation for a base form of word "second".
@@ -186,6 +193,11 @@ public enum TimeDifferenceCalculator {
    * String representation for a plural form of word "day".
    */
   private String days;
+  
+  /**
+   * String representation for an additional plural form of word "day".
+   */
+  private String days5AndMore;
   
   /**
    * String representation for a plural form of word "business days".
@@ -345,66 +357,72 @@ public enum TimeDifferenceCalculator {
   private void assignVeryIrregularPluralForm(int i, String frameName) {
     switch (i) {
       case 0:
-        second = frameName;
+        ms = frameName;
         break;
       case 1:
-        seconds = frameName;
+        second = frameName;
         break;
       case 2:
-        seconds5AndMore = frameName;
+        seconds = frameName;
         break;
       case 3:
-        minute = frameName;
+        seconds5AndMore = frameName;
         break;
       case 4:
-        minutes = frameName;
+        minute = frameName;
         break;
       case 5:
-        minutes5AndMore = frameName;
+        minutes = frameName;
         break;
       case 6:
-        hour = frameName;
+        minutes5AndMore = frameName;
         break;
       case 7:
-        hours = frameName;
+        hour = frameName;
         break;
       case 8:
-        hours5AndMore = frameName;
+        hours = frameName;
         break;
       case 9:
-        day = frameName;
+        hours5AndMore = frameName;
         break;
       case 10:
-        days = frameName;
+        day = frameName;
         break;
       case 11:
-        month = frameName;
+        days = frameName;
         break;
       case 12:
-        months = frameName;
-        break;
+        days5AndMore = frameName;
+        break;        
       case 13:
-        months5AndMore = frameName;
+        month = frameName;
         break;
       case 14:
+        months = frameName;
+        break;
+      case 15:
+        months5AndMore = frameName;
+        break;
+      case 16:
     	businessDay = frameName;
     	break;
-      case 15:
+      case 17:
     	businessDays1stForm = frameName;
     	break;
-      case 16:
+      case 18:
     	businessDays2ndForm = frameName;
     	break;
-      case 17:
+      case 19:
     	businessDays3rdForm = frameName;
     	break;
-      case 18:
+      case 20:
     	businessMonth = frameName;
     	break;
-      case 19:
+      case 21:
     	businessMonths = frameName;
     	break;
-      case 20:
+      case 22:
     	businessMonths5AndMore = frameName;
     	break;
       default:
@@ -440,45 +458,48 @@ public enum TimeDifferenceCalculator {
   private void assignIrregularPluralForm(int i, String timeFrameName) {
     switch (i) {
       case 0:
-        second = timeFrameName;
+        ms = timeFrameName;
         break;
       case 1:
-        seconds = timeFrameName;
+        second = timeFrameName;
         break;
       case 2:
-        minute = timeFrameName;
+        seconds = timeFrameName;
         break;
       case 3:
-        minutes = timeFrameName;
+        minute = timeFrameName;
         break;
       case 4:
-        hour = timeFrameName;
+        minutes = timeFrameName;
         break;
       case 5:
-        hours = timeFrameName;
+        hour = timeFrameName;
         break;
       case 6:
-        day = timeFrameName;
+        hours = timeFrameName;
         break;
       case 7:
-        days = timeFrameName;
+        day = timeFrameName;
         break;
       case 8:
-        month = timeFrameName;
+        days = timeFrameName;
         break;
       case 9:
-        months = timeFrameName;
+        month = timeFrameName;
         break;
       case 10:
+        months = timeFrameName;
+        break;
+      case 11:
     	businessDay = timeFrameName;
     	break;
-      case 11:
+      case 12:
     	businessDays1stForm = timeFrameName;
     	break;
-      case 12:
+      case 13:
     	businessMonth = timeFrameName;
     	break;
-      case 13:
+      case 14:
     	businessMonths = timeFrameName;
     	break;
       default:
@@ -513,30 +534,33 @@ public enum TimeDifferenceCalculator {
   private void assignPluralMorphemeForm(int i, String timeFrameName) {
 	switch (i) {
 	  case 0:
+		ms = timeFrameName;
+		break;
+	  case 1:	
 	    second = timeFrameName;
 	    break;
-	  case 1:
+	  case 2:
 	    minute = timeFrameName;
 	    break;
-	  case 2:
+	  case 3:
 	    hour = timeFrameName;
 	    break;
-	  case 3:
+	  case 4:
 	    day = timeFrameName;
 	    break;
-	  case 4:
+	  case 5:
 	    month = timeFrameName;
 	    break;
-	  case 5:
+	  case 6:
 		businessDay = timeFrameName;
 		break;
-	  case 6:
+	  case 7:
 		businessDays1stForm = timeFrameName;
 		break;
-	  case 7:
+	  case 8:
 		businessMonth = timeFrameName;
 		break;
-	  case 8:
+	  case 9:
 		businessMonths = timeFrameName;
 		break;
 	  default:
@@ -573,7 +597,7 @@ public enum TimeDifferenceCalculator {
         buffer.append(" ");
       }
       buffer.append((diff % Constants.ONE_SECOND_IN_MILLISECONDS));
-      buffer.append(" " + MILLISECONDS);
+      buffer.append(" " + ms);
     }
     if (diff < Constants.ONE_SECOND_IN_MILLISECONDS) {
       return buffer.toString().trim();
@@ -692,6 +716,13 @@ public enum TimeDifferenceCalculator {
     if (timeFrame == Calendar.DATE && intValue > 1) {
 
       if (customValues == null) {
+    	if ("RUSSIAN".equals(this.name())) {
+          if (intValue > 1 && intValue < 5) {
+            return intValue + " " + getCustomOrDefaultValue(customValues, "days", days) + " ";
+          } else if (intValue > 4) {
+        	return intValue + " " + getCustomOrDefaultValue(customValues, "days", days5AndMore) + " ";  
+          }
+    	}
 	    return intValue + " " + getCustomOrDefaultValue(customValues, "days", days) + " ";
 	  }
       
@@ -713,6 +744,18 @@ public enum TimeDifferenceCalculator {
 		if (intValue > 4) {
 		  return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays2ndForm", days) + " ";
 		}
+      } else if ("RUSSIAN".equals(this.name())) {
+        if (intValue > 1 && intValue < 5) {
+          return intValue + " " + getCustomOrDefaultValue(customValues, "days", days) + " ";
+        } 
+        
+        if (intValue > 4 && intValue < 9) {
+          return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays2ndForm", days) + " ";
+        }
+        if (intValue == 9) {
+          return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays3rdForm", days) + " ";
+        }
+        return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays2ndForm", days) + " "; 
       }
     }
     
