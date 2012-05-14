@@ -47,48 +47,76 @@ import java.util.Map;
  */
 public enum TimeDifferenceCalculator {
 
-	CZECH("cs", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "ms", "sekunda", "sekundy", "sekund", "minuta", "minuty", "minut", "hodina",
-			"hodiny", "hodin", "den", "dn\u00ed", "dn\u00ed", "m\u011bs\u00edc", "m\u011bs\u00edce", "m\u011bs\u00edc\u016f", "pracovn\u00ed den",
-			"pracovn\u00ed dny", "pracovn\u00edch dn\u016f", "pracovn\u00edch dn\u00ed", "pracovn\u00ed m\u011bs\u00edc",
-			"pracovn\u00ed m\u011bs\u00edce", "pracovn\u00edch m\u011bs\u00edc\u016f"),
+	CZECH("cs", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "ms",
+			"sekunda", "sekundy", "sekund", "minuta", "minuty", "minut",
+			"hodina", "hodiny", "hodin", "den", "dn\u00ed", "dn\u00ed",
+			"m\u011bs\u00edc", "m\u011bs\u00edce", "m\u011bs\u00edc\u016f",
+			"pracovn\u00ed den", "pracovn\u00ed dny",
+			"pracovn\u00edch dn\u016f", "pracovn\u00edch dn\u00ed",
+			"pracovn\u00ed m\u011bs\u00edc", "pracovn\u00ed m\u011bs\u00edce",
+			"pracovn\u00edch m\u011bs\u00edc\u016f"),
 
-	DUTCH("nl", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms", "seconde", "seconden", "minuut", "minuten", "uur", "uren", "dag", "dagen",
-			"maand", "maanden", "werkdag", "werkdagen", "werkmaand", "werkmaanden"),
+	DUTCH("nl", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms",
+			"seconde", "seconden", "minuut", "minuten", "uur", "uren", "dag",
+			"dagen", "maand", "maanden", "werkdag", "werkdagen", "werkmaand",
+			"werkmaanden"),
 
-	ENGLISH("en", Type.PLURAL_MORPHEME, "s", "e", false, false, "", "ms", "second", "minute", "hour", "day", "month", "business day",
+	ENGLISH("en", Type.PLURAL_MORPHEME, "s", "e", false, false, "", "ms",
+			"second", "minute", "hour", "day", "month", "business day",
 			"business days", "business month", "business months"),
 
-	FINNISH("fi", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms", "sekunti", "sekuntia", "minuutti", "minuuttia", "tunti", "tuntia",
-			"vuorokausi", "vuorokautta", "kuukausi", "kuukautta", "työpäivä", "työpäivää", "liiketoiminnan kuukausi", "liiketoimintaa kuukautta"),
+	FINNISH("fi", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms",
+			"sekunti", "sekuntia", "minuutti", "minuuttia", "tunti", "tuntia",
+			"vuorokausi", "vuorokautta", "kuukausi", "kuukautta", "työpäivä",
+			"työpäivää", "liiketoiminnan kuukausi", "liiketoimintaa kuukautta"),
 
-	FRENCH("fr", Type.PLURAL_MORPHEME, "s", "e", true, false, "", "ms", "seconde", "minute", "heure", "jour", "mois", "jour ouvrable",
+	FRENCH("fr", Type.PLURAL_MORPHEME, "s", "e", true, false, "", "ms",
+			"seconde", "minute", "heure", "jour", "mois", "jour ouvrable",
 			"jours ouvrables", "moi ouvrable", "mois ouvrables"),
 
-	GERMAN("de", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms", "Sekunde", "Sekunden", "Minute", "Minuten", "Stunde", "Stunden", "Tag",
-			"Tage", "Monat", "Monate", "Werktag", "Werktage", "Werkmonat", "Werkmonate"),
+	GERMAN("de", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms",
+			"Sekunde", "Sekunden", "Minute", "Minuten", "Stunde", "Stunden",
+			"Tag", "Tage", "Monat", "Monate", "Werktag", "Werktage",
+			"Werkmonat", "Werkmonate"),
 
-	ITALIAN("it", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms", "secondo", "seconda", "minuto", "minuti", "ora", "ore", "giorno", "giorni",
-			"mese", "mesi", "giorno lavorativo", "giorni lavorativi", "mese lavorativo", "mesi lavorativi"),
+	ITALIAN("it", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms",
+			"secondo", "seconda", "minuto", "minuti", "ora", "ore", "giorno",
+			"giorni", "mese", "mesi", "giorno lavorativo", "giorni lavorativi",
+			"mese lavorativo", "mesi lavorativi"),
 
-	NORWEGIAN("no", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms", "sekund", "sekunder", "minutt", "minutter", "time", "timer", "dag",
-			"dagen", "m\u00e5ned", "m\u00e5neden", "virkedag", "virkedager", "virkem\u00e5ned", "virkem\u00e5neder"),
+	NORWEGIAN("no", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms",
+			"sekund", "sekunder", "minutt", "minutter", "time", "timer", "dag",
+			"dagen", "m\u00e5ned", "m\u00e5neden", "virkedag", "virkedager",
+			"virkem\u00e5ned", "virkem\u00e5neder"),
 
-	POLISH("pl", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "ms", "sekunda", "sekundy", "sekund", "minuta", "minuty", "minut", "godzina",
-			"godziny", "godzin", "dzie\u0144", "dni", "dni", "miesi\u0105c", "miesi\u0105ce", "miesi\u0119cy", "dzie\u0144 roboczy", "dni robocze",
-			"dni roboczych", "dni roboczych", "miesi\u0105c roboczy", "miesi\u0105ce robocze", "miesi\u0119cy roboczych"),
+	POLISH("pl", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "ms",
+			"sekunda", "sekundy", "sekund", "minuta", "minuty", "minut",
+			"godzina", "godziny", "godzin", "dzie\u0144", "dni", "dni",
+			"miesi\u0105c", "miesi\u0105ce", "miesi\u0119cy",
+			"dzie\u0144 roboczy", "dni robocze", "dni roboczych",
+			"dni roboczych", "miesi\u0105c roboczy", "miesi\u0105ce robocze",
+			"miesi\u0119cy roboczych"),
 
-	PORTUGESE("pt", Type.IRREGULAR_PLURAL, "s", "e", false, true, "e", "ms", "segundo", "segundos", "minuto", "minutos", "hora", "horas", "dia",
-			"dias", "m\u00ea", "meses", "dia \u00fatil", "dias \u00fateis", "m\u00ea \u00fatil", "meses \u00fateis"),
+	PORTUGESE("pt", Type.IRREGULAR_PLURAL, "s", "e", false, true, "e", "ms",
+			"segundo", "segundos", "minuto", "minutos", "hora", "horas", "dia",
+			"dias", "m\u00ea", "meses", "dia \u00fatil", "dias \u00fateis",
+			"m\u00ea \u00fatil", "meses \u00fateis"),
 
-	RUSSIAN("ru", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "мс", "секунда", "секунды", "секунд", "минута", "минуты", "минут", "час",
-			"часа", "часов", "день", "дня", "дней", "месяц", "месяца", "месяцев", "рабочий день", "рабочих дней", "рабочих дня", "рабочих дней",
-			"рабочий месяц", "рабочих месяца", "рабочих месяцев"),
+	RUSSIAN("ru", Type.VERY_IRREGULAR_PLURAL, "", "", false, false, "", "мс",
+			"секунда", "секунды", "секунд", "минута", "минуты", "минут", "час",
+			"часа", "часов", "день", "дня", "дней", "месяц", "месяца",
+			"месяцев", "рабочий день", "рабочих дней", "рабочих дня",
+			"рабочих дней", "рабочий месяц", "рабочих месяца",
+			"рабочих месяцев"),
 
-	SPANISH("es", Type.PLURAL_MORPHEME, "s", "e", false, false, "", "ms", "segundo", "minuto", "hora", "d\u00eda", "mes", "d\u00eda h\u00e1bil",
-			"d\u00edas h\u00e1biles", "mes h\u00e1bil", "meses h\u00e1biles"),
-	
-	TURKISH("tr", Type.PLURAL_MORPHEME, "", "", false, false, "", "ms", "saniye", "dakika", "saat", "gün", "ay", "is günü",
-			"is günü", "is ayi", "is ayi");
+	SPANISH("es", Type.PLURAL_MORPHEME, "s", "e", false, false, "", "ms",
+			"segundo", "minuto", "hora", "d\u00eda", "mes",
+			"d\u00eda h\u00e1bil", "d\u00edas h\u00e1biles", "mes h\u00e1bil",
+			"meses h\u00e1biles"),
+
+	TURKISH("tr", Type.PLURAL_MORPHEME, "", "", false, false, "", "ms",
+			"saniye", "dakika", "saat", "gün", "ay", "is günü", "is günü",
+			"is ayi", "is ayi");
 
 	/**
 	 * Language code.
@@ -265,8 +293,10 @@ public enum TimeDifferenceCalculator {
 	 * @throws IllegalArgumentException
 	 *             if input parameters are not correct
 	 */
-	TimeDifferenceCalculator(String code, Type type, String pluralMorphemeSuffix, String pluralMorphemeInterfix,
-			boolean doNotAppendPluralSuffixToMonths, boolean useCommasBetween, String andWord, String... timeFrameNames)
+	TimeDifferenceCalculator(String code, Type type,
+			String pluralMorphemeSuffix, String pluralMorphemeInterfix,
+			boolean doNotAppendPluralSuffixToMonths, boolean useCommasBetween,
+			String andWord, String... timeFrameNames)
 			throws IllegalArgumentException {
 
 		if (code != null && code.length() == 2) {
@@ -305,10 +335,25 @@ public enum TimeDifferenceCalculator {
 		}
 	}
 
+	/**
+	 * @param iso code for language
+	 * @return TimeDifferenceCalculator dedicated for language
+	 */
+	public TimeDifferenceCalculator getInstance(String code) {
+		for (TimeDifferenceCalculator value : values()) {
+			if (value.code.equals(code)) {
+				return value;
+			}
+		}
+		throw new IllegalArgumentException("language not supported");
+	}
+
 	private void prepareFormsForVeryIrregularPlural(String... timeFrameNames) {
 		if (timeFrameNames.length != this.type.getNumberOfTimeFrameNames()) {
-			throw new IllegalArgumentException("Length of timeFrameNames for " + Type.VERY_IRREGULAR_PLURAL + " must be "
-					+ this.type.getNumberOfTimeFrameNames() + " but is " + timeFrameNames.length);
+			throw new IllegalArgumentException("Length of timeFrameNames for "
+					+ Type.VERY_IRREGULAR_PLURAL + " must be "
+					+ this.type.getNumberOfTimeFrameNames() + " but is "
+					+ timeFrameNames.length);
 		} else {
 			assignVeryIrregularPluralForms(timeFrameNames);
 		}
@@ -318,7 +363,8 @@ public enum TimeDifferenceCalculator {
 		for (int i = 0; i < timeFrameNames.length; i++) {
 			final String frameName = timeFrameNames[i];
 			if (frameName == null || frameName.length() == 0) {
-				throw new IllegalArgumentException("timeFrameNames[" + i + "] is empty");
+				throw new IllegalArgumentException("timeFrameNames[" + i
+						+ "] is empty");
 			} else {
 				assignVeryIrregularPluralForm(i, frameName);
 			}
@@ -403,19 +449,23 @@ public enum TimeDifferenceCalculator {
 
 	private void prepareFormsForIrregularPlural(String... timeFrameNames) {
 		if (timeFrameNames.length != this.type.getNumberOfTimeFrameNames()) {
-			throw new IllegalArgumentException("Length of timeFrameNames for " + Type.IRREGULAR_PLURAL + " must be "
-					+ this.type.getNumberOfTimeFrameNames() + " but is " + timeFrameNames.length);
+			throw new IllegalArgumentException("Length of timeFrameNames for "
+					+ Type.IRREGULAR_PLURAL + " must be "
+					+ this.type.getNumberOfTimeFrameNames() + " but is "
+					+ timeFrameNames.length);
 		} else {
 			assignIrregularPluralForms(timeFrameNames);
 		}
 	}
 
-	private void assignIrregularPluralForms(String... timeFrameNames) throws IllegalArgumentException {
+	private void assignIrregularPluralForms(String... timeFrameNames)
+			throws IllegalArgumentException {
 		for (int i = 0; i < timeFrameNames.length; i++) {
 			final String frameName = timeFrameNames[i];
 
 			if (frameName == null || frameName.isEmpty()) {
-				throw new IllegalArgumentException("timeFrameNames[" + i + "] is empty");
+				throw new IllegalArgumentException("timeFrameNames[" + i
+						+ "] is empty");
 			} else {
 				assignIrregularPluralForm(i, frameName);
 			}
@@ -476,8 +526,10 @@ public enum TimeDifferenceCalculator {
 
 	private void prepareFormsForPluralMorpheme(String... timeFrameNames) {
 		if (timeFrameNames.length != this.type.getNumberOfTimeFrameNames()) {
-			throw new IllegalArgumentException("Length of timeFrameNames for " + Type.PLURAL_MORPHEME + " must be "
-					+ this.type.getNumberOfTimeFrameNames() + " but is " + timeFrameNames.length);
+			throw new IllegalArgumentException("Length of timeFrameNames for "
+					+ Type.PLURAL_MORPHEME + " must be "
+					+ this.type.getNumberOfTimeFrameNames() + " but is "
+					+ timeFrameNames.length);
 		} else {
 			assignPluralMorphemeForms(timeFrameNames);
 		}
@@ -486,7 +538,8 @@ public enum TimeDifferenceCalculator {
 	private void assignPluralMorphemeForms(String... timeFrameNames) {
 		for (int i = 0; i < timeFrameNames.length; i++) {
 			if (timeFrameNames[i] == null || timeFrameNames[i].length() == 0) {
-				throw new IllegalArgumentException("timeFrameNames[" + i + "] is empty");
+				throw new IllegalArgumentException("timeFrameNames[" + i
+						+ "] is empty");
 			} else {
 				assignPluralMorphemeForm(i, timeFrameNames[i]);
 			}
@@ -541,8 +594,10 @@ public enum TimeDifferenceCalculator {
 	 * @return String representation of a difference in time between endTime and
 	 *         startTime
 	 */
-	public String getTimeDifferenceAsString(TimeDifferenceContext timeDifferenceContext) {
-		Map<String, String> customValues = timeDifferenceContext.getCustomValues();
+	public String getTimeDifferenceAsString(
+			TimeDifferenceContext timeDifferenceContext) {
+		Map<String, String> customValues = timeDifferenceContext
+				.getCustomValues();
 		StringBuffer buffer = new StringBuffer("");
 
 		TimeDifferenceCalculationStrategy calculationStrategy;
@@ -552,7 +607,9 @@ public enum TimeDifferenceCalculator {
 			calculationStrategy = new DefaultTimeDifferenceCalculationStrategy();
 		}
 
-		long diff = calculationStrategy.calculateTimeDifference(timeDifferenceContext.getStartTime(), timeDifferenceContext.getEndTime());
+		long diff = calculationStrategy.calculateTimeDifference(
+				timeDifferenceContext.getStartTime(),
+				timeDifferenceContext.getEndTime());
 
 		if (diff % Constants.ONE_SECOND_IN_MILLISECONDS != 0) {
 			if (diff > Constants.ONE_SECOND_IN_MILLISECONDS) {
@@ -568,7 +625,8 @@ public enum TimeDifferenceCalculator {
 		Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(diff);
 
-		if (customValues == null && timeDifferenceContext.isBusinessDaysInString()) {
+		if (customValues == null
+				&& timeDifferenceContext.isBusinessDaysInString()) {
 			customValues = new HashMap<String, String>();
 			customValues.put("day", businessDay);
 			customValues.put("days", businessDays1stForm);
@@ -579,33 +637,52 @@ public enum TimeDifferenceCalculator {
 			customValues.put("businessMonths5AndMore", businessMonths5AndMore);
 		}
 
-		prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.SECOND, customValues), timeDifferenceContext.isOmitTailingZeroes());
+		prependInBuffer(
+				buffer,
+				getStringRepresentationOfValue(cal, Calendar.SECOND,
+						customValues),
+				timeDifferenceContext.isOmitTailingZeroes());
 
 		if (diff < Constants.ONE_MINUTE_IN_MILLISECONDS) {
 			return buffer.toString().trim();
 		}
 
-		prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.MINUTE, customValues), timeDifferenceContext.isOmitTailingZeroes());
+		prependInBuffer(
+				buffer,
+				getStringRepresentationOfValue(cal, Calendar.MINUTE,
+						customValues),
+				timeDifferenceContext.isOmitTailingZeroes());
 
 		if (diff < Constants.ONE_HOUR_IN_MILLISECONDS) {
 			return applyCommasAndAndWord(buffer).toString().trim();
 		}
 		cal.add(Calendar.HOUR_OF_DAY, -1);
 
-		prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.HOUR_OF_DAY, customValues), timeDifferenceContext.isOmitTailingZeroes());
+		prependInBuffer(
+				buffer,
+				getStringRepresentationOfValue(cal, Calendar.HOUR_OF_DAY,
+						customValues),
+				timeDifferenceContext.isOmitTailingZeroes());
 
 		if (diff < Constants.ONE_DAY_IN_MILLISECONDS) {
 			return applyCommasAndAndWord(buffer).toString().trim();
 		}
 		cal.add(Calendar.DATE, -1);
-		prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.DATE, customValues), timeDifferenceContext.isOmitTailingZeroes());
+		prependInBuffer(
+				buffer,
+				getStringRepresentationOfValue(cal, Calendar.DATE, customValues),
+				timeDifferenceContext.isOmitTailingZeroes());
 
 		long currentMonthInMillis = Constants.getActualMonthInMillis(cal);
 
 		if (diff < currentMonthInMillis) {
 			return applyCommasAndAndWord(buffer).toString().trim();
 		}
-		prependInBuffer(buffer, getStringRepresentationOfValue(cal, Calendar.MONTH, customValues), timeDifferenceContext.isOmitTailingZeroes());
+		prependInBuffer(
+				buffer,
+				getStringRepresentationOfValue(cal, Calendar.MONTH,
+						customValues),
+				timeDifferenceContext.isOmitTailingZeroes());
 
 		return applyCommasAndAndWord(buffer).toString().trim();
 	}
@@ -616,8 +693,10 @@ public enum TimeDifferenceCalculator {
 		}
 		StringBuffer output = new StringBuffer();
 
-		String helpString = buffer.toString().replaceAll("([0-9]+) ([A-z\u00ea\u00fa ]+)", "$1-$2");
-		helpString = helpString.replaceAll("([A-z\u00ea\u00fa ]+) ([0-9]+)", "$1-$2");
+		String helpString = buffer.toString().replaceAll(
+				"([0-9]+) ([A-z\u00ea\u00fa ]+)", "$1-$2");
+		helpString = helpString.replaceAll("([A-z\u00ea\u00fa ]+) ([0-9]+)",
+				"$1-$2");
 
 		String[] timeFrames = helpString.split("-");
 		for (int i = 0; i < timeFrames.length; i = i + 2) {
@@ -633,7 +712,8 @@ public enum TimeDifferenceCalculator {
 		return output;
 	}
 
-	private void prependInBuffer(StringBuffer buffer, String part, boolean omitTailingZeroes) {
+	private void prependInBuffer(StringBuffer buffer, String part,
+			boolean omitTailingZeroes) {
 		if (!omitTailingZeroes || !part.startsWith("0 ")) {
 			buffer.insert(0, part);
 		}
@@ -659,77 +739,126 @@ public enum TimeDifferenceCalculator {
 	 * @throws NumberFormatException
 	 *             exception when timeFrame is not able to parse
 	 */
-	private String getStringRepresentationOfValue(Calendar cal, int timeFrame, Map<String, String> customValues) throws NumberFormatException {
+	private String getStringRepresentationOfValue(Calendar cal, int timeFrame,
+			Map<String, String> customValues) throws NumberFormatException {
 		String buff = "" + cal.get(timeFrame);
 		int intValue = Integer.parseInt(buff);
 
 		switch (type) {
 		case PLURAL_MORPHEME:
-			return getStringRepresentationForPluralMorpheme(timeFrame, intValue, customValues);
+			return getStringRepresentationForPluralMorpheme(timeFrame,
+					intValue, customValues);
 		case IRREGULAR_PLURAL:
-			return getStringRepresentationForIrregularPlural(timeFrame, intValue, customValues);
+			return getStringRepresentationForIrregularPlural(timeFrame,
+					intValue, customValues);
 		case VERY_IRREGULAR_PLURAL:
-			return getStringRepresentationForVeryIrregularPlural(timeFrame, intValue, customValues);
+			return getStringRepresentationForVeryIrregularPlural(timeFrame,
+					intValue, customValues);
 		default:
 		}
 		return "";
 	}
 
-	private String getStringRepresentationForVeryIrregularPlural(int timeFrame, int intValue, Map<String, String> customValues) {
+	private String getStringRepresentationForVeryIrregularPlural(int timeFrame,
+			int intValue, Map<String, String> customValues) {
 		if (timeFrame == Calendar.DATE && intValue > 1) {
 
 			if (customValues == null) {
 				if ("RUSSIAN".equals(this.name())) {
 
 					if (intValue > 1 && intValue <= 4) {
-						return intValue + " " + getCustomOrDefaultValue(customValues, "days", days) + " ";
+						return intValue
+								+ " "
+								+ getCustomOrDefaultValue(customValues, "days",
+										days) + " ";
 					} else if (intValue > 4 && intValue < 22) {
-						return intValue + " " + getCustomOrDefaultValue(customValues, "days", days5AndMore) + " ";
+						return intValue
+								+ " "
+								+ getCustomOrDefaultValue(customValues, "days",
+										days5AndMore) + " ";
 					}
 
 					int lastDigit = intValue % 10;
 
 					if (lastDigit > 1 && lastDigit <= 4) {
-						return intValue + " " + getCustomOrDefaultValue(customValues, "days", days) + " ";
+						return intValue
+								+ " "
+								+ getCustomOrDefaultValue(customValues, "days",
+										days) + " ";
 					} else {
-						return intValue + " " + getCustomOrDefaultValue(customValues, "days", days5AndMore) + " ";
+						return intValue
+								+ " "
+								+ getCustomOrDefaultValue(customValues, "days",
+										days5AndMore) + " ";
 					}
 				}
-				return intValue + " " + getCustomOrDefaultValue(customValues, "days", days) + " ";
+				return intValue + " "
+						+ getCustomOrDefaultValue(customValues, "days", days)
+						+ " ";
 			}
 
 			if ("CZECH".equals(this.name())) {
 				if (intValue > 1 && intValue < 5) {
-					return intValue + " " + getCustomOrDefaultValue(customValues, "days", days) + " ";
+					return intValue
+							+ " "
+							+ getCustomOrDefaultValue(customValues, "days",
+									days) + " ";
 				}
 				if (intValue > 4 && intValue < 9) {
-					return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays2ndForm", days) + " ";
+					return intValue
+							+ " "
+							+ getCustomOrDefaultValue(customValues,
+									"businessDays2ndForm", days) + " ";
 				}
 				if (intValue == 9) {
-					return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays3rdForm", days) + " ";
+					return intValue
+							+ " "
+							+ getCustomOrDefaultValue(customValues,
+									"businessDays3rdForm", days) + " ";
 				}
-				return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays2ndForm", days) + " ";
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues,
+								"businessDays2ndForm", days) + " ";
 			} else if ("POLISH".equals(this.name())) {
 				if (intValue > 1 && intValue < 5) {
-					return intValue + " " + getCustomOrDefaultValue(customValues, "days", days) + " ";
+					return intValue
+							+ " "
+							+ getCustomOrDefaultValue(customValues, "days",
+									days) + " ";
 				}
 				if (intValue > 4) {
-					return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays2ndForm", days) + " ";
+					return intValue
+							+ " "
+							+ getCustomOrDefaultValue(customValues,
+									"businessDays2ndForm", days) + " ";
 				}
 			} else if ("RUSSIAN".equals(this.name())) {
 
 				if (intValue > 1 && intValue <= 4) {
-					return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays2ndForm", days) + " ";
+					return intValue
+							+ " "
+							+ getCustomOrDefaultValue(customValues,
+									"businessDays2ndForm", days) + " ";
 				} else if (intValue > 4 && intValue < 22) {
-					return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays3rdForm", days) + " ";
+					return intValue
+							+ " "
+							+ getCustomOrDefaultValue(customValues,
+									"businessDays3rdForm", days) + " ";
 				}
 
 				int lastDigit = intValue % 10;
 
 				if (lastDigit > 1 && lastDigit <= 4) {
-					return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays2ndForm", days) + " ";
+					return intValue
+							+ " "
+							+ getCustomOrDefaultValue(customValues,
+									"businessDays2ndForm", days) + " ";
 				} else {
-					return intValue + " " + getCustomOrDefaultValue(customValues, "businessDays3rdForm", days) + " ";
+					return intValue
+							+ " "
+							+ getCustomOrDefaultValue(customValues,
+									"businessDays3rdForm", days) + " ";
 				}
 
 			}
@@ -740,38 +869,73 @@ public enum TimeDifferenceCalculator {
 		if (suffixIntValue == 1) {
 			switch (timeFrame) {
 			case Calendar.SECOND:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "second", second);
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues, "second",
+								second);
 			case Calendar.MINUTE:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "minute", minute) + " ";
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues, "minute",
+								minute) + " ";
 			case Calendar.HOUR_OF_DAY:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "hour", hour) + " ";
+				return intValue + " "
+						+ getCustomOrDefaultValue(customValues, "hour", hour)
+						+ " ";
 			case Calendar.DATE:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "day", day) + " ";
+				return intValue + " "
+						+ getCustomOrDefaultValue(customValues, "day", day)
+						+ " ";
 			case Calendar.MONTH:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "month", month) + " ";
+				return intValue + " "
+						+ getCustomOrDefaultValue(customValues, "month", month)
+						+ " ";
 			}
 
 		} else if (1 < suffixIntValue && suffixIntValue < 5) {
 			switch (timeFrame) {
 			case Calendar.SECOND:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "seconds", seconds);
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues, "seconds",
+								seconds);
 			case Calendar.MINUTE:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "minutes", minutes) + " ";
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues, "minutes",
+								minutes) + " ";
 			case Calendar.HOUR_OF_DAY:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "hours", hours) + " ";
+				return intValue + " "
+						+ getCustomOrDefaultValue(customValues, "hours", hours)
+						+ " ";
 			case Calendar.MONTH:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "months", months) + " ";
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues, "months",
+								months) + " ";
 			}
 		} else {
 			switch (timeFrame) {
 			case Calendar.SECOND:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "seconds5AndMore", seconds5AndMore);
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues,
+								"seconds5AndMore", seconds5AndMore);
 			case Calendar.MINUTE:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "minutes5AndMore", minutes5AndMore) + " ";
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues,
+								"minutes5AndMore", minutes5AndMore) + " ";
 			case Calendar.HOUR_OF_DAY:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "hours5AndMore", hours5AndMore) + " ";
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues,
+								"hours5AndMore", hours5AndMore) + " ";
 			case Calendar.MONTH:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "months5AndMore", months5AndMore) + " ";
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues,
+								"months5AndMore", months5AndMore) + " ";
 			}
 		}
 		return "";
@@ -782,7 +946,8 @@ public enum TimeDifferenceCalculator {
 		if (10 < intValue && intValue < 20) {
 			suffixIntValue = 5;
 		} else {
-			suffixIntValue = Integer.parseInt(("" + intValue).substring(("" + intValue).length() - 1));
+			suffixIntValue = Integer.parseInt(("" + intValue)
+					.substring(("" + intValue).length() - 1));
 			if (intValue > 20 && "1".equals("" + suffixIntValue)) {
 				suffixIntValue = 5;
 			}
@@ -790,60 +955,99 @@ public enum TimeDifferenceCalculator {
 		return suffixIntValue;
 	}
 
-	private String getStringRepresentationForIrregularPlural(int timeFrame, int intValue, Map<String, String> customValues) {
+	private String getStringRepresentationForIrregularPlural(int timeFrame,
+			int intValue, Map<String, String> customValues) {
 		if (intValue > 1 || intValue == 0) {
 			switch (timeFrame) {
 			case Calendar.SECOND:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "seconds", seconds);
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues, "seconds",
+								seconds);
 			case Calendar.MINUTE:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "minutes", minutes) + " ";
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues, "minutes",
+								minutes) + " ";
 			case Calendar.HOUR_OF_DAY:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "hours", hours) + " ";
+				return intValue + " "
+						+ getCustomOrDefaultValue(customValues, "hours", hours)
+						+ " ";
 			case Calendar.DATE:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "days", days) + " ";
+				return intValue + " "
+						+ getCustomOrDefaultValue(customValues, "days", days)
+						+ " ";
 			case Calendar.MONTH:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "months", months) + " ";
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues, "months",
+								months) + " ";
 			}
 		} else {
 			switch (timeFrame) {
 			case Calendar.SECOND:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "second", second);
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues, "second",
+								second);
 			case Calendar.MINUTE:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "minute", minute) + " ";
+				return intValue
+						+ " "
+						+ getCustomOrDefaultValue(customValues, "minute",
+								minute) + " ";
 			case Calendar.HOUR_OF_DAY:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "hour", hour) + " ";
+				return intValue + " "
+						+ getCustomOrDefaultValue(customValues, "hour", hour)
+						+ " ";
 			case Calendar.DATE:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "day", day) + " ";
+				return intValue + " "
+						+ getCustomOrDefaultValue(customValues, "day", day)
+						+ " ";
 			case Calendar.MONTH:
-				return intValue + " " + getCustomOrDefaultValue(customValues, "month", month) + " ";
+				return intValue + " "
+						+ getCustomOrDefaultValue(customValues, "month", month)
+						+ " ";
 			}
 		}
 		return "";
 	}
 
-	private String getStringRepresentationForPluralMorpheme(int timeFrame, int intValue, Map<String, String> customValues) {
+	private String getStringRepresentationForPluralMorpheme(int timeFrame,
+			int intValue, Map<String, String> customValues) {
 		switch (timeFrame) {
 		case Calendar.SECOND:
-			return applyProperPluralMorphemeSuffix(intValue, getCustomOrDefaultValue(customValues, "second", second));
+			return applyProperPluralMorphemeSuffix(intValue,
+					getCustomOrDefaultValue(customValues, "second", second));
 		case Calendar.MINUTE:
-			return applyProperPluralMorphemeSuffix(intValue, getCustomOrDefaultValue(customValues, "minute", minute)) + " ";
+			return applyProperPluralMorphemeSuffix(intValue,
+					getCustomOrDefaultValue(customValues, "minute", minute))
+					+ " ";
 		case Calendar.HOUR_OF_DAY:
-			return applyProperPluralMorphemeSuffix(intValue, getCustomOrDefaultValue(customValues, "hour", hour)) + " ";
+			return applyProperPluralMorphemeSuffix(intValue,
+					getCustomOrDefaultValue(customValues, "hour", hour)) + " ";
 		case Calendar.DATE:
 			if (intValue > 1) {
-				String value = getCustomOrDefaultValue(customValues, "days", days);
-				value = (isBlank(value)) ? getCustomOrDefaultValue(customValues, "day", day) : value;
+				String value = getCustomOrDefaultValue(customValues, "days",
+						days);
+				value = (isBlank(value)) ? getCustomOrDefaultValue(
+						customValues, "day", day) : value;
 				return applyProperPluralMorphemeSuffix(intValue, value) + " ";
 			} else {
-				return applyProperPluralMorphemeSuffix(intValue, getCustomOrDefaultValue(customValues, "day", day)) + " ";
+				return applyProperPluralMorphemeSuffix(intValue,
+						getCustomOrDefaultValue(customValues, "day", day))
+						+ " ";
 			}
 		case Calendar.MONTH:
 			if (intValue > 1) {
-				String value = getCustomOrDefaultValue(customValues, "months", months);
-				value = (isBlank(value)) ? getCustomOrDefaultValue(customValues, "month", month) : value;
+				String value = getCustomOrDefaultValue(customValues, "months",
+						months);
+				value = (isBlank(value)) ? getCustomOrDefaultValue(
+						customValues, "month", month) : value;
 				return applyProperPluralMorphemeSuffix(intValue, value) + " ";
 			} else {
-				return applyProperPluralMorphemeSuffix(intValue, getCustomOrDefaultValue(customValues, "month", month)) + " ";
+				return applyProperPluralMorphemeSuffix(intValue,
+						getCustomOrDefaultValue(customValues, "month", month))
+						+ " ";
 			}
 		}
 		return "";
@@ -853,7 +1057,8 @@ public enum TimeDifferenceCalculator {
 		return (value == null || value == "");
 	}
 
-	private String getCustomOrDefaultValue(Map<String, String> customValues, String key, String defaultValue) {
+	private String getCustomOrDefaultValue(Map<String, String> customValues,
+			String key, String defaultValue) {
 		if (customValues != null && customValues.get(key) != null) {
 			return customValues.get(key);
 		}
@@ -883,7 +1088,8 @@ public enum TimeDifferenceCalculator {
 					return value + " " + baseForm;
 				} else {
 					if (baseForm.endsWith(pluralMorphemeSuffix)) {
-						return value + " " + baseForm + pluralMorphemeInterfix + pluralMorphemeSuffix;
+						return value + " " + baseForm + pluralMorphemeInterfix
+								+ pluralMorphemeSuffix;
 					} else {
 						return value + " " + baseForm + pluralMorphemeSuffix;
 					}
