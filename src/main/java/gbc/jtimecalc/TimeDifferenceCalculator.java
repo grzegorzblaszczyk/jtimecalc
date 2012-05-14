@@ -339,7 +339,7 @@ public enum TimeDifferenceCalculator {
 	 * @param iso code for language
 	 * @return TimeDifferenceCalculator dedicated for language
 	 */
-	public TimeDifferenceCalculator getInstance(String code) {
+	public static TimeDifferenceCalculator getInstance(String code) {
 		for (TimeDifferenceCalculator value : values()) {
 			if (value.code.equals(code)) {
 				return value;
