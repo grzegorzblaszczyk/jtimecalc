@@ -56,7 +56,8 @@ public class SimpleExample {
 
 		for (TimeDifferenceCalculator calc : TimeDifferenceCalculator.values()) {
 			System.out.println(calc + ": \""
-					+ calc.getTimeDifferenceAsString(endTime, startTime, false, false, null)
+					+ calc.getTimeDifferenceAsString(new TimeDifferenceContext(endTime, startTime, false, false,
+							null, false))
 					+ "\" , type: " + calc.getType());
 		}
 		

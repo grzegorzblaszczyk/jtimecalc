@@ -558,9 +558,10 @@ public class AbstractTimeDifferenceCalculatorTest {
     return timeDifferenceCalculator;
   }
 
-  protected void assertCorrectMessage(String expectedValue, long endTime, long startTime, boolean omitTailingZeroes, boolean onlyBusinessDays, Map<String, String> customValues) {
+  protected void assertCorrectMessage(String expectedValue, long endTime, long startTime, boolean omitTailingZeroes, boolean onlyBusinessDays, Map<String, String> customValues, boolean businessDaysInString) {
     assertEquals("value returned is not '" + expectedValue + "'", expectedValue, getTimeDifferenceCalculator()
-        .getTimeDifferenceAsString(endTime, startTime, omitTailingZeroes, onlyBusinessDays, customValues));
+        .getTimeDifferenceAsString(new TimeDifferenceContext(endTime, startTime, omitTailingZeroes, onlyBusinessDays, customValues,
+				businessDaysInString)));
   }
 
   protected void assertCorrectMessages() {
@@ -594,7 +595,9 @@ public class AbstractTimeDifferenceCalculatorTest {
         	onlyBusinessDays = true;
         }
         
-        assertCorrectMessage(getExpectedValue(), getEndTime(), getStartTime(), omitTailingZeroes, onlyBusinessDays, null);
+        boolean businessDaysInString = onlyBusinessDays;
+        
+		assertCorrectMessage(getExpectedValue(), getEndTime(), getStartTime(), omitTailingZeroes, onlyBusinessDays, null, businessDaysInString);
         logger.debug("expected value '" + getExpectedValue() + "' is correct");
       }
     }
