@@ -345,7 +345,7 @@ public enum TimeDifferenceCalculator {
 				return value;
 			}
 		}
-		throw new IllegalArgumentException("language not supported");
+		throw new IllegalArgumentException("Language with code '" + code + "' is not yet supported.");
 	}
 
 	private void prepareFormsForVeryIrregularPlural(String... timeFrameNames) {
