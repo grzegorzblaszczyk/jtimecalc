@@ -56,6 +56,11 @@ public enum TimeDifferenceCalculator {
 			"pracovn\u00ed m\u011bs\u00edc", "pracovn\u00ed m\u011bs\u00edce",
 			"pracovn\u00edch m\u011bs\u00edc\u016f"),
 
+	DANISH("da", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms",
+					"sekund", "sekunder", "minut", "minutter", "time", "timer", "dag",
+					"dage", "måned", "måneder", "arbejdsdag", "arbejdsdage", "arbejdsmåned",
+					"arbejdsmåneder"),		
+			
 	DUTCH("nl", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms",
 			"seconde", "seconden", "minuut", "minuten", "uur", "uren", "dag",
 			"dagen", "maand", "maanden", "werkdag", "werkdagen", "werkmaand",
