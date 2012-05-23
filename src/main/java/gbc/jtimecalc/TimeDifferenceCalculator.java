@@ -113,6 +113,11 @@ public enum TimeDifferenceCalculator {
 			"segundo", "minuto", "hora", "d\u00eda", "mes",
 			"d\u00eda h\u00e1bil", "d\u00edas h\u00e1biles", "mes h\u00e1bil",
 			"meses h\u00e1biles"),
+			
+	SWEDISH("sv", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms",
+			"sekund", "sekunder", "minut", "minuter", "timme", "timmar", "dag",
+					"dagar", "månad", "månader", "arbetsdag", "arbetsdagar", "arbetsmånad",
+					"arbetsmånader"),			
 
 	TURKISH("tr", Type.PLURAL_MORPHEME, "", "", false, false, "", "ms",
 			"saniye", "dakika", "saat", "gün", "ay", "is günü", "is günü",
