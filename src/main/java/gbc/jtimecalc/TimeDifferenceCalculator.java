@@ -84,6 +84,10 @@ public enum TimeDifferenceCalculator {
 			"Tag", "Tage", "Monat", "Monate", "Werktag", "Werktage",
 			"Werkmonat", "Werkmonate"),
 
+	HUNGARIAN("hu", Type.PLURAL_MORPHEME, "", "", false, false, "", "ms",
+		    "másodperc", "perc", "óra", "nap", "hónap", "munkanap", "munkanap", 
+		    "munkahónap", "munkahónap"),
+
 	ITALIAN("it", Type.IRREGULAR_PLURAL, "", "", false, false, "", "ms",
 			"secondo", "seconda", "minuto", "minuti", "ora", "ore", "giorno",
 			"giorni", "mese", "mesi", "giorno lavorativo", "giorni lavorativi",
