@@ -90,7 +90,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>net.sf.jtimecalc.SimpleExample</mainClass>
+              <mainClass>gbc.jtimecalc.SimpleExample</mainClass>
               <addClasspath>true</addClasspath>
               <classpathPrefix>lib</classpathPrefix>
             </manifest>

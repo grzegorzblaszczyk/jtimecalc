@@ -42,7 +42,7 @@ public class SimpleExample {
 		System.out.println("1. Starting operation");
 		long startTime = System.currentTimeMillis();
 
-		System.out.println("2. Invoking some time consuming method");
+		System.out.println("2. Invoking some time-consuming method => waiting 5 seconds...");
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
