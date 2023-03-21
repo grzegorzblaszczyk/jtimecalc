@@ -2,13 +2,13 @@
  * Project jtimecalc
  * http://grzegorzblaszczyk.github.com/jtimecalc
  *
- * Copyright Grzegorz Blaszczyk Consulting 2008-2009
+ * Copyright Grzegorz Blaszczyk Consulting 2008-2023
  *
  */
 
 /*
 MIT LICENSE
-Copyright (C) 2012 by Grzegorz Blaszczyk
+Copyright (C) 2023 by Grzegorz Blaszczyk
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,8 @@ import java.util.Map;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Ignore;
 
 /**
@@ -53,7 +54,7 @@ import org.junit.Ignore;
 @Ignore
 public class AbstractTimeDifferenceCalculatorTest {
 
-  public static Logger logger = Logger.getLogger(AbstractTimeDifferenceCalculatorTest.class);
+  public static Logger logger = LogManager.getLogger(AbstractTimeDifferenceCalculatorTest.class);
 
   public static final String TEST_METHOD_PREFIX = "should";
 

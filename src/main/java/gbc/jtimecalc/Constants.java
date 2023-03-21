@@ -2,13 +2,13 @@
  * Project jtimecalc
  * http://grzegorzblaszczyk.github.com/jtimecalc
  * 
- * Copyright Grzegorz Blaszczyk Consulting 2008-2012 
+ * Copyright Grzegorz Blaszczyk Consulting 2008-2023
  * 
  */
 
 /*
 MIT LICENSE
-Copyright (C) 2012 by Grzegorz Blaszczyk
+Copyright (C) 2023 by Grzegorz Blaszczyk
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

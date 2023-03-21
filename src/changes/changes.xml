@@ -5,6 +5,13 @@
       <author email="grzegorz@blaszczyk-consulting.com">Grzegorz Błaszczyk</author>
    </properties>
    <body>
+
+      <release version="1.10" date="2023-03-21" description="Stable version">
+           <action dev="Grzegorz Błaszczyk" type="refactor">
+               Upgrade of log4j to version 2.20.0.
+           </action>
+      </release>
+
    
       <release version="1.3.1" date="2009-03-01" description="Stable version">   
            <action dev="Grzegorz Błaszczyk" type="refactor">
@@ -40,15 +47,6 @@
            <action dev="Grzegorz Błaszczyk" type="add">
                Stable version of English- and PolishTimeDifferenceCalculator
            </action>                      
-
-<!--
-           <action dev="Grzegorz Błaszczyk" type="fix" issue="1254">
-               Fixed a nasty bug.
-           </action>        
-           <action dev="Grzegorz Błaszczyk" type="delete">
-               Removed a feature that nobody liked.
-           </action>        
--->
       </release>         
    </body>
 </document>

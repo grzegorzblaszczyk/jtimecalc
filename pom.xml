@@ -7,7 +7,7 @@
   <artifactId>jtimecalc</artifactId>
   <name>JTimeCalc</name>
   <packaging>jar</packaging>
-  <version>1.9</version>
+  <version>1.10</version>
   <description>
   	An easy to use library for formatting human readable time differences in many languages.
 
@@ -73,8 +73,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.0.2</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.7</source>
+          <target>1.7</target>
         </configuration>
       </plugin>
       
@@ -123,7 +123,7 @@
       <plugin>
         <artifactId>maven-install-plugin</artifactId>
         <configuration>
-	    <createChecksum>true</createChecksum>
+          <createChecksum>true</createChecksum>
         </configuration>
       </plugin>
     </plugins>
@@ -177,9 +177,9 @@
     </dependency>
 
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.15</version>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.20.0</version>
       <exclusions>
         <exclusion>
           <groupId>com.sun.jdmk</groupId>
@@ -261,6 +261,7 @@
       </plugin>
 
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
         <configuration>
           <locales>en,cs,de,es,fi,fr,it,nl,no,pl</locales>
